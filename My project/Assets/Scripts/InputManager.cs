@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
-    public bool jumpInput;
+    public bool kickInput;
     public Vector2 mousePosition;
     private void Awake()
     {
@@ -20,13 +20,14 @@ public class InputManager : MonoBehaviour
     }
     void Start()
     {
-        jumpInput = false;
+        kickInput = false;
         //mousePosition = 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        mousePosition = Input.mousePosition;
+        kickInput = Input.GetMouseButtonDown(0) ;
     }
 }
