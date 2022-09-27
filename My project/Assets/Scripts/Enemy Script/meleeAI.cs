@@ -11,17 +11,17 @@ public class meleeAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         SeekPlayer();
     }
 
     void SeekPlayer()
     {
-        Vector2 pPosition = player.transform.position;
         float angle;
-        angle =(Mathf.Atan2(transform.position.y - pPosition.y, transform.position.x - pPosition.x));
-        transform.rotation = new Quaternion(0,0,angle,0);
+        Vector2 playerPosition = player.transform.position;
+        angle =(Mathf.Atan2(transform.position.y - playerPosition.y, transform.position.x - playerPosition.x));
+        transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angle) - 90);
     }
     
     
