@@ -68,6 +68,7 @@ public class PcController : MonoBehaviour
     void GetInputs()                // Used To Get Inputs From Input Maager, Should Be Called On Update
     {
         kickInput = InputManager.instance.kickInput;
+        kickInput = InputManager.instance.kickInput;
         mousePosition = InputManager.instance.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
     }
