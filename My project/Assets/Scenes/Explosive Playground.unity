@@ -398,11 +398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1530617419 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1778980674312429992, guid: e6f7425c6947801419596cb82aab9042, type: 3}
-  m_PrefabInstance: {fileID: 3488603370381649603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3488603370381649603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,9 +405,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 64652128495440956, guid: e6f7425c6947801419596cb82aab9042, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.13
+    - target: {fileID: 1778980674312429992, guid: e6f7425c6947801419596cb82aab9042, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778980674312429992, guid: e6f7425c6947801419596cb82aab9042, type: 3}
+      propertyPath: m_Size.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3488603370711615090, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: m_RootOrder
@@ -463,12 +462,8 @@ PrefabInstance:
       value: PC
       objectReference: {fileID: 0}
     - target: {fileID: 6732947858655756206, guid: e6f7425c6947801419596cb82aab9042, type: 3}
-      propertyPath: kickHitbox
-      value: 
-      objectReference: {fileID: 1530617419}
-    - target: {fileID: 6732947858655756206, guid: e6f7425c6947801419596cb82aab9042, type: 3}
-      propertyPath: enemyHitLayer.m_Bits
-      value: 128
+      propertyPath: kickStrength
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6f7425c6947801419596cb82aab9042, type: 3}
@@ -485,11 +480,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831343763853265614, guid: 050b4de52ffa7f94d91e592f5e7d3e77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.75
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6831343763853265614, guid: 050b4de52ffa7f94d91e592f5e7d3e77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 6831343763853265614, guid: 050b4de52ffa7f94d91e592f5e7d3e77, type: 3}
       propertyPath: m_LocalPosition.z

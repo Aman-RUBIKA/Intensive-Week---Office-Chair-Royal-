@@ -17,10 +17,11 @@ public class PcController : MonoBehaviour
     #endregion Inputs
 
     [Header("Kick Variables")]
-    public float kickForce;     // How Hard The PC Should Kick
-    public float kickDelay;     // How Lomg Before Each Kick
-    Vector2 kickForceVector;
-    public float angle;
+    public float kickForce;         // How Hard The PC Should Kick
+    public float kickDelay;         // How Lomg Before Each Kick
+    Vector2 kickForceVector;        // 
+    public float angleOfKick;       // The Z Axis Value For Kick   
+    public Vector2 kickAngleVector; // The X and Y Vectors For Kick Direction
     private void Awake()
     {
         #region Simpleton
@@ -62,6 +63,7 @@ public class PcController : MonoBehaviour
     {
         kickCooldown = true;
         LaunchKick();
+        Kick.instance.PerformKick();
         yield return new WaitForSeconds(delay);
         //Debug.Log("I Have Kicked " + kickCooldown);
         kickCooldown = false;
@@ -84,11 +86,12 @@ public class PcController : MonoBehaviour
     void CharacterAim(Vector2 mousePosition)        //Gets The Mouse Position And Allows The Player's Y Axis To Always Point At It
     {
         
-        angle =(Mathf.Atan2(transform.position.y - mousePosition.y, transform.position.x - mousePosition.x));
-        Debug.Log(mousePosition.y + " is Y Position Mouse. " + mousePosition.x + "is X Position Mouse");
-        Debug.Log(mousePosition);
+        kickAngleVector =new Vector2(transform.position.x - mousePosition.x, transform.position.y - mousePosition.y);
+        angleOfKick =(Mathf.Atan2(kickAngleVector.y, kickAngleVector.x));
+        //Debug.Log(mousePosition.y + " is Y Position Mouse. " + mousePosition.x + "is X Position Mouse");
+        //Debug.Log(mousePosition);
         //Debug.Log((Mathf.Rad2Deg*angle)-90);
-        transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angle) +90);
+        transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angleOfKick) +90);
         //Debug.Log(new Vector2(transform.position.x, transform.position.y) + mousePosition);
         //transform.rotation = eulerAngles(0,0,)
     }
