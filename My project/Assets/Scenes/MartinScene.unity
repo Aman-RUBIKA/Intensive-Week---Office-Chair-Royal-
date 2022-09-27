@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!50 &126649407 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6499974284137641950, guid: 511d237fa6004f746a09109e2d959786, type: 3}
+  m_PrefabInstance: {fileID: 525037159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &264418157
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +343,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4683676792675677283, guid: 511d237fa6004f746a09109e2d959786, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 126649407}
+    - target: {fileID: 4683676792675677283, guid: 511d237fa6004f746a09109e2d959786, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5508196756047798304, guid: 511d237fa6004f746a09109e2d959786, type: 3}
       propertyPath: m_Name
       value: Melee
@@ -453,7 +466,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3488603370381649603
 PrefabInstance:
