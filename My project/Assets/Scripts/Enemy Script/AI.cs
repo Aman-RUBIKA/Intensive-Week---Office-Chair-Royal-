@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public float explosiveRange = 2;
+    private bool isGonnaExplode = false;
+    public float explosionCountdown = 10;
     public int type;
     private float step;
     public float speed;
@@ -23,22 +26,39 @@ public class AI : MonoBehaviour
         if (type == 0)
         {
             MeleeSeek();
-            speed = 1;
         }
         else if(type == 1)
         {
             RangedSeek();
-            speed = 0.9f;
         }
         else if(type == 2)
         {
             ExplosiveSeek();
+            
         }
     }
 
     void ExplosiveSeek()
     {
+        if (Vector2.Distance(transform.position, pPosition) < explosiveRange)
+        {
+            isGonnaExplode = true;
+        }
+        transform.position = Vector2.MoveTowards(transform.position, pPosition, step);  
         
+
+        if (isGonnaExplode)
+        {
+            if (explosionCountdown > 0)
+            {
+                explosionCountdown -= Time.deltaTime;  
+            }
+            else
+            {
+                Debug.Log("explosion go brrr");
+            }
+        }
+        TurnToPlayer();
     }
     
     void RangedSeek()
