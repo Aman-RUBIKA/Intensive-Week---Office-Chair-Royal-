@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Capitalism : MonoBehaviour
 {
-    [seria]
-    // Start is called before the first frame update
+    [SerializeField] private GameObject Menu;
+    
     void Start()
     {
-
+        Menu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void Openshop()
+    {
+        if (Input.GetKey("tab"))
+        {
+            Menu.SetActive(true);
+        }
     }
 }
