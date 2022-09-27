@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 499671259627883400}
   - component: {fileID: 6879136601469901474}
   - component: {fileID: 8956850439411494638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PC
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   pcRigidbody: {fileID: 499671259627883400}
   meleeRange: {fileID: 1778980674312429992}
   pcCollider: {fileID: 6879136601469901474}
+  mainCamera: {fileID: 0}
   kickForce: 20
   kickDelay: 3
 --- !u!1 &3488603371019496662

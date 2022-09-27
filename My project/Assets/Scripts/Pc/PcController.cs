@@ -41,7 +41,7 @@ public class PcController : MonoBehaviour
     void Update()
     {
         GetInputs();
-        characterAim(Camera.main.ScreenToWorldPoint(mousePosition));
+        characterAim(mousePosition);
         if (kickInput && !kickCooldown)
         {
             StartCoroutine(KickUpdate(kickDelay));
@@ -69,6 +69,7 @@ public class PcController : MonoBehaviour
     {
         kickInput = InputManager.instance.kickInput;
         mousePosition = InputManager.instance.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
     }
     void GetInputs(bool input)      // Use This Overload To Refresh Inputs On Start
     {
@@ -80,6 +81,18 @@ public class PcController : MonoBehaviour
     }
     void characterAim(Vector2 mousePosition)
     {
-
+        float angle;
+        angle =(Mathf.Atan2(transform.position.y - mousePosition.y, transform.position.x - mousePosition.x));
+        Debug.Log(mousePosition.y + " is Y Position Mouse. " + mousePosition.x + "is X Position Mouse");
+        Debug.Log(mousePosition);
+        //Debug.Log((Mathf.Rad2Deg*angle)-90);
+        transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angle) +90);
+        //Debug.Log(new Vector2(transform.position.x, transform.position.y) + mousePosition);
+        //transform.rotation = eulerAngles(0,0,)
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, mousePosition);
+        
     }
 }
