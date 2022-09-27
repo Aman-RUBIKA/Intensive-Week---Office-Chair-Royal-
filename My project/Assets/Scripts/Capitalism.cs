@@ -1,27 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Capitalism : MonoBehaviour
 {
-    [SerializeField] private GameObject Menu;
+    public static bool GameIsPaused = false;
+    public GameObject Menu;
     
     void Start()
     {
         Menu.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void Openshop()
-    {
-        if (Input.GetKey("tab"))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Menu.SetActive(true);
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
+
+    void Resume()
+    {
+        Menu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    void Pause()
+    {
+        Menu.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Debug.Log("fuck");
+
+    }
+
 }
