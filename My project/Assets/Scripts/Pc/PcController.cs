@@ -20,6 +20,7 @@ public class PcController : MonoBehaviour
     public float kickForce;     // How Hard The PC Should Kick
     public float kickDelay;     // How Lomg Before Each Kick
     Vector2 kickForceVector;
+    public float angle;
     private void Awake()
     {
         #region Simpleton
@@ -41,7 +42,7 @@ public class PcController : MonoBehaviour
     void Update()
     {
         GetInputs();
-        characterAim(mousePosition);
+        CharacterAim(mousePosition);
         if (kickInput && !kickCooldown)
         {
             StartCoroutine(KickUpdate(kickDelay));
@@ -80,9 +81,9 @@ public class PcController : MonoBehaviour
             mousePosition = Vector2.zero;
         }
     }
-    void characterAim(Vector2 mousePosition)
+    void CharacterAim(Vector2 mousePosition)        //Gets The Mouse Position And Allows The Player's Y Axis To Always Point At It
     {
-        float angle;
+        
         angle =(Mathf.Atan2(transform.position.y - mousePosition.y, transform.position.x - mousePosition.x));
         Debug.Log(mousePosition.y + " is Y Position Mouse. " + mousePosition.x + "is X Position Mouse");
         Debug.Log(mousePosition);

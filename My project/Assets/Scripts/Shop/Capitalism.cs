@@ -45,7 +45,7 @@ public class Capitalism : MonoBehaviour
             SetTimerText();
         }
 
-        if (currentTime<1)
+        if (currentTime<=1)
         {
             timerText.color = Color.red;
         }

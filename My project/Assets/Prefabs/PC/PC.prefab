@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8044673608019668055}
   - component: {fileID: 1778980674312429992}
+  - component: {fileID: 6732947858655756206}
   m_Layer: 0
   m_Name: 'Melee Collider '
   m_TagString: Untagged
@@ -58,6 +59,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6732947858655756206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748635778905286881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefe8c67f1a409e40a3b8bbc8b8aba4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickHitbox: {fileID: 1778980674312429992}
+  kickHitboxVector: {x: 0, y: 0}
+  enemyHitLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3488603370711615091
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,12 +282,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1704550578, guid: dd6b020679c810e4a9acd936f1d9c8ff, type: 3}
+  m_Sprite: {fileID: -354558329, guid: f08d8cc5453e2684eab7f57c262343d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

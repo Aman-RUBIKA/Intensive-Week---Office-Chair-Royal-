@@ -9,6 +9,9 @@ public class HealthPC : MonoBehaviour
     public float startingHealth;
     public float currentHealth;
     public float healAmount;
+
+    public float invincibilityTime;
+    public bool canBeDamaged;
     private void Awake()
     {
         #region Simpleton
@@ -25,6 +28,7 @@ public class HealthPC : MonoBehaviour
     void Start()
     {
         startingHealth = currentHealth;
+        canBeDamaged = true;
     }
 
     void Update()
@@ -38,8 +42,12 @@ public class HealthPC : MonoBehaviour
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over
         }
         else 
-        { 
-            currentHealth = -damage;
+        {
+            if (canBeDamaged)
+            {
+                StartCoroutine(InvinvibilityAfterDamage());
+                currentHealth = -damage;
+            }
         }
     }
     void callWhenHealed()                   // Call This Function When The Player Consumes STolen Lunch (Healing Item)
@@ -66,8 +74,10 @@ public class HealthPC : MonoBehaviour
         }
         else { return false; }
     }
-    void invinvibilityAfterDamage()
+    IEnumerator InvinvibilityAfterDamage()
     {
-
+        canBeDamaged = false;
+        yield return new WaitForSeconds(invincibilityTime);
+        canBeDamaged = true;
     }
 }
