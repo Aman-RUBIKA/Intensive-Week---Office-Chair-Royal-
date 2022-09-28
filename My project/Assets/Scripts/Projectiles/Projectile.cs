@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
     }
     protected internal void BulletKick()
     {
-        projectileRB.AddForce(transform.up * projectileSpeed);
+        projectileRB.velocity=(transform.up * projectileSpeed);
     }
 
     // Update is called once per frame
