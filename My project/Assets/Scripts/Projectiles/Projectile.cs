@@ -35,6 +35,14 @@ public class Projectile : MonoBehaviour
     {
         projectileRB.velocity=(transform.up * projectileSpeed);
     }
+    public void RandomBulletDirection(float randomRange)
+    {
+        Debug.Log("Determine Bullet Direction Is Being Called");
+        bulletAngle = (UnityEngine.Random.Range(-randomRange, randomRange));
+        //Debug.Log(bulletAngle + " Is The Bullet's Angle Randomness");
+        //bulletAngle += PcController.instance.pivotFireTransform.transform.rotation.z;
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + bulletAngle);
+    }
 
     // Update is called once per frame
     void Update()

@@ -11,6 +11,7 @@ public class MachineGunWeapon : Projectile
     protected override void Start()
     {
         base.Start();
+        base.RandomBulletDirection(1.5f);
         base.BulletKick();
     }
 

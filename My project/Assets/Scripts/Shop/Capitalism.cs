@@ -75,7 +75,7 @@ public class Capitalism : MonoBehaviour
 
     private void SetTimerText()
     {
-        timerText.text = currentTime.ToString("0.0");
+        timerText.text = currentTime.ToString();
     }
     private void SetPrice()
     {
