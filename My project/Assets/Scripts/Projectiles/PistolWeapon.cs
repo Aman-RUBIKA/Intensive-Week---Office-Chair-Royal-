@@ -20,6 +20,7 @@ public class PistolWeapon : Projectile
     }
     void CheckCollision(Collider2D col)
     {
+        Debug.Log(col.gameObject.name + " and layer " + col.gameObject.layer);
         if (col.IsTouchingLayers(wallLayer))
         {
             Debug.Log("Touched A Wall");

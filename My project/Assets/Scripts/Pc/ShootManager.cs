@@ -45,7 +45,7 @@ public class ShootManager : MonoBehaviour
         }
         else                // If The Player Owns The Base Item
         {
-            Instantiate(pistolP, forwardT.position, Quaternion.identity);
+            Instantiate(pistolP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(0.5f);
         }
         pistolCycle = false;

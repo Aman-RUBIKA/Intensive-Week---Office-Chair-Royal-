@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     protected Rigidbody2D projectileRB;
-    public GameObject parent;
+    public Transform parentT;
     public LayerMask enemyLayer;
     public LayerMask wallLayer;
 
@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         projectileRB = GetComponent<Rigidbody2D>();
+        parentT = GetComponentInParent<Transform>().GetComponentInParent<Transform>();
     }
     protected virtual void Start()
     {
@@ -37,7 +38,7 @@ public class Projectile : MonoBehaviour
     }
     virtual internal void Init(GameObject parent)
     {
-        this.parent = parent;
+        //this.parent = parent;
 
     }
 }
