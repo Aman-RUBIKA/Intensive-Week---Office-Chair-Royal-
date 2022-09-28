@@ -147,7 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  midBoss: 0
+  isCharging: 0
+  chargeSpeed: 0
+  chargeMaxTimer: 10
+  chargeTimer: 0
+  rangedTrajectory: 0
+  minesDeployed: 0
+  lr: {fileID: 0}
+  maxHp: 6
   hp: 0
   maxBurnCountdown: 2
   burnCountdown: 0
@@ -159,7 +167,11 @@ MonoBehaviour:
   explosionCountdown: 10
   type: 2
   speed: 2
+  shootTimerMax: 0
+  shootTimer: 0
   rangedDistanceStop: 0
+  pPosition: {x: 0, y: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!95 &1864952333
 Animator:
   serializedVersion: 4
