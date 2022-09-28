@@ -71,16 +71,16 @@ public class EnemyManager : MonoBehaviour
         switch (whereSpawn)
         {
             case 1:
-                Instantiate(go, new Vector2(randomvalue * 19, 11), Quaternion.identity);
+                Instantiate(go, new Vector2(randomvalue * 19, 11 + camPos.y), Quaternion.identity);
                 break;
             case  2:
-                Instantiate(go, new Vector2(-19, randomvalue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(-19 + camPos.x, randomvalue * 11), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(go, new Vector2(randomvalue * 19, -11), Quaternion.identity);
+                Instantiate(go, new Vector2(randomvalue * 19, -11 + camPos.y), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(go, new Vector2(19, randomvalue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(19 + camPos.x, randomvalue * 11), Quaternion.identity);
                 break;
         }
         Debug.Log(Width);
