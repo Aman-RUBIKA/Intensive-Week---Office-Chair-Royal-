@@ -18,15 +18,20 @@ public class AI : MonoBehaviour
     public bool rangedTrajectory;
     public bool minesDeployed;
     public LineRenderer lr;
+
     [Header("General Variables")]
     public float maxHp;
     public float hp;
     public float maxBurnCountdown = 60;
+
+    [Header("Status Effects")]
     public float burnCountdown ;
     public float burnDamage;
     public bool freeze = false;
     public bool burn = false;
     public bool shock = false;
+
+    [Header("Enemy Parameters")]
     public float explosiveRange = 2;
     private bool isGonnaExplode = false;
     public float explosionCountdown = 10;
@@ -36,7 +41,8 @@ public class AI : MonoBehaviour
     private float changeSpeed;
 
     public float shootTimerMax;
-    [SerializeField] float  shootTimer;
+    [SerializeField] 
+    float  shootTimer;
     
     public float rangedDistanceStop;
     public Vector2 pPosition;
