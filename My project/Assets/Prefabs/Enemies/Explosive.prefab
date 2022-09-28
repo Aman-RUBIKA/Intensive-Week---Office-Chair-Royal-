@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8952187295563962550}
   - component: {fileID: 6499974284137641950}
   - component: {fileID: 5656202387072877829}
+  - component: {fileID: 1864952333}
   m_Layer: 7
   m_Name: Explosive
   m_TagString: Untagged
@@ -146,8 +147,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 10
+  hp: 0
+  maxBurnCountdown: 2
+  burnCountdown: 0
+  burnDamage: 5
+  freeze: 0
+  burn: 1
+  shock: 0
   explosiveRange: 2
   explosionCountdown: 10
   type: 2
-  speed: 0.9
+  speed: 2
   rangedDistanceStop: 0
+--- !u!95 &1864952333
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508196756047798304}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f31f68b0c967d694b8a1eb486f73cd4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

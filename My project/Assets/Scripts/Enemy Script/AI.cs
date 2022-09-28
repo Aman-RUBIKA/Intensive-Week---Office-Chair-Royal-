@@ -20,15 +20,20 @@ public class AI : MonoBehaviour
     private float step;
     public float speed;
     private float changeSpeed;
+
+    public float shootTimerMax;
+    [SerializeField] float  shootTimer;
     
     public float rangedDistanceStop;
     private Vector2 pPosition;
     private GameObject player;
+    public GameObject bulletPrefab;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         burnCountdown = maxBurnCountdown;
         hp = maxHp;
+        shootTimer = shootTimerMax;
     }
 
     // Update is called once per frame
@@ -117,7 +122,15 @@ public class AI : MonoBehaviour
         }
         else
         {
-            
+            if (shootTimer <= 0)
+            {
+                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                shootTimer = shootTimerMax;
+            }
+            else
+            {
+                shootTimer -= Time.deltaTime;
+            }
         }
         
     }

@@ -147,11 +147,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 8
+  hp: 0
+  maxBurnCountdown: 60
+  burnCountdown: 0
+  burnDamage: 0
+  freeze: 0
+  burn: 0
+  shock: 0
   explosiveRange: 2
   explosionCountdown: 10
   type: 1
   speed: 0.9
+  shootTimerMax: 3
+  shootTimer: 0
   rangedDistanceStop: 10
+  bulletPrefab: {fileID: 7306176417093634837, guid: 321ebc2699547c04783750ea876b9489, type: 3}
 --- !u!95 &5544387083820384056
 Animator:
   serializedVersion: 4
