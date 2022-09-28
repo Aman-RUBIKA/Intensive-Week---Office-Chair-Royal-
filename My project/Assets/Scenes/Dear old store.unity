@@ -409,6 +409,15 @@ MonoBehaviour:
   price1: {fileID: 1273957999}
   price2: {fileID: 719163531}
   price3: {fileID: 1474029408}
+  upgrades:
+  - {fileID: 11400000, guid: 495da7bc84662754fa24fe9f9145a0f7, type: 2}
+  - {fileID: 11400000, guid: 534990b125e8cc049b853d9c1ac09e09, type: 2}
+  - {fileID: 11400000, guid: 4d0fd501d3f014a4f8ef93f7e2c51169, type: 2}
+  - {fileID: 11400000, guid: 3e7214f1d8aafe949a8ee30430d393b0, type: 2}
+  - {fileID: 11400000, guid: 9b72a8a4f54b84a41adf20d6868da3aa, type: 2}
+  - {fileID: 11400000, guid: 8078f4d5c23e4954a9281f18e2070d78, type: 2}
+  - {fileID: 11400000, guid: f00f32c3baaf56448823a4a38e3e377e, type: 2}
+  - {fileID: 11400000, guid: 5938e77e17407194290f5ce97516edbb, type: 2}
 --- !u!4 &263325922
 Transform:
   m_ObjectHideFlags: 0
@@ -958,7 +967,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1132919124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 263325921}
+        m_TargetAssemblyTypeName: Capitalism, Assembly-CSharp
+        m_MethodName: DisplayUpgrades
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1132919124
 MonoBehaviour:
   m_ObjectHideFlags: 0

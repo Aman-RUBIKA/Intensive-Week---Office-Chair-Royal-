@@ -309,10 +309,20 @@ MonoBehaviour:
   rightT: {fileID: 5735469986605872495}
   backT: {fileID: 2903157251192880757}
   leftT: {fileID: 7625537857628094155}
-  pistol0: 0
+  pistol0: 1
   pistol1: 0
   pistol2: 0
+  pistolCycle: 0
+  mach0: 0
+  mach1: 0
+  mach2: 0
+  machCycle: 0
+  machMagSize: 0
+  magCooldown0: 0
+  magCooldown1: 0
+  magCooldown2: 0
   pistolP: {fileID: 1913228001271541735, guid: e1c9aa88f4dbac4408ea76215a3af16f, type: 3}
+  machP: {fileID: 1561388194924014883, guid: 08e8c12738917fd4ab73c2138916cdf7, type: 3}
 --- !u!1 &3488603371019496662
 GameObject:
   m_ObjectHideFlags: 0

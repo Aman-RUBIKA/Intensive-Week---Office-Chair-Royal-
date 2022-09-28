@@ -17,9 +17,7 @@ public class Capitalism : MonoBehaviour
     public int price = 50;
     public int salePrice;
     public float priceAugment;
-    public TextMeshProUGUI price1;
-    public TextMeshProUGUI price2;
-    public TextMeshProUGUI price3;
+    public TextMeshProUGUI price1, price2, price3;
     [SerializeField] private List<UpgradeManager> upgrades;
 
 
@@ -78,8 +76,6 @@ public class Capitalism : MonoBehaviour
     private void SetTimerText()
     {
         timerText.text = currentTime.ToString("0.0");
-        
-
     }
     private void SetPrice()
     {
@@ -120,21 +116,36 @@ public class Capitalism : MonoBehaviour
 
     }
 
-    public List<UpgradeManager> GetUpgrades(int count)
+    public List<UpgradeManager> GetAvailableUpgrades(int count)
     {
-        List<UpgradeManager> upgradeList = new List<UpgradeManager>();
+        List<UpgradeManager> outputList = new List<UpgradeManager>();
+        List<UpgradeManager> dupeList = new List<UpgradeManager>(upgrades);
 
         if (count> upgrades.Count)
         {
             count = upgrades.Count;
         }
-        
+        int range;
         for (int i = 0; i < count; i++)
         {
-            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            range = Random.Range(0, dupeList.Count-1);  // Choses a random number between 1 and the list count
+            //Debug.Log(range + " is Range");             
+            outputList.Add(dupeList[range]);            // Adds This Item To The Output List
+            dupeList.Remove(dupeList[range]);           // Removes It So It Cannot be added again, in the same cycle.
         }
 
-        return upgradeList;
+        dupeList.Clear();
+        return outputList;
+    }
+    public void DisplayUpgrades()
+    {
+        Debug.Log("I Have Been Clicked Bwahaha");
+        List<UpgradeManager> upgradesToShow = GetAvailableUpgrades(3); 
+        for (int i=0; i<=2; i++)
+        {
+            Debug.Log("Initiating Spin");
+            Debug.Log(upgradesToShow[i]);
+        }
     }
     private void TimerReset()
     {
