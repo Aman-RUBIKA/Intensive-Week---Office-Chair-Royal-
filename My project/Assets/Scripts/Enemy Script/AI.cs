@@ -124,7 +124,7 @@ public class AI : MonoBehaviour
         {
             if (shootTimer <= 0)
             {
-                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Instantiate(bulletPrefab, transform.position, transform.localRotation);
                 shootTimer = shootTimerMax;
             }
             else

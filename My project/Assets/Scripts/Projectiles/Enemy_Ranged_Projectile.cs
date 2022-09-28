@@ -14,10 +14,11 @@ public class Enemy_Ranged_Projectile : Projectile
     
     protected override void Start()
     {
+        
         base.Awake();
         base.Start();
-        Debug.Log(projectileRB);
         BulletKick();
+        
     }
     
     
