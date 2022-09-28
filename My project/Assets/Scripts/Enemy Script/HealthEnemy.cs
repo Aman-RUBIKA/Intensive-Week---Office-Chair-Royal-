@@ -49,7 +49,7 @@ public class HealthEnemy : MonoBehaviour
         }
         else { return false; }
     }
-    void IDontKnow()
+    /*void IDontKnow()
     {
         
         if (freeze)
@@ -78,7 +78,7 @@ public class HealthEnemy : MonoBehaviour
         {
             changeSpeed = 1;
         }
-    }
+    }*/
     #region Burn Status
     void CallIfBurned()
     {

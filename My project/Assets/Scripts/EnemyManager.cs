@@ -83,8 +83,6 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(go, new Vector2(19 + camPos.x, randomvalue * 11), Quaternion.identity);
                 break;
         }
-        Debug.Log(Width);
-        Debug.Log(height);
         
     }
     
