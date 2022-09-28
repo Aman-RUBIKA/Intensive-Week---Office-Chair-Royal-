@@ -53,6 +53,8 @@ public class AI : MonoBehaviour
             {
                 burnCountdown -= Time.deltaTime;
             }
+
+            changeSpeed = 1;
         }
         if(burn == false && freeze == false && shock == false)
         {
