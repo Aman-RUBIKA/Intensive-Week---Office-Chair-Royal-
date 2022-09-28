@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public bool canFreeze;
+    public bool canBurn;
+    public bool canStun;
+    
     protected Rigidbody2D projectileRB;
     public Transform parentT;
     public LayerMask enemyLayer;
@@ -28,7 +33,7 @@ public class Projectile : MonoBehaviour
     }
     protected internal void BulletKick()
     {
-        projectileRB.AddForce(transform.up * projectileSpeed);
+        projectileRB.velocity=(transform.up * projectileSpeed);
     }
 
     // Update is called once per frame
@@ -40,5 +45,27 @@ public class Projectile : MonoBehaviour
     {
         //this.parent = parent;
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.GetComponent<AI>() != null)
+        {
+            if (canFreeze)
+            {
+                col.GetComponent<AI>().freeze = true;
+            }
+
+            if (canStun)
+            {
+                col.GetComponent<AI>().shock = true;
+            }
+
+            if (canBurn)
+            {
+                col.GetComponent<AI>().burn = true;
+                col.GetComponent<AI>().burnCountdown = col.GetComponent<AI>().maxBurnCountdown;
+            }
+        }
     }
 }
