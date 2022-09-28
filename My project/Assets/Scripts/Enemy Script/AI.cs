@@ -1,41 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public float maxHp;
+    public float hp;
+    public float maxBurnCountdown = 60;
+    public float burnCountdown ;
+    public float burnDamage;
+    public bool freeze = false;
+    public bool burn = false;
+    public bool shock = false;
     public float explosiveRange = 2;
     private bool isGonnaExplode = false;
     public float explosionCountdown = 10;
     public int type;
     private float step;
     public float speed;
+    private float changeSpeed;
+    
     public float rangedDistanceStop;
     private Vector2 pPosition;
     private GameObject player;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        burnCountdown = maxBurnCountdown;
+        hp = maxHp;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (shock)
+        {
+            changeSpeed = 0.5f;
+        }
+        if (freeze)
+        {
+            changeSpeed = 0;
+        }
+        if (burn || shock)
+        {
+            if (burnCountdown <= 0)
+            {
+                burnCountdown = maxBurnCountdown;
+                hp -= burnDamage;
+            }
+            else
+            {
+                burnCountdown -= Time.deltaTime;
+            }
+        }
+        if(burn == false && freeze == false && shock == false)
+        {
+            changeSpeed = 1;
+        }
+        
+        
         pPosition = player.transform.position;
-        step = speed * Time.deltaTime;
-        if (type == 0)
+        step = speed * Time.deltaTime * changeSpeed;
+
+        switch (type)
         {
-            MeleeSeek();
+            case 0 :
+                MeleeSeek();
+                break;
+            case 1:
+                RangedSeek();
+                break;
+            case 2:
+                ExplosiveSeek();
+                break;
         }
-        else if(type == 1)
+
+        if (hp <= 0)
         {
-            RangedSeek();
+            Destroy(this.GameObject());
         }
-        else if(type == 2)
-        {
-            ExplosiveSeek();
-            
-        }
+        
     }
 
     void ExplosiveSeek()
