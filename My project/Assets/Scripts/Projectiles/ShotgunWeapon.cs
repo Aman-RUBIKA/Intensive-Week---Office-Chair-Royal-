@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MachineGunWeapon : Projectile
+public class ShotgunWeapon: Projectile
 {
     protected override void Awake()
     {
@@ -11,7 +11,6 @@ public class MachineGunWeapon : Projectile
     protected override void Start()
     {
         base.Start();
-        base.RandomBulletDirection(1.5f);
         base.BulletKick();
     }
 
