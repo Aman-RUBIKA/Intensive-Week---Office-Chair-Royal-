@@ -55,7 +55,8 @@ public class Projectile : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+
+    public void StatusEffect(Collider2D col)
     {
         if (col.GetComponent<AI>() != null)
         {

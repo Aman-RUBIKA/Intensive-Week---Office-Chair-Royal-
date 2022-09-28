@@ -59,6 +59,7 @@ public class EnemyManager : MonoBehaviour
     void oocInstance(GameObject go)
     {
         GameObject cam = GameObject.FindWithTag("MainCamera");
+        Vector2 camPos = cam.transform.position;
         float height = cam.GetComponent<Camera>().orthographicSize * 2f ;
         float Width = height * cam.GetComponent<Camera>().aspect ;
         float widthFromPlayer = Width / 2;
@@ -70,18 +71,20 @@ public class EnemyManager : MonoBehaviour
         switch (whereSpawn)
         {
             case 1:
-                Instantiate(go, new Vector2(randomvalue * Width, pPosition.y + heightFromPlayer + 1), Quaternion.identity);
+                Instantiate(go, new Vector2(randomvalue * 19, 11), Quaternion.identity);
                 break;
             case  2:
-                Instantiate(go, new Vector2(pPosition.x + widthFromPlayer + 1, randomvalue * height), Quaternion.identity);
+                Instantiate(go, new Vector2(-19, randomvalue * 11), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(go, new Vector2(randomvalue * Width, pPosition.y - heightFromPlayer - 1), Quaternion.identity);
+                Instantiate(go, new Vector2(randomvalue * 19, -11), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(go, new Vector2(pPosition.x - widthFromPlayer - 1, randomvalue * height), Quaternion.identity);
+                Instantiate(go, new Vector2(19, randomvalue * 11), Quaternion.identity);
                 break;
         }
+        Debug.Log(Width);
+        Debug.Log(height);
         
     }
     

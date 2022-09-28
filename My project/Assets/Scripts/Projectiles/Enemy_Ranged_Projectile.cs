@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_Ranged_Projectile : Projectile
@@ -20,10 +19,12 @@ public class Enemy_Ranged_Projectile : Projectile
         BulletKick();
         
     }
-    
-    
-    void Update()
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (col.CompareTag("Player"))
+        {
+            HealthPC.instance.callWhenDamagedPC(base.damage);
+        }
     }
 }
