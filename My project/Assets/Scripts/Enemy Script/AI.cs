@@ -4,37 +4,71 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public float maxBurnCountdown = 60;
+    private float burnCountdown ;
+    public bool freeze = false;
+    public bool burn = false;
+    public bool shock = false;
     public float explosiveRange = 2;
     private bool isGonnaExplode = false;
     public float explosionCountdown = 10;
     public int type;
     private float step;
     public float speed;
+    private float changeSpeed;
+    
     public float rangedDistanceStop;
     private Vector2 pPosition;
     private GameObject player;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        burnCountdown = maxBurnCountdown;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (shock)
+        {
+            changeSpeed = 0.5f;
+        }
+        if (freeze)
+        {
+            changeSpeed = 0;
+        }
+        if (burn || shock)
+        {
+            if (burnCountdown <= 0)
+            {
+                burnCountdown = maxBurnCountdown;
+                //take damage
+            }
+            else
+            {
+                burnCountdown -= Time.deltaTime;
+            }
+        }
+        if(burn == false && freeze == false && shock == false)
+        {
+            changeSpeed = 1;
+        }
+        
+        
         pPosition = player.transform.position;
-        step = speed * Time.deltaTime;
-        if (type == 0)
+        step = speed * Time.deltaTime * changeSpeed;
+
+        switch (type)
         {
-            MeleeSeek();
-        }
-        else if(type == 1)
-        {
-            RangedSeek();
-        }
-        else if(type == 2)
-        {
-            ExplosiveSeek();
-            
+            case 0 :
+                MeleeSeek();
+                break;
+            case 1:
+                RangedSeek();
+                break;
+            case 2:
+                ExplosiveSeek();
+                break;
         }
     }
 
