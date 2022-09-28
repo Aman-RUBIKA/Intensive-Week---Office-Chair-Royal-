@@ -15,12 +15,14 @@ public class Capitalism : MonoBehaviour
     public bool hasLimits;
     public float timerLimit;
     public int price = 50;
+    public int salePrice;
     public float priceAugment;
     public TextMeshProUGUI price1;
     public TextMeshProUGUI price2;
     public TextMeshProUGUI price3;
+    [SerializeField] private List<UpgradeManager> upgrades;
 
-    
+
     void Start()
     {
         Menu.SetActive(false);
@@ -92,8 +94,10 @@ public class Capitalism : MonoBehaviour
     {
         if (currentTime<1)
         { 
-            price /= 2;
-            SetPrice();
+            salePrice= price / 2;
+            price1.text = salePrice.ToString();
+            price2.text = salePrice.ToString();
+            price3.text = salePrice.ToString();
         }
     }
 
@@ -115,6 +119,23 @@ public class Capitalism : MonoBehaviour
         Debug.Log("fuck");
 
     }
+
+    public List<UpgradeManager> GetUpgrades(int count)
+    {
+        List<UpgradeManager> upgradeList = new List<UpgradeManager>();
+
+        if (count> upgrades.Count)
+        {
+            count = upgrades.Count;
+        }
+        
+        for (int i = 0; i < count; i++)
+        {
+            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+        }
+
+        return upgradeList;
+    }
     private void TimerReset()
     {
         
@@ -122,6 +143,8 @@ public class Capitalism : MonoBehaviour
         {
             randomTime = Random.Range(1f, 10f);
             hasHalved = false;
+            SetPrice();
+
         }
     }
 
