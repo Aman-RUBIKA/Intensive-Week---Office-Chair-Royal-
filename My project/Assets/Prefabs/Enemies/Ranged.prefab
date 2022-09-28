@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8952187295563962550}
   - component: {fileID: 6499974284137641950}
   - component: {fileID: 5656202387072877829}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ranged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1216429859, guid: 126b83ae244090d48b81185da35032e1, type: 3}
+  m_Sprite: {fileID: 89552677, guid: 126b83ae244090d48b81185da35032e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.56}
+  m_Size: {x: 1, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,8 +104,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.56}
-    newSize: {x: 1, y: 1.56}
+    oldSize: {x: 1, y: 0.96}
+    newSize: {x: 1, y: 0.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -146,5 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosiveRange: 2
+  explosionCountdown: 10
   type: 1
   speed: 0.9
+  rangedDistanceStop: 10
