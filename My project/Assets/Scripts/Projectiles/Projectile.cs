@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     protected Rigidbody2D projectileRB;
     public GameObject parent;
+    public LayerMask enemyLayer;
+    public LayerMask wallLayer;
 
     [Header("Bullet Variables")]
     public float projectileSpeed = 10f;
