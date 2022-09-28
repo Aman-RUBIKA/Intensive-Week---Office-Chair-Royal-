@@ -294,6 +294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3410185310958162879, guid: 511d237fa6004f746a09109e2d959786, type: 3}
+      propertyPath: maxHp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4023670852484473784, guid: 511d237fa6004f746a09109e2d959786, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -509,6 +513,22 @@ PrefabInstance:
     - target: {fileID: 5508196756047798304, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
       propertyPath: m_Name
       value: Explosive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656202387072877829, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
+      propertyPath: burn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656202387072877829, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
+      propertyPath: maxHp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656202387072877829, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
+      propertyPath: burnDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656202387072877829, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
+      propertyPath: maxBurnCountdown
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8792d42faa22a2946b32c89490f7d755, type: 3}
@@ -807,6 +827,10 @@ PrefabInstance:
     - target: {fileID: 5508196756047798304, guid: 2fc583bc93c3af940831fe7787b57d3e, type: 3}
       propertyPath: m_Name
       value: Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656202387072877829, guid: 2fc583bc93c3af940831fe7787b57d3e, type: 3}
+      propertyPath: maxHp
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fc583bc93c3af940831fe7787b57d3e, type: 3}

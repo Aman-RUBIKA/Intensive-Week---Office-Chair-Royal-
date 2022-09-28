@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public float maxHp;
+    public float hp;
     public float maxBurnCountdown = 60;
-    private float burnCountdown ;
+    public float burnCountdown ;
+    public float burnDamage;
     public bool freeze = false;
     public bool burn = false;
     public bool shock = false;
@@ -24,6 +28,7 @@ public class AI : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         burnCountdown = maxBurnCountdown;
+        hp = maxHp;
     }
 
     // Update is called once per frame
@@ -42,7 +47,7 @@ public class AI : MonoBehaviour
             if (burnCountdown <= 0)
             {
                 burnCountdown = maxBurnCountdown;
-                //take damage
+                hp -= burnDamage;
             }
             else
             {
@@ -70,6 +75,12 @@ public class AI : MonoBehaviour
                 ExplosiveSeek();
                 break;
         }
+
+        if (hp <= 0)
+        {
+            Destroy(this.GameObject());
+        }
+        
     }
 
     void ExplosiveSeek()
