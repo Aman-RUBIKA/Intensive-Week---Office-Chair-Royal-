@@ -130,7 +130,7 @@ public class AI : MonoBehaviour
     }
 
 
-    void Death()
+    public void Death()
     {
         GameObject manager = GameObject.FindWithTag("EnemyManager");
         manager.GetComponent<EnemyManager>().enemyKilled(type);
