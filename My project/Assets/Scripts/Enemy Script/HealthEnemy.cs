@@ -38,8 +38,8 @@ public class HealthEnemy : MonoBehaviour
         {
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
-            //int type = transform.GetComponent<AI>().type;
-            //manager.GetComponent<EnemyManager>().enemyKilled(type);
+            int type = transform.GetComponent<AI>().type;
+            manager.GetComponent<EnemyManager>().enemyKilled(type);
             Destroy(this.gameObject);
         }
         else 

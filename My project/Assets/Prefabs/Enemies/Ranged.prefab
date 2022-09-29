@@ -215,8 +215,8 @@ MonoBehaviour:
   burnDuration: 5
   shockDuration: 5
   freezeDuration: 5
-  burnProgress: 0
-  shockProgress: 0
-  freezeProgress: 0
-  burnDamage: 0
-  shockDamage: 0
+  burnProgress: 5
+  shockProgress: 5
+  freezeProgress: 5
+  burnDamage: 2
+  shockDamage: 2

@@ -52,23 +52,17 @@ public class ShootManager : MonoBehaviour
         {
             offset = new Vector2(0.25f, 0.25f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x * 2, forwardT.position.y + offset.y * 2), transform.localRotation);
-            yield return new WaitForSeconds(0.7f);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x * 2, forwardT.position.y - offset.y * 2), transform.localRotation);
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
             pistolCycle = false;
 
         }
         else if (pistol1)   // If The Player Has 1 Upgrade
         {
             offset = new Vector2(0.25f, 0.25f);
-            //Instantiate(pistolP, forwardT.position, transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            //Instantiate(pistolP, forwardT.position, transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.35f);
         }
