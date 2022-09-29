@@ -10,8 +10,7 @@ public class ShootManager : MonoBehaviour
     
     public bool pistol0, pistol1, pistol2, pistolCycle;
 
-    [SerializeField]
-    bool mach0, mach1, mach2, machCycle;
+    public bool mach0, mach1, mach2, machCycle;
     public int machMagSize;
     [SerializeField]
     float machCooldown0, machCooldown1, machCooldown2;
@@ -87,27 +86,21 @@ public class ShootManager : MonoBehaviour
         {
             
             Instantiate(machP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            Instantiate(machP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            Instantiate(machP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
 
 
         }
         else if (mach1)   // If The Player Has 1 Upgrade
         {
             Instantiate(machP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            Instantiate(machP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.25f);
         }
         else                // If The Player Owns The Base Item
         {
             for (int i = 0; i <= machMagSize; i++)
             {
                 Instantiate(machP, forwardT.position, transform.localRotation);
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(machCooldown0);
         }
