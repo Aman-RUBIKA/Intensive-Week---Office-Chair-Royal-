@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class ShotgunWeapon: Projectile
 {
+    private GameObject player;
+    
     protected override void Awake()
     {
         base.Awake();
     }
     protected override void Start()
     {
+        if (player.GetComponent<ShootManager>().shotgun1)
+        {
+            float random = Random.value;
+            if (random < 0.25f)
+            {
+                canFreeze = true;
+            }
+        }
+        
         base.Start();
         base.BulletKick();
     }
@@ -36,5 +47,9 @@ public class ShotgunWeapon: Projectile
     private void OnTriggerEnter2D(Collider2D col)
     {
         CheckCollision(col);
+        if (canFreeze)
+        {
+            col.GetComponent<HealthEnemy>().CallIfFrozen();
+        }
     }
 }

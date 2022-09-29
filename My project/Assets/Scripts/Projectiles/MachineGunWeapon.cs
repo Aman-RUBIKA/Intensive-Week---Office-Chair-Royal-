@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class MachineGunWeapon : Projectile
 {
+
+    private GameObject player;
+    
     protected override void Awake()
     {
         base.Awake();
     }
     protected override void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        if (player.GetComponent<ShootManager>().mach2)
+        {
+            RandomBulletDirection(.5f);
+        }
+        else if (player.GetComponent<ShootManager>().mach1)
+        {
+            float random = Random.value;
+            if (random < 0.15f)
+            {
+                canStun = true;
+            }
+        }
+        
         base.Start();
         base.RandomBulletDirection(1.5f);
         base.BulletKick();
@@ -37,5 +54,9 @@ public class MachineGunWeapon : Projectile
     private void OnTriggerEnter2D(Collider2D col)
     {
         CheckCollision(col);
+        if (canStun)
+        {
+            col.gameObject.GetComponent<HealthEnemy>().CallIfShocked();
+        }
     }
 }

@@ -9,6 +9,7 @@ public class PistolWeapon : Projectile
     {
         base.Awake();
     }
+
     protected override void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -42,13 +43,17 @@ public class PistolWeapon : Projectile
         //Debug.Log(col.gameObject.name + " and layer " + col.gameObject.layer + " and enemy layer is " + enemyLayer);
         if (col.IsTouchingLayers(wallLayer))
         {
-            Debug.Log("Touched A Wall");
+            //Debug.Log("Touched A Wall");
             Destroy(this.gameObject);
         }
         else if (col.gameObject.layer==enemyLayer)
         {
-            Debug.Log("Touched An Enemy");
+            //Debug.Log("Touched An Enemy");
             col.gameObject.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);
+            if (canBurn)
+            {
+                col.gameObject.GetComponent<HealthEnemy>().CallIfBurned();  
+            }
             Destroy(this.gameObject);
         }
     }
