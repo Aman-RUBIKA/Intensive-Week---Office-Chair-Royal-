@@ -16,12 +16,15 @@ public class HealthEnemy : MonoBehaviour
     public float burnDuration, shockDuration, freezeDuration;
     public float burnProgress, shockProgress, freezeProgress;
     public float burnDamage, shockDamage;           // This Damage Is Per Second 
+
+    public GameObject goldManager;
     private void Awake()
     {
         ResetEnemy();                               // Resets The Enemy's Health And Status Effects To Make Sure It's Ready To Fight!
     }
     void Start()
     {
+        goldManager = GameObject.FindWithTag("GoldManager");
         ResetEnemy();
         canBeDamaged = true;
     }
@@ -41,6 +44,8 @@ public class HealthEnemy : MonoBehaviour
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
             manager.GetComponent<EnemyManager>().enemyKilled(type);
+            int addedGold = Random.Range(2, 4);
+            goldManager.GetComponent<GoldManager>().AddGold(addedGold);
             Destroy(this.gameObject);
         }
         else 
