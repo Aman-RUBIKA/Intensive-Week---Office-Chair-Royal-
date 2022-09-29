@@ -35,6 +35,7 @@ public class AI : MonoBehaviour
     public float explosiveRange = 2;
     private bool isGonnaExplode = false;
     public float explosionCountdown = 10;
+
     public int type;
     private float step;
     public float speed;

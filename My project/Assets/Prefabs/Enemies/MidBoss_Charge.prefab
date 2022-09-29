@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 33406016389669179}
   - component: {fileID: 7055147639828274398}
   - component: {fileID: 5025653334252917267}
+  - component: {fileID: 7508174440410247170}
   m_Layer: 0
   m_Name: MidBoss_Charge
   m_TagString: Untagged
@@ -292,3 +293,29 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &7508174440410247170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668596743652672010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b33a7f6eddffe458045eedd29d84c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 250
+  currentHealth: 0
+  canBeDamaged: 0
+  isBurning: 0
+  isShocked: 0
+  isFrozen: 0
+  burnDuration: 0
+  shockDuration: 0
+  freezeDuration: 0
+  burnProgress: 0
+  shockProgress: 0
+  freezeProgress: 0
+  burnDamage: 0
+  shockDamage: 0

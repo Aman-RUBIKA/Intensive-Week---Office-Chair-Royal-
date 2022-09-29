@@ -20,16 +20,16 @@ public class PistolWeapon : Projectile
     }
     void CheckCollision(Collider2D col)
     {
-        Debug.Log(col.gameObject.name + " and layer " + col.gameObject.layer);
+        Debug.Log(col.gameObject.name + " and layer " + col.gameObject.layer + " and enemy layer is " + enemyLayer);
         if (col.IsTouchingLayers(wallLayer))
         {
             Debug.Log("Touched A Wall");
             Destroy(this.gameObject);
         }
-        else if (col.IsTouchingLayers(enemyLayer))
+        else if (col.gameObject.layer==enemyLayer)
         {
             Debug.Log("Touched An Enemy");
-            // Call Enemy's If Damaged Script Here
+            col.gameObject.GetComponent<HealthEnemy>().callWhenDamagedEnemy(damage);
             Destroy(this.gameObject);
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6499974284137641950}
   - component: {fileID: 5656202387072877829}
   - component: {fileID: 1864952333}
+  - component: {fileID: -2167471299602113488}
   m_Layer: 7
   m_Name: Explosive
   m_TagString: Untagged
@@ -192,3 +193,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2167471299602113488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508196756047798304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b33a7f6eddffe458045eedd29d84c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 20
+  currentHealth: 0
+  canBeDamaged: 0
+  isBurning: 0
+  isShocked: 0
+  isFrozen: 0
+  burnDuration: 0
+  shockDuration: 0
+  freezeDuration: 0
+  burnProgress: 0
+  shockProgress: 0
+  freezeProgress: 0
+  burnDamage: 0
+  shockDamage: 0

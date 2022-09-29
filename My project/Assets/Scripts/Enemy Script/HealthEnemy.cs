@@ -27,7 +27,9 @@ public class HealthEnemy : MonoBehaviour
 
     void Update()
     {
-        
+        Burn();
+        Shock();
+        Freeze();
     }
     public void callWhenDamagedEnemy(float damage)    // Call This Function Whenever The Enemy Takes Damage
     {
@@ -49,36 +51,7 @@ public class HealthEnemy : MonoBehaviour
         }
         else { return false; }
     }
-    void IDontKnow()
-    {
-        
-        if (freeze)
-        {
-            changeSpeed = 0;
-        }
-        else if (shock)
-        {
-            changeSpeed = 0.5f;
-        }
-        if (burn || shock)
-        {
-            if (burnCountdown <= 0)
-            {
-                burnCountdown = maxBurnCountdown;
-                hp -= burnDamage;
-            }
-            else
-            {
-                burnCountdown -= Time.deltaTime;
-            }
-
-            changeSpeed = 1;
-        }
-        if (burn == false && freeze == false && shock == false)
-        {
-            changeSpeed = 1;
-        }
-    }
+    
     #region Burn Status
     void CallIfBurned()
     {
@@ -111,38 +84,57 @@ public class HealthEnemy : MonoBehaviour
     #region Shock Status
     void CallIfShocked()
     {
-
+        isShocked = true;
+        shockProgress = 0f;
     }
     void CallWhileShocking()
     {
-
+        currentHealth -= shockDamage * Time.deltaTime;
+        shockProgress += Time.deltaTime;
     }
-    bool checkIfStillShocked()
+    void checkIfStillShocked()
     {
-        if (burnProgress > burnDuration)
+        if (shockProgress > shockDuration)
         {
-            return false;
+            isShocked=false;
         }
-        else { return true; }
+        else { isShocked=true; }
+    }
+    void Shock()
+    {
+        checkIfStillShocked();
+        if (isShocked)
+        {
+            CallWhileShocking();
+        }
     }
     #endregion Shock Status
 
     #region Freeze Status
     void CallIfFrozen()
     {
-
+        isFrozen = true;
+        freezeProgress = 0f;
     }
     void CallWhileFrozen()
     {
 
     }
-    bool checkIfStillFrozen()
+    void checkIfStillFrozen()
     {
-        if (burnProgress > burnDuration)
+        if (freezeProgress > freezeDuration)
         {
-            return false;
+            isFrozen = false;
         }
-        else { return true; }
+        else { isFrozen = true; }
+    }
+    void Freeze()
+    {
+        checkIfStillFrozen();
+        if (isFrozen)
+        {
+            CallWhileFrozen();
+        }
     }
     #endregion Freeze Status
     void ResetEnemy()

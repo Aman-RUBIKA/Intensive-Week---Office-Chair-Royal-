@@ -30,7 +30,7 @@ public class MachineGunWeapon : Projectile
         else if (col.IsTouchingLayers(enemyLayer))
         {
             Debug.Log("Touched An Enemy");
-            // Call Enemy's If Damaged Script Here
+            col.gameObject.GetComponent<HealthEnemy>().callWhenDamagedEnemy(damage);
             Destroy(this.gameObject);
         }
     }

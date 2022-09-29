@@ -11,8 +11,8 @@ public class Projectile : MonoBehaviour
     
     protected Rigidbody2D projectileRB;
     public Transform parentT;
-    public LayerMask enemyLayer;
-    public LayerMask wallLayer;
+    public int enemyLayer = 7;
+    public int wallLayer = 10;
 
     [Header("Bullet Variables")]
     public float projectileSpeed = 10f;

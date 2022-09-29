@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6499974284137641950}
   - component: {fileID: 5656202387072877829}
   - component: {fileID: 5544387083820384056}
+  - component: {fileID: 6936274603628582918}
   m_Layer: 7
   m_Name: Ranged
   m_TagString: Untagged
@@ -147,6 +148,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  midBoss: 0
+  isCharging: 0
+  chargeSpeed: 0
+  chargeMaxTimer: 10
+  chargeTimer: 0
+  rangedTrajectory: 0
+  minesDeployed: 0
+  lr: {fileID: 0}
   maxHp: 8
   hp: 0
   maxBurnCountdown: 60
@@ -162,6 +171,7 @@ MonoBehaviour:
   shootTimerMax: 3
   shootTimer: 0
   rangedDistanceStop: 10
+  pPosition: {x: 0, y: 0}
   bulletPrefab: {fileID: 7306176417093634837, guid: 321ebc2699547c04783750ea876b9489, type: 3}
 --- !u!95 &5544387083820384056
 Animator:
@@ -183,3 +193,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6936274603628582918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508196756047798304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b33a7f6eddffe458045eedd29d84c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 25
+  currentHealth: 0
+  canBeDamaged: 0
+  isBurning: 0
+  isShocked: 0
+  isFrozen: 0
+  burnDuration: 0
+  shockDuration: 0
+  freezeDuration: 0
+  burnProgress: 0
+  shockProgress: 0
+  freezeProgress: 0
+  burnDamage: 0
+  shockDamage: 0
