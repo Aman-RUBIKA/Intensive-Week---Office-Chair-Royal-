@@ -36,6 +36,9 @@ public class HealthEnemy : MonoBehaviour
         if (CheckIfDead(damage))
         {
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
+            GameObject manager = GameObject.FindWithTag("EnemyManager");
+            int type = transform.GetComponent<AI>().type;
+            manager.GetComponent<EnemyManager>().enemyKilled(type);
             Destroy(this.gameObject);
         }
         else 
