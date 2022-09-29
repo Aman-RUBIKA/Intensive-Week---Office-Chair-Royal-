@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
             {
                 if (explosiveKilled >= 3)
                 {
-                    oocInstance(enemyPrefabs[3]);
+                    oocInstance(enemyPrefabs[1]);
                     explosiveKilled -= 3;
                     rangerPresent += 1;
                 }
@@ -98,6 +98,7 @@ public class EnemyManager : MonoBehaviour
             case 0:
                 meleeKilled += 1;
                 meleePresent -= 1;
+                Debug.Log("melee killed");
                 break;
             case 1:
                 rangerKilled += 1;
@@ -115,7 +116,7 @@ public class EnemyManager : MonoBehaviour
         switch (boss)
         {
             case true:
-                if (!BossPresent)
+                if (BossPresent == false)
                 {
                     BossPresent = true;
                     oocInstance(enemyPrefabs[3]);

@@ -12,7 +12,7 @@ public class HealthEnemy : MonoBehaviour
     public bool canBeDamaged;
 
     [Header("Status Effects")]
-    public bool isBurning, isShocked, isFrozen;
+    public bool isBurning, isShocked, isFrozen = false;
     public float burnDuration, shockDuration, freezeDuration;
     public float burnProgress, shockProgress, freezeProgress;
     public float burnDamage, shockDamage;           // This Damage Is Per Second 
@@ -22,6 +22,7 @@ public class HealthEnemy : MonoBehaviour
     }
     void Start()
     {
+        ResetEnemy();
         canBeDamaged = true;
     }
 
@@ -38,8 +39,8 @@ public class HealthEnemy : MonoBehaviour
         {
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
-            //int type = transform.GetComponent<AI>().type;
-            //manager.GetComponent<EnemyManager>().enemyKilled(type);
+            int type = transform.GetComponent<AI>().type;
+            manager.GetComponent<EnemyManager>().enemyKilled(type);
             Destroy(this.gameObject);
         }
         else 

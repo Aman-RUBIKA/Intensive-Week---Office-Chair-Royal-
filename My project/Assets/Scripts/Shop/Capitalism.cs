@@ -46,7 +46,7 @@ public class Capitalism : MonoBehaviour
 
         currentTime = randomTime -= Time.deltaTime;
 
-        if (hasLimits && ((currentTime <= timerLimit)))
+        if (hasLimits && (currentTime <= timerLimit))
         {
             currentTime = timerLimit;
             SetTimerText();

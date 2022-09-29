@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7055147639828274398}
   - component: {fileID: 5025653334252917267}
   - component: {fileID: 7508174440410247170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MidBoss_Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,15 +308,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 250
   currentHealth: 0
-  canBeDamaged: 0
+  canBeDamaged: 1
   isBurning: 0
   isShocked: 0
   isFrozen: 0
   burnDuration: 5
   shockDuration: 5
   freezeDuration: 5
-  burnProgress: 0
-  shockProgress: 0
-  freezeProgress: 0
-  burnDamage: 0
-  shockDamage: 0
+  burnProgress: 5
+  shockProgress: 5
+  freezeProgress: 5
+  burnDamage: 5
+  shockDamage: 5

@@ -568,6 +568,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
+      propertyPath: mach2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: pistol0
       value: 0
       objectReference: {fileID: 0}
@@ -581,6 +585,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
+      propertyPath: pistolCycle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
