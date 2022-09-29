@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    int enemyLayer = 7;
+    int enemyProjLayer = 9;
     bool shieldUpgrade0, shieldUpgrade1, shieldUpgrade2;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,28 @@ public class Shield : MonoBehaviour
     }
     void HandleProj(Collider2D col)
     {
-        //if (col.gameObject.layer=)
+        if (col.gameObject.layer == enemyProjLayer)
+        {
+            Vector2 vel;
+            vel = col.attachedRigidbody.velocity;
+            if (IfShieldUpgrade())
+            {
+                if (shieldUpgrade2)
+                {
+
+                }
+                else if (shieldUpgrade1)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+            Debug.Log(vel + " is Velocity Of Bullet Before Changing");
+            vel = -vel;
+            Debug.Log(vel + " is Velocity Of Bullet After Changing");
+        }
     }
 }
