@@ -20,7 +20,6 @@ public class EnemyTimer : MonoBehaviour
 
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         //currentTimeText.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
-        Debug.Log(time);
     }
 
     public void StartTimer()
