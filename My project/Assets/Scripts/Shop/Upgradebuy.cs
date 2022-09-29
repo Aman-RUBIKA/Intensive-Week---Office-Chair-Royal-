@@ -9,6 +9,6 @@ public class Upgradebuy : MonoBehaviour
     // Start is called before the first frame update
     public void Set(UpgradeManager upgradeManager)
     {
-        mage = UpgradeManager.icon;
+        //mage = UpgradeManager.icon;
     }
 }

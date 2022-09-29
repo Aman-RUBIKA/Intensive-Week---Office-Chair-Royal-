@@ -24,6 +24,7 @@ public class ItemManager : MonoBehaviour
         }
         #endregion Simpleton
         ClearLists();
+        AddUpgradeItemsOnStart();
         //positionsOfStartingItems = new List<int>();
         //positionsOfStartingItems.Add(0, 2, 5)
     }
@@ -33,7 +34,7 @@ public class ItemManager : MonoBehaviour
         {
             listOfPlayerItems = null;
         }
-        AddUpgradeItemsOnStart();
+        
         listOfPlayerItems = new List<UpgradeManager>();
     }
 
@@ -50,18 +51,19 @@ public class ItemManager : MonoBehaviour
 
         if (item.upgradeType != UpgradeType.UPGRADE_2)
         {
-            // To Get The First Letter Of The String
             Debug.Log(removeIndex + " is Remove Index and Item is " + item);
-            // Add It To Player Inventory
-            listOfUpgradeItems.Add(listOfAllItems[FindItemInList(item, listOfAllItems) + 1]);                 // Increment The Shop Rewards (If It Can Happen)
-
+            listOfUpgradeItems.Add(listOfAllItems[FindItemInList(item, listOfAllItems) + 1]);                   // Increment The Shop Rewards (If It Can Happen)
         }
-        listOfUpgradeItems.RemoveAt(removeIndex);                                           //Remove It From The List Of Available Upgrades
-        listOfPlayerItems.Add(item); 
+        listOfUpgradeItems.RemoveAt(removeIndex);                                                               // Remove It From The List Of Available Upgrades
+        listOfPlayerItems.Add(item);                                                                            // Add Item To Player's Inventory
         /*else (listOfUpgradeItems[removeIndex].upgradeID.Contains(upgradeIdInitial))  
         {
 
         }*/
+    }
+    public void DecideItemsForShop()
+    {
+
     }
     public int FindItemInList(UpgradeManager item, List<UpgradeManager> shopList)
     {
