@@ -11,11 +11,24 @@ public class EnemyTimer : MonoBehaviour
     public float currentTime;
     public Text currentTimeText;
 
+    [Header("whatever else")]
+    public GameObject enemyManager;
+    public float timeTillBossSpawn;
+    public float timeTillMinionSpawn;
+
     private void Update()
     {
         if (timerActive)
         {
             currentTime = currentTime + Time.deltaTime;
+            if (currentTime % timeTillBossSpawn <= 0.01f)
+            {
+                spawnBoss();
+            }
+            else if (currentTime % timeTillMinionSpawn <= 0.01f)
+            {
+                spawnEnemy();
+            }
         }
 
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
@@ -31,7 +44,15 @@ public class EnemyTimer : MonoBehaviour
     {
         timerActive = true;
     }
-    
-    
+
+    public void spawnEnemy()
+    {
+        enemyManager.GetComponent<EnemyManager>().makeSpawn(false);
+    }
+
+    public void spawnBoss()
+    {
+        enemyManager.GetComponent<EnemyManager>().makeSpawn(true);
+    }
     
 }

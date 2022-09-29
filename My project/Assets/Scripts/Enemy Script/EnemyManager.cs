@@ -95,12 +95,15 @@ public class EnemyManager : MonoBehaviour
         {
             case 0:
                 meleeKilled += 1;
+                meleePresent -= 1;
                 break;
             case 1:
                 rangerKilled += 1;
+                rangerPresent -= 1;
                 break;
             case 2:
                 explosiveKilled += 1;
+                explosivePresent -= 1;
                 break;
         }
     }
