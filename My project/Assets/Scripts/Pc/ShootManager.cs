@@ -106,6 +106,10 @@ public class ShootManager : MonoBehaviour
     }
     IEnumerator ShotgunShoot()
     {
+        float minAngle, maxAngle;
+        int bulletNb;
+        minAngle = 40;
+        maxAngle = 120;
         GameObject player = GameObject.FindWithTag("Player");
         shotgunCycle = true;
 
@@ -144,7 +148,16 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
-                shotgunSpread(shotgunP,40 + player.transform.rotation.z,140 + player.transform.rotation.z,5);
+                //for loop for every bullet
+                bulletNb = 5;
+                float angleIncrement = (maxAngle - minAngle) / bulletNb;
+                for (int n = 0; n < bulletNb + 1; n++)
+                {
+                    inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, transform.localRotation.z /*+ minAngle + angleIncrement * n*/, 0));
+                    Debug.Log(transform.localRotation.z);
+                    inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                    //Instantiate(shotgunP, transform.position, transform.localRotation);
+                }
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
@@ -162,17 +175,13 @@ public class ShootManager : MonoBehaviour
             return new Vector2(pos1.x - offset.x, pos1.y - offset.y);
         }
     }
-    
-    //calculate angle : maxAngle - minAngle, / bulletNb, ça donne les increments
-    // bulletAngle = minAngle + angle * i 
 
     void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb)
     {
         float angleIncrement = (maxAngle - minAngle) / bulletNb;
         for (int i = 0; i < bulletNb; i++)
-        { 
+        {
             Instantiate(prefab, transform.position, new Quaternion(0, 0, minAngle + angleIncrement * i, 0));
-            i += 1;
         }
     }
 }

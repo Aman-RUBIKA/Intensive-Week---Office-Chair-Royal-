@@ -12,15 +12,6 @@ public class ShotgunWeapon: Projectile
     }
     protected override void Start()
     {
-        /*if (player.GetComponent<ShootManager>().shotgun1)
-        {
-            float random = Random.value;
-            if (random < 0.25f)
-            {
-                canFreeze = true;
-            }
-        }*/
-        
         base.Start();
         base.BulletKick();
     }
