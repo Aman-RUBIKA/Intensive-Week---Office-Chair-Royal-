@@ -114,9 +114,9 @@ public class ShootManager : MonoBehaviour
             offset.x = 1;
             offset.y = 1;
             Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.7f);
             Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.7f);
 
 
         }
@@ -126,9 +126,9 @@ public class ShootManager : MonoBehaviour
             offset.y = 1;
             //Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
             Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.8f);
             Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.8f);
         }
         else                // If The Player Owns The Base Item
         {
