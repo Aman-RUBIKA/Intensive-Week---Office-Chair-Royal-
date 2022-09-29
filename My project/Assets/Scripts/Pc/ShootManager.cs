@@ -109,26 +109,41 @@ public class ShootManager : MonoBehaviour
     IEnumerator ShotgunShoot()
     {
         shotgunCycle = true;
+
+        GameObject inst;
+        Vector2 shootOffsetL, shootOffsetR;
+        offset = new Vector2(0.1f, 0.1f);
+        shootOffsetL = new Vector2(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y);
+        shootOffsetR = new Vector2(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y);
+
         if (shotgun2)    // If The Player Has Bought 2 Upgrades
         {
-            offset.x = 1;
-            offset.y = 1;
-            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-
+            for (int i = 0; i <= shotgunMagSize*2; i++)
+            {
+                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                yield return new WaitForSeconds(0.2f);
+                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, false), transform.localRotation);
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                yield return new WaitForSeconds(0.2f);
+            }
+            yield return new WaitForSeconds(shotgunCooldown2);
 
         }
         else if (shotgun1)   // If The Player Has 1 Upgrade
         {
-            offset.x = 1;
-            offset.y = 1;
             //Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
-            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
+
+            for (int i = 0; i <= shotgunMagSize*2; i++)
+            {
+                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                yield return new WaitForSeconds(0.3f);
+                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, false), transform.localRotation);
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return new WaitForSeconds(shotgunCooldown1);
         }
         else                // If The Player Owns The Base Item
         {
@@ -137,9 +152,19 @@ public class ShootManager : MonoBehaviour
                 Instantiate(shotgunP, forwardShotgun.position , transform.localRotation);
                 yield return new WaitForSeconds(0.8f);
             }
-            yield return new WaitForSeconds(machCooldown0);
+            yield return new WaitForSeconds(shotgunCooldown0);
         }
         shotgunCycle = false;
     }
-
+    Vector2 CalculateVectorOffset(Vector2 pos1, Vector2 offset, bool add)    // The Bool Will Determine Whether This Function Adds Or Subtracts The Offset
+    {
+        if (add)
+        {
+            return new Vector2(pos1.x + offset.x, pos1.y + offset.y);
+        }
+        else
+        {
+            return new Vector2(pos1.x - offset.x, pos1.y - offset.y);
+        }
+    }
 }
