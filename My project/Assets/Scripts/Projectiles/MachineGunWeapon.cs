@@ -16,7 +16,7 @@ public class MachineGunWeapon : Projectile
         player = GameObject.FindWithTag("Player");
         if (player.GetComponent<ShootManager>().mach2)
         {
-            RandomBulletDirection(.5f);
+            RandomBulletDirection(3);
         }
         else if (player.GetComponent<ShootManager>().mach1)
         {
