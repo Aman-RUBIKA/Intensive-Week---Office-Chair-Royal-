@@ -8,7 +8,7 @@ public class Capitalism : MonoBehaviour
 {
     private bool hasHalved;
     public static bool GameIsPaused = false;
-    public GameObject Menu;
+    public GameObject MenuCanvas;
     public TextMeshProUGUI timerText;
     public float currentTime = 0f;
     public float randomTime;
@@ -23,7 +23,7 @@ public class Capitalism : MonoBehaviour
 
     void Start()
     {
-        Menu.SetActive(false);
+        MenuCanvas.SetActive(false);
         SetPrice();
         randomTime = Random.Range(1f, 10f);
 
@@ -100,7 +100,7 @@ public class Capitalism : MonoBehaviour
 
     void Resume()
     {
-        Menu.SetActive(false);
+        MenuCanvas.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
 
@@ -109,7 +109,7 @@ public class Capitalism : MonoBehaviour
 
     void Pause()
     {
-        Menu.SetActive(true);
+        MenuCanvas.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Debug.Log("fuck");
