@@ -212,11 +212,11 @@ MonoBehaviour:
   isBurning: 0
   isShocked: 0
   isFrozen: 0
-  burnDuration: 5
-  shockDuration: 5
-  freezeDuration: 5
-  burnProgress: 5
-  shockProgress: 5
-  freezeProgress: 5
+  burnDuration: 0
+  shockDuration: 0
+  freezeDuration: 0
+  burnProgress: 0
+  shockProgress: 0
+  freezeProgress: 0
   burnDamage: 2
   shockDamage: 2

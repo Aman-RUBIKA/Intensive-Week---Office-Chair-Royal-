@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7055147639828274398}
   - component: {fileID: 5025653334252917267}
   - component: {fileID: 7508174440410247170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MidBoss_Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

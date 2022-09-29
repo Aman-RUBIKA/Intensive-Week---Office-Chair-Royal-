@@ -52,23 +52,17 @@ public class ShootManager : MonoBehaviour
         {
             offset = new Vector2(0.25f, 0.25f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x * 2, forwardT.position.y + offset.y * 2), transform.localRotation);
-            yield return new WaitForSeconds(0.7f);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x * 2, forwardT.position.y - offset.y * 2), transform.localRotation);
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
             pistolCycle = false;
 
         }
         else if (pistol1)   // If The Player Has 1 Upgrade
         {
             offset = new Vector2(0.25f, 0.25f);
-            //Instantiate(pistolP, forwardT.position, transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
-            yield return new WaitForSeconds(0.2f);
-            //Instantiate(pistolP, forwardT.position, transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.35f);
         }
@@ -117,6 +111,7 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize*2; i++)
             {
+                
                 inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
                 inst.GetComponent<ShotgunWeapon>().canFreeze = true;
                 yield return new WaitForSeconds(0.2f);
@@ -129,8 +124,6 @@ public class ShootManager : MonoBehaviour
         }
         else if (shotgun1)   // If The Player Has 1 Upgrade
         {
-            //Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
-
             for (int i = 0; i <= shotgunMagSize*2; i++)
             {
                 inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
@@ -146,7 +139,6 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
-                Instantiate(shotgunP, forwardShotgun.position , transform.localRotation);
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
@@ -164,4 +156,16 @@ public class ShootManager : MonoBehaviour
             return new Vector2(pos1.x - offset.x, pos1.y - offset.y);
         }
     }
+
+    void spreadShot(int maxPellets, float maxAngle, bool spread, GameObject prefab)
+    {
+        float minAngle = maxAngle /= maxPellets;
+        for (int i = 0; i < maxPellets + 1; i++)
+        {
+            i += 1;
+            float angle = minAngle * i;
+            Instantiate(prefab, transform.position, transform.rotation = new Quaternion(0,0,angle,0));
+        }
+    }
+    
 }

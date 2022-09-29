@@ -12,17 +12,21 @@ public class HealthEnemy : MonoBehaviour
     public bool canBeDamaged;
 
     [Header("Status Effects")]
-    public bool isBurning, isShocked, isFrozen;
+    public bool isBurning, isShocked, isFrozen = false;
     public float burnDuration, shockDuration, freezeDuration;
     public float burnProgress, shockProgress, freezeProgress;
     public float burnDamage, shockDamage;           // This Damage Is Per Second 
+
+    public GameObject goldManager;
     private void Awake()
     {
         ResetEnemy();                               // Resets The Enemy's Health And Status Effects To Make Sure It's Ready To Fight!
     }
     void Start()
     {
-
+        goldManager = GameObject.FindWithTag("GoldManager");
+        ResetEnemy();
+        canBeDamaged = true;
     }
 
     void Update()
@@ -36,10 +40,13 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead(damage))
         {
+            goldManager.GetComponent<GoldManager>().AddGold(3);
+            
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
             manager.GetComponent<EnemyManager>().enemyKilled(type);
+            
             Destroy(this.gameObject);
         }
         else 
