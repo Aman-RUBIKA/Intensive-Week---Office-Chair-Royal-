@@ -153,8 +153,7 @@ public class ShootManager : MonoBehaviour
                 float angleIncrement = (maxAngle - minAngle) / bulletNb;
                 for (int n = 0; n < bulletNb + 1; n++)
                 {
-                    inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, transform.localRotation.z /*+ minAngle + angleIncrement * n*/, 0));
-                    Debug.Log(transform.localRotation.z);
+                    inst = Instantiate(shotgunP, transform.position, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + minAngle + angleIncrement * n, transform.localRotation.w));
                     inst.GetComponent<ShotgunWeapon>().canFreeze = true;
                     //Instantiate(shotgunP, transform.position, transform.localRotation);
                 }
