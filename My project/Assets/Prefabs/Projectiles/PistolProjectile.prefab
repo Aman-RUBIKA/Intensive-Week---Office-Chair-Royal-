@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1205876435147366894}
   - component: {fileID: 782491829272570716}
   - component: {fileID: -3703913867569552745}
+  - component: {fileID: 700654956817699996}
   m_Layer: 8
   m_Name: PistolProjectile
   m_TagString: Untagged
@@ -103,12 +104,8 @@ MonoBehaviour:
   canBurn: 0
   canStun: 0
   parentT: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  enemyLayer: 7
+  wallLayer: 10
   projectileSpeed: 10
   projectileRange: 10
   bulletAngle: 0
@@ -151,3 +148,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &700654956817699996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913228001271541735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a316e3647ee674047a0e9c225dbc46e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: d8cc9d1181e34f248a905e6db7a621b2, type: 3}
