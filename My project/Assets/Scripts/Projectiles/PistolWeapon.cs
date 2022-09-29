@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class PistolWeapon : Projectile
 {
+    private GameObject player;
     protected override void Awake()
     {
         base.Awake();
     }
     protected override void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        if (player.GetComponent<ShootManager>().pistol2)
+        {
+            canBurn = true;
+        }
+        else if (player.GetComponent<ShootManager>().pistol1)
+        {
+            float random = Random.value;
+            if (random <= 0.5f)
+            {
+                canBurn = true;
+            }
+            else
+            {
+                
+            }
+        }
+        
         base.Start();
         base.BulletKick();
     }
