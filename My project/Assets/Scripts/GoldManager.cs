@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GoldManager : MonoBehaviour
 {
-    private float currentGold;
+    public float currentGold;
     public Text textGold;
 
     public void AddGold(int acquired)
