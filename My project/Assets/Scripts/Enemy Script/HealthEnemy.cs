@@ -57,7 +57,7 @@ public class HealthEnemy : MonoBehaviour
     }
     
     #region Burn Status
-    void CallIfBurned()
+    public void CallIfBurned()
     {
         isBurning = true;
         burnProgress = 0f;
@@ -66,6 +66,10 @@ public class HealthEnemy : MonoBehaviour
     {
         currentHealth -= burnDamage * Time.deltaTime;
         burnProgress += Time.deltaTime;
+        if (currentHealth <= 0)
+        {
+            CallWhenDamagedEnemy(0);
+        }
     }
     void checkIfStillBurned()
     {
@@ -86,7 +90,7 @@ public class HealthEnemy : MonoBehaviour
     #endregion Burn Status
 
     #region Shock Status
-    void CallIfShocked()
+    public void CallIfShocked()
     {
         isShocked = true;
         shockProgress = 0f;
@@ -95,6 +99,10 @@ public class HealthEnemy : MonoBehaviour
     {
         currentHealth -= shockDamage * Time.deltaTime;
         shockProgress += Time.deltaTime;
+        if (currentHealth <= 0)
+        {
+            CallWhenDamagedEnemy(0);
+        }
     }
     void checkIfStillShocked()
     {
@@ -115,7 +123,7 @@ public class HealthEnemy : MonoBehaviour
     #endregion Shock Status
 
     #region Freeze Status
-    void CallIfFrozen()
+    public void CallIfFrozen()
     {
         isFrozen = true;
         freezeProgress = 0f;
