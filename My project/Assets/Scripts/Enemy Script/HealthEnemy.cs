@@ -123,7 +123,7 @@ public class HealthEnemy : MonoBehaviour
     #endregion Shock Status
 
     #region Freeze Status
-    void CallIfFrozen()
+    public void CallIfFrozen()
     {
         isFrozen = true;
         freezeProgress = 0f;

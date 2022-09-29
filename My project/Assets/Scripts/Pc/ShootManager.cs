@@ -16,7 +16,7 @@ public class ShootManager : MonoBehaviour
     float machCooldown0, machCooldown1, machCooldown2;
 
     [SerializeField]
-    bool shotgun0, shotgun1, shotgun2, shotgunCycle;
+    public bool shotgun0, shotgun1, shotgun2, shotgunCycle;
     public int shotgunMagSize;
     [SerializeField]
     float shotgunCooldown0, shotgunCooldown1, shotgunCooldown2;
@@ -111,21 +111,24 @@ public class ShootManager : MonoBehaviour
         shotgunCycle = true;
         if (shotgun2)    // If The Player Has Bought 2 Upgrades
         {
-            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            offset.x = 1;
+            offset.y = 1;
+            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
-            yield return new WaitForSeconds(1f);
 
 
         }
         else if (shotgun1)   // If The Player Has 1 Upgrade
         {
-            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            offset.x = 1;
+            offset.y = 1;
+            //Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
-            yield return new WaitForSeconds(0.6f);
+            Instantiate(shotgunP, new Vector3(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y), transform.localRotation);
+            yield return new WaitForSeconds(0.2f);
         }
         else                // If The Player Owns The Base Item
         {
