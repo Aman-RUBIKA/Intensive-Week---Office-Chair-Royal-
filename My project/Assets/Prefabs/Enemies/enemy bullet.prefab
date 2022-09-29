@@ -99,14 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745e3348c45deb14fbabcf1a162050db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFreeze: 0
+  canBurn: 0
+  canStun: 0
   parentT: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  projectileSpeed: 200
+  enemyLayer: 7
+  wallLayer: 10
+  projectileSpeed: 10
   projectileRange: 10
   bulletAngle: 0
   lifeSpan: 2

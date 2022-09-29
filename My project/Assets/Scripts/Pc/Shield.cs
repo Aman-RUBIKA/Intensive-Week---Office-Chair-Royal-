@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     int enemyProjLayer = 9;
+    [SerializeField]
     bool shieldUpgrade0, shieldUpgrade1, shieldUpgrade2;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class Shield : MonoBehaviour
         if (col.gameObject.layer == enemyProjLayer)
         {
             Vector2 vel;
+            //Vector3 reverse = new Vector3(0, 0, 180);
+            //Quaternion temp;
             vel = col.attachedRigidbody.velocity;
             if (IfShieldUpgrade())
             {
@@ -43,12 +46,27 @@ public class Shield : MonoBehaviour
                 }
                 else
                 {
+                    //Debug.Log(vel + " is Velocity Of Bullet Before Changing");
+                    vel = -vel;
+                    col.attachedRigidbody.velocity = vel;
+                    //Debug.Log(col.attachedRigidbody.velocity + " is Velocity Of Bullet After Changing and " + -vel+ " is vel");
 
                 }
             }
-            Debug.Log(vel + " is Velocity Of Bullet Before Changing");
-            vel = -vel;
-            Debug.Log(vel + " is Velocity Of Bullet After Changing");
+            else
+            {
+                Destroy(col.gameObject);
+            }
+            
+            /*temp = col.gameObject.transform.localRotation;
+            reverse.z += col.gameObject.transform.localRotation.z  ;
+            temp.z = reverse.z;
+            col.gameObject.transform.localRotation = temp;*/
         }
+        
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        HandleProj(col);
     }
 }
