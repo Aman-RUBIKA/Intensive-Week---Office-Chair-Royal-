@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GoldManager : MonoBehaviour
 {
-    public float currentGold;
+    private float currentGold;
     public Text textGold;
 
     public void AddGold(int acquired)
@@ -13,9 +13,14 @@ public class GoldManager : MonoBehaviour
         currentGold += acquired;
         textGold.text = "$ :" + currentGold.ToString();
         Debug.Log(currentGold);
-
     }
-    
+
+
+    public void CallWhenBought(int goldremoval)
+    {
+        currentGold -= goldremoval;
+        textGold.text = "$ :" + currentGold.ToString();
+    }
     
     
     
