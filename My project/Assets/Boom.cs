@@ -13,6 +13,7 @@ public class Boom : MonoBehaviour
     public float maxCountdown;
     public float countdown;
     private float duration = 1;
+    public float lerpDuration = 0.5f;
     
     void Start()
     {
@@ -23,7 +24,7 @@ public class Boom : MonoBehaviour
     {
         if (countdown <= 0)
         {
-            StartCoroutine(SpriteFade(sprite, 0, 1));
+            StartCoroutine(SpriteFade(sprite, 0, lerpDuration));
         }
         else
         {
