@@ -52,6 +52,8 @@ public class EnemyManager : MonoBehaviour
                     oocInstance(enemyPrefabs[0]);
                     meleePresent += 1;
                 }
+
+                totalAppeared += 1;
             } 
         }
     }
@@ -85,7 +87,23 @@ public class EnemyManager : MonoBehaviour
         }
         
     }
-    
+
+
+    public void enemyKilled(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                meleeKilled += 1;
+                break;
+            case 1:
+                rangerKilled += 1;
+                break;
+            case 2:
+                explosiveKilled += 1;
+                break;
+        }
+    }
     
     void Update()
     {

@@ -14,6 +14,7 @@ public class Boom : MonoBehaviour
     public float countdown;
     private float duration = 1;
     public float lerpDuration = 0.5f;
+    public float damage = 5;
     
     void Start()
     {
@@ -34,7 +35,14 @@ public class Boom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (col.GetComponent<AI>() != null)
+        {
+            col.GetComponent<AI>().hp -= damage;
+        }
+        else if (col.GetComponent<HealthPC>())
+        {
+            HealthPC.instance.callWhenDamagedPC(damage);
+        }
     }
 
     public IEnumerator SpriteFade(

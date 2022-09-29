@@ -124,11 +124,19 @@ public class AI : MonoBehaviour
         
         if (hp <= 0)
         {
-            Destroy(this.GameObject());
+            Death();
         }
         
     }
 
+
+    void Death()
+    {
+        GameObject manager = GameObject.FindWithTag("EnemyManager");
+        manager.GetComponent<EnemyManager>().enemyKilled(type);
+        Destroy(this.GameObject());
+    }
+    
     void MidBossCharge()
     {
         if (isCharging == false)
@@ -184,7 +192,7 @@ public class AI : MonoBehaviour
             else
             {
                 Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                Destroy(transform.gameObject);
+                Death();
             }
         }
         TurnToPlayer();
