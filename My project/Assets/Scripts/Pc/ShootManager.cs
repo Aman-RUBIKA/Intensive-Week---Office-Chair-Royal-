@@ -111,10 +111,7 @@ public class ShootManager : MonoBehaviour
         shotgunCycle = true;
 
         GameObject inst;
-        Vector2 shootOffsetL, shootOffsetR;
         offset = new Vector2(0.1f, 0.1f);
-        shootOffsetL = new Vector2(forwardShotgun.position.x + offset.x, forwardShotgun.position.y + offset.y);
-        shootOffsetR = new Vector2(forwardShotgun.position.x - offset.x, forwardShotgun.position.y - offset.y);
 
         if (shotgun2)    // If The Player Has Bought 2 Upgrades
         {

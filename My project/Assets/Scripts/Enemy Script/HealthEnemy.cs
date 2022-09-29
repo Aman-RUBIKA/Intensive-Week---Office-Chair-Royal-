@@ -22,7 +22,7 @@ public class HealthEnemy : MonoBehaviour
     }
     void Start()
     {
-        canBeDamaged = true;
+
     }
 
     void Update()

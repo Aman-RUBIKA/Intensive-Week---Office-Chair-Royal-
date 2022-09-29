@@ -6,19 +6,22 @@ using UnityEngine;
 
 public class Capitalism : MonoBehaviour
 {
-    private bool hasHalved;
-    public static bool GameIsPaused = false;
+    [Header("UI Elements")]
     public GameObject MenuCanvas;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI price1, price2, price3;
     public float currentTime = 0f;
     public float randomTime;
-    public bool hasLimits;
     public float timerLimit;
+    public static bool GameIsPaused = false;
+
+    [Header("Prices Variables")]
     public int price = 50;
     public int salePrice;
+    private bool hasHalved;
     public float priceAugment;
-    public TextMeshProUGUI price1, price2, price3;
-    [SerializeField] private List<UpgradeManager> upgrades;
+    [SerializeField] 
+    private List<UpgradeManager> upgrades;
 
 
     void Start()
@@ -32,21 +35,15 @@ public class Capitalism : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-
         currentTime = randomTime -= Time.deltaTime;
 
-        if (hasLimits && (currentTime <= timerLimit))
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            PauseResume();
+        }
+
+
+        if (currentTime <= timerLimit)
         {
             currentTime = timerLimit;
             SetTimerText();
@@ -59,10 +56,6 @@ public class Capitalism : MonoBehaviour
             {
                 Sale();
                 hasHalved = true;
-            }
-            else
-            {
-                
             }
         }
         else
@@ -77,13 +70,21 @@ public class Capitalism : MonoBehaviour
     {
         timerText.text = currentTime.ToString();
     }
+    private void TimerReset()
+    {
+
+        if (currentTime <= 0)
+        {
+            randomTime = Random.Range(1f, 10f);
+            hasHalved = false;
+            SetPrice();
+        }
+    }
     private void SetPrice()
     {
         price1.text = price.ToString();
         price2.text = price.ToString();
         price3.text = price.ToString();
-        
-
     }
 
     private void Sale()
@@ -96,15 +97,13 @@ public class Capitalism : MonoBehaviour
             price3.text = salePrice.ToString();
         }
     }
-
-
+    
+    #region Pause And Resume
     void Resume()
     {
         MenuCanvas.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     void Pause()
@@ -113,8 +112,18 @@ public class Capitalism : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Debug.Log("fuck");
-
     }
+
+    void PauseResume()
+    {
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else { Pause(); }
+    }
+    #endregion Pause And Resume
+
 
     public List<UpgradeManager> GetAvailableUpgrades(int count)
     {
@@ -147,16 +156,6 @@ public class Capitalism : MonoBehaviour
             Debug.Log(upgradesToShow[i]);
         }
     }
-    private void TimerReset()
-    {
-        
-        if (currentTime<=0)
-        {
-            randomTime = Random.Range(1f, 10f);
-            hasHalved = false;
-            SetPrice();
-
-        }
-    }
+    
 
 }
