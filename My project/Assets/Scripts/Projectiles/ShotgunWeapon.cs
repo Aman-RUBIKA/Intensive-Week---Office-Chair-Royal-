@@ -26,10 +26,10 @@ public class ShotgunWeapon: Projectile
             Debug.Log("Touched A Wall");
             Destroy(this.gameObject);
         }
-        else if (col.IsTouchingLayers(enemyLayer))
+        else if (col.gameObject.layer==enemyLayer)
         {
             Debug.Log("Touched An Enemy");
-            col.gameObject.GetComponent<HealthEnemy>().callWhenDamagedEnemy(damage);
+            col.gameObject.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);
             Destroy(this.gameObject);
         }
     }

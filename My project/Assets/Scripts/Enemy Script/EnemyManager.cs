@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -113,12 +115,27 @@ public class EnemyManager : MonoBehaviour
         switch (boss)
         {
             case true:
-                BossPresent = true;
-                oocInstance(enemyPrefabs[3]);
+                if (!BossPresent)
+                {
+                    BossPresent = true;
+                    oocInstance(enemyPrefabs[3]);
+                }
+                else
+                {
+                    
+                }
                 break;
             case false:
                 SpawnNewEnemy();
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (meleePresent + rangerPresent + explosivePresent == 0)
+        {
+            SpawnNewEnemy();
         }
     }
 }

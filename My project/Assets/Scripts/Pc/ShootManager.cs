@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
+    private Vector2 offset;
     public Transform forwardT, rightT, backT, leftT, forwardShotgun;    // Transforms That The Player Fires From
-
-    [SerializeField]
-    bool pistol0, pistol1, pistol2, pistolCycle;
+    
+    
+    public bool pistol0, pistol1, pistol2, pistolCycle;
 
     [SerializeField]
     bool mach0, mach1, mach2, machCycle;
@@ -50,21 +51,27 @@ public class ShootManager : MonoBehaviour
         pistolCycle = true;
         if (pistol2)    // If The Player Has Bought 2 Upgrades
         {
-            Instantiate(pistolP, forwardT.position, transform.localRotation);
+            offset = new Vector2(0.25f, 0.25f);
+            Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(pistolP, forwardT.position, transform.localRotation);
+            Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(pistolP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(1f);
+            Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x * 2, forwardT.position.y + offset.y * 2), transform.localRotation);
+            yield return new WaitForSeconds(0.7f);
+            Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x * 2, forwardT.position.y - offset.y * 2), transform.localRotation);
+            yield return new WaitForSeconds(0.7f);
             pistolCycle = false;
 
         }
         else if (pistol1)   // If The Player Has 1 Upgrade
         {
-            Instantiate(pistolP, forwardT.position, transform.localRotation);
+            offset = new Vector2(0.25f, 0.25f);
+            //Instantiate(pistolP, forwardT.position, transform.localRotation);
+            Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(pistolP, forwardT.position, transform.localRotation);
-            yield return new WaitForSeconds(0.6f);
+            //Instantiate(pistolP, forwardT.position, transform.localRotation);
+            Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
+            yield return new WaitForSeconds(0.35f);
         }
         else                // If The Player Owns The Base Item
         {
@@ -78,6 +85,7 @@ public class ShootManager : MonoBehaviour
         machCycle = true;
         if (mach2)    // If The Player Has Bought 2 Upgrades
         {
+            
             Instantiate(machP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(0.2f);
             Instantiate(machP, forwardT.position, transform.localRotation);

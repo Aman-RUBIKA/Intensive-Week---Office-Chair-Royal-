@@ -31,19 +31,20 @@ public class HealthEnemy : MonoBehaviour
         Shock();
         Freeze();
     }
-    public void callWhenDamagedEnemy(float damage)    // Call This Function Whenever The Enemy Takes Damage
+    public void CallWhenDamagedEnemy(float damage)    // Call This Function Whenever The Enemy Takes Damage
     {
+        Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead(damage))
         {
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
-            int type = transform.GetComponent<AI>().type;
-            manager.GetComponent<EnemyManager>().enemyKilled(type);
+            //int type = transform.GetComponent<AI>().type;
+            //manager.GetComponent<EnemyManager>().enemyKilled(type);
             Destroy(this.gameObject);
         }
         else 
         {
-            currentHealth = -damage;       
+            currentHealth -= damage;
         }
     }
     bool CheckIfDead(float damage)          // Checks If The Enemy Dies After Taking Damage
