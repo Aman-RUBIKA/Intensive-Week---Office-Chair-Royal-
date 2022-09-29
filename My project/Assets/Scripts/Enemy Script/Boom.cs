@@ -12,7 +12,6 @@ public class Boom : MonoBehaviour
     private float endValue;
     public float maxCountdown;
     public float countdown;
-    private float duration = 1;
     public float lerpDuration = 0.5f;
     public float damage = 5;
     
@@ -56,9 +55,7 @@ public class Boom : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float newAlpha = Mathf.Lerp(startValue, endValue, elapsedTime / duration);
-            Debug.Log(newAlpha);
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, newAlpha);
-            Debug.Log(sr.color);
             yield return null;
         }
     }
