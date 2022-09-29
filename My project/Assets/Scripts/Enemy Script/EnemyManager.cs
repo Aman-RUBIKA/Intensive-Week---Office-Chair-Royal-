@@ -52,6 +52,8 @@ public class EnemyManager : MonoBehaviour
                     oocInstance(enemyPrefabs[0]);
                     meleePresent += 1;
                 }
+
+                totalAppeared += 1;
             } 
         }
     }
@@ -83,14 +85,37 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(go, new Vector2(19 + camPos.x, randomvalue * 11), Quaternion.identity);
                 break;
         }
-        Debug.Log(Width);
-        Debug.Log(height);
         
     }
-    
-    
-    void Update()
+
+
+    public void enemyKilled(int type)
     {
-        
+        switch (type)
+        {
+            case 0:
+                meleeKilled += 1;
+                break;
+            case 1:
+                rangerKilled += 1;
+                break;
+            case 2:
+                explosiveKilled += 1;
+                break;
+        }
+    }
+
+    public void makeSpawn(bool boss)
+    {
+        switch (boss)
+        {
+            case true:
+                BossPresent = true;
+                oocInstance(enemyPrefabs[3]);
+                break;
+            case false:
+                SpawnNewEnemy();
+                break;
+        }
     }
 }
