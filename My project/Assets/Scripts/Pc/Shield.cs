@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    int enemyProjLayer = 9;
+    static int enemyProjLayer = 9;
+    static int pcProjLayer = 8;
     [SerializeField]
     bool shieldUpgrade0, shieldUpgrade1, shieldUpgrade2;
     // Start is called before the first frame update
@@ -36,6 +37,8 @@ public class Shield : MonoBehaviour
             vel = col.attachedRigidbody.velocity;
             if (IfShieldUpgrade())
             {
+                col.gameObject.layer = pcProjLayer;
+                col.GetComponent<Enemy_Ranged_Projectile>().isReflected = true;
                 if (shieldUpgrade2)
                 {
 
