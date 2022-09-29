@@ -102,6 +102,7 @@ public class ShootManager : MonoBehaviour
     }
     IEnumerator ShotgunShoot()
     {
+        GameObject player = GameObject.FindWithTag("Player");
         shotgunCycle = true;
 
         GameObject inst;
@@ -139,6 +140,7 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
+                shotgunSpread(shotgunP,40 + player.transform.rotation.z,140 + player.transform.rotation.z,5);
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
@@ -156,16 +158,17 @@ public class ShootManager : MonoBehaviour
             return new Vector2(pos1.x - offset.x, pos1.y - offset.y);
         }
     }
+    
+    //calculate angle : maxAngle - minAngle, / bulletNb, ça donne les increments
+    // bulletAngle = minAngle + angle * i 
 
-    void spreadShot(int maxPellets, float maxAngle, bool spread, GameObject prefab)
+    void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb)
     {
-        float minAngle = maxAngle /= maxPellets;
-        for (int i = 0; i < maxPellets + 1; i++)
-        {
+        float angleIncrement = (maxAngle - minAngle) / bulletNb;
+        for (int i = 0; i < bulletNb; i++)
+        { 
+            Instantiate(prefab, transform.position, new Quaternion(0, 0, minAngle + angleIncrement * i, 0));
             i += 1;
-            float angle = minAngle * i;
-            Instantiate(prefab, transform.position, transform.rotation = new Quaternion(0,0,angle,0));
         }
     }
-    
 }

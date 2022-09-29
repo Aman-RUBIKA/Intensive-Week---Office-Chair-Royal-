@@ -77,16 +77,4 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-    
-    //calculate angle : maxAngle - minAngle, / bulletNb, ça donne les increments
-    // bulletAngle = minAngle + angle * i 
-
-    void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb)
-    {
-        float angleIncrement = (maxAngle - minAngle) / bulletNb;
-        for (int i = 0; i < bulletNb; i++)
-        {
-            Instantiate(prefab, transform.position, new Quaternion(0, 0, minAngle + angleIncrement * i, 0));
-        }
-    }
 }
