@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class AI : MonoBehaviour
 {
@@ -18,25 +18,32 @@ public class AI : MonoBehaviour
     public bool rangedTrajectory;
     public bool minesDeployed;
     public LineRenderer lr;
+
     [Header("General Variables")]
     public float maxHp;
     public float hp;
     public float maxBurnCountdown = 60;
+
+    [Header("Status Effects")]
     public float burnCountdown ;
     public float burnDamage;
     public bool freeze = false;
     public bool burn = false;
     public bool shock = false;
+
+    [Header("Enemy Parameters")]
     public float explosiveRange = 2;
     private bool isGonnaExplode = false;
     public float explosionCountdown = 10;
+    public GameObject explosionPrefab;
     public int type;
     private float step;
     public float speed;
     private float changeSpeed;
 
     public float shootTimerMax;
-    [SerializeField] float  shootTimer;
+    [SerializeField] 
+    float  shootTimer;
     
     public float rangedDistanceStop;
     public Vector2 pPosition;
@@ -54,7 +61,7 @@ public class AI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (shock)
         {
@@ -117,11 +124,19 @@ public class AI : MonoBehaviour
         
         if (hp <= 0)
         {
-            Destroy(this.GameObject());
+            Death();
         }
         
     }
 
+
+    void Death()
+    {
+        GameObject manager = GameObject.FindWithTag("EnemyManager");
+        manager.GetComponent<EnemyManager>().enemyKilled(type);
+        Destroy(this.GameObject());
+    }
+    
     void MidBossCharge()
     {
         if (isCharging == false)
@@ -176,7 +191,8 @@ public class AI : MonoBehaviour
             }
             else
             {
-                Debug.Log("explosion go brrr");
+                Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Death();
             }
         }
         TurnToPlayer();

@@ -36,7 +36,7 @@ public class HealthPC : MonoBehaviour
     {
         
     }
-    void callWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
+    public void callWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
     {
         if (CheckIfDead(damage))
         {

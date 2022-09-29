@@ -126,8 +126,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 0.5
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -147,6 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  midBoss: 0
+  isCharging: 0
+  chargeSpeed: 0
+  chargeMaxTimer: 10
+  chargeTimer: 0
+  rangedTrajectory: 0
+  minesDeployed: 0
+  lr: {fileID: 0}
   maxHp: 8
   hp: 0
   maxBurnCountdown: 60
@@ -157,11 +165,13 @@ MonoBehaviour:
   shock: 0
   explosiveRange: 2
   explosionCountdown: 10
+  explosionPrefab: {fileID: 0}
   type: 1
   speed: 0.9
   shootTimerMax: 3
   shootTimer: 0
   rangedDistanceStop: 10
+  pPosition: {x: 0, y: 0}
   bulletPrefab: {fileID: 7306176417093634837, guid: 321ebc2699547c04783750ea876b9489, type: 3}
 --- !u!95 &5544387083820384056
 Animator:

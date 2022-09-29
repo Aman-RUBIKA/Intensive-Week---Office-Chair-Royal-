@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
-    public Transform forwardT, rightT, backT, leftT;    // Transforms That The Player Fires From
+    public Transform forwardT, rightT, backT, leftT, forwardShotgun;    // Transforms That The Player Fires From
 
     [SerializeField]
     bool pistol0, pistol1, pistol2, pistolCycle;
+
     [SerializeField]
     bool mach0, mach1, mach2, machCycle;
     public int machMagSize;
     [SerializeField]
-    float magCooldown0, magCooldown1, magCooldown2;
+    float machCooldown0, machCooldown1, machCooldown2;
 
-    public GameObject pistolP, machP;       // All The Prefabs For Projectiles
+    [SerializeField]
+    bool shotgun0, shotgun1, shotgun2, shotgunCycle;
+    public int shotgunMagSize;
+    [SerializeField]
+    float shotgunCooldown0, shotgunCooldown1, shotgunCooldown2;
+
+
+    public GameObject pistolP, machP, shotgunP;       // All The Prefabs For Projectiles
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,6 +39,10 @@ public class ShootManager : MonoBehaviour
         if (mach0 && !machCycle)
         {
             StartCoroutine(MachineGunShoot());
+        }
+        if (shotgun0 && !shotgunCycle)
+        {
+            StartCoroutine(ShotgunShoot());
         }
     }
     IEnumerator PistolShoot()
@@ -72,7 +84,7 @@ public class ShootManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             Instantiate(machP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(1f);
-            
+
 
         }
         else if (mach1)   // If The Player Has 1 Upgrade
@@ -89,8 +101,41 @@ public class ShootManager : MonoBehaviour
                 Instantiate(machP, forwardT.position, transform.localRotation);
                 yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(magCooldown0);
+            yield return new WaitForSeconds(machCooldown0);
         }
         machCycle = false;
     }
+    IEnumerator ShotgunShoot()
+    {
+        shotgunCycle = true;
+        if (shotgun2)    // If The Player Has Bought 2 Upgrades
+        {
+            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            yield return new WaitForSeconds(1f);
+
+
+        }
+        else if (shotgun1)   // If The Player Has 1 Upgrade
+        {
+            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(shotgunP, forwardShotgun.position, transform.localRotation);
+            yield return new WaitForSeconds(0.6f);
+        }
+        else                // If The Player Owns The Base Item
+        {
+            for (int i = 0; i <= shotgunMagSize; i++)
+            {
+                Instantiate(shotgunP, forwardShotgun.position , transform.localRotation);
+                yield return new WaitForSeconds(0.8f);
+            }
+            yield return new WaitForSeconds(machCooldown0);
+        }
+        shotgunCycle = false;
+    }
+
 }
