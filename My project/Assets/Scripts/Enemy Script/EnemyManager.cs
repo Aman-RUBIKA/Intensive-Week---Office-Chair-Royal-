@@ -104,9 +104,18 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
     }
-    
-    void Update()
+
+    public void makeSpawn(bool boss)
     {
-        
+        switch (boss)
+        {
+            case true:
+                BossPresent = true;
+                oocInstance(enemyPrefabs[3]);
+                break;
+            case false:
+                SpawnNewEnemy();
+                break;
+        }
     }
 }
