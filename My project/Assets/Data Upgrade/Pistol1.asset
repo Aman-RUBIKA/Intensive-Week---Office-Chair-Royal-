@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecc6e1722c6b314290bc9501d468a7c, type: 3}
   m_Name: Pistol1
   m_EditorClassIdentifier: 
-  upgradeName: 1
-  id: 0
+  upgradeType: 1
+  upgradeName: Pistol1
+  upgradeID: A2

@@ -397,18 +397,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d7b7acf9b5c37499852bc286e3ccc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Menu: {fileID: 28286560}
+  MenuCanvas: {fileID: 28286560}
   timerText: {fileID: 1802341666}
+  price1: {fileID: 1273957999}
+  price2: {fileID: 719163531}
+  price3: {fileID: 1474029408}
   currentTime: 5
   randomTime: 0
-  hasLimits: 1
   timerLimit: 0
   price: 50
   salePrice: 0
   priceAugment: 0
-  price1: {fileID: 1273957999}
-  price2: {fileID: 719163531}
-  price3: {fileID: 1474029408}
   upgrades:
   - {fileID: 11400000, guid: 495da7bc84662754fa24fe9f9145a0f7, type: 2}
   - {fileID: 11400000, guid: 534990b125e8cc049b853d9c1ac09e09, type: 2}
@@ -426,12 +425,68 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263325920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 543.56647, y: 339.26147, z: -2.8298123}
+  m_LocalPosition: {x: 543.56647, y: 339.26147, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &629676921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629676923}
+  - component: {fileID: 629676922}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &629676922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629676921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5521ac115fa924eaad165d1f2d4a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfAllItems:
+  - {fileID: 11400000, guid: 495da7bc84662754fa24fe9f9145a0f7, type: 2}
+  - {fileID: 11400000, guid: 534990b125e8cc049b853d9c1ac09e09, type: 2}
+  - {fileID: 11400000, guid: 4d0fd501d3f014a4f8ef93f7e2c51169, type: 2}
+  - {fileID: 11400000, guid: 3e7214f1d8aafe949a8ee30430d393b0, type: 2}
+  - {fileID: 11400000, guid: 9b72a8a4f54b84a41adf20d6868da3aa, type: 2}
+  - {fileID: 11400000, guid: 8078f4d5c23e4954a9281f18e2070d78, type: 2}
+  - {fileID: 11400000, guid: f00f32c3baaf56448823a4a38e3e377e, type: 2}
+  - {fileID: 11400000, guid: 5938e77e17407194290f5ce97516edbb, type: 2}
+  listOfUpgradeItems: []
+  listOfPlayerItems: []
+  positionsOfStartingItems: 000000000200000005000000
+--- !u!4 &629676923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629676921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &719163528
 GameObject:
@@ -968,13 +1023,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263325921}
-        m_TargetAssemblyTypeName: Capitalism, Assembly-CSharp
-        m_MethodName: DisplayUpgrades
-        m_Mode: 1
+      - m_Target: {fileID: 629676922}
+        m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
+        m_MethodName: PlayerGetsUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 495da7bc84662754fa24fe9f9145a0f7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UpgradeManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
