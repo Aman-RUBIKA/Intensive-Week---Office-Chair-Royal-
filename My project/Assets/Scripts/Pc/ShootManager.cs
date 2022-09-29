@@ -21,6 +21,10 @@ public class ShootManager : MonoBehaviour
     [SerializeField]
     float shotgunCooldown0, shotgunCooldown1, shotgunCooldown2;
 
+    [SerializeField] private AudioClip pistolShot;
+    [SerializeField] private AudioClip shotgunShot;
+    [SerializeField] private AudioClip machineGunShot;
+
 
     public GameObject pistolP, machP, shotgunP;       // All The Prefabs For Projectiles
     // Start is called before the first frame update

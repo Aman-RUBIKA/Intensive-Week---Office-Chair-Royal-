@@ -10,7 +10,7 @@ public class HealthPC : MonoBehaviour
     public float startingHealth;
     public float currentHealth;
     public float healAmount;
-
+    public Healthbar healthBar;
     public float invincibilityTime;
     public bool canBeDamaged;
     private void Awake()
@@ -48,6 +48,8 @@ public class HealthPC : MonoBehaviour
             {
                 StartCoroutine(InvinvibilityAfterDamage());
                 currentHealth = -damage;
+                healthBar.SetHealth(currentHealth);
+
             }
         }
     }
