@@ -405,6 +405,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
+      propertyPath: rangerPresent
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
+      propertyPath: survivedWaves
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
+      propertyPath: explosivePresent
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7470235009017102413, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
       propertyPath: m_Name
       value: Enemy Manager
