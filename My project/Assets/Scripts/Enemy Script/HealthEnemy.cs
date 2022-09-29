@@ -40,12 +40,13 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead(damage))
         {
+            goldManager.GetComponent<GoldManager>().AddGold(3);
+            
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
             manager.GetComponent<EnemyManager>().enemyKilled(type);
-            int addedGold = Random.Range(2, 4);
-            goldManager.GetComponent<GoldManager>().AddGold(addedGold);
+            
             Destroy(this.gameObject);
         }
         else 
