@@ -16,3 +16,4 @@ MonoBehaviour:
   upgradeName: Pistol2
   upgradeID: A3
   icon: {fileID: -109179954, guid: cf90cabff38499346899daeeb1199941, type: 3}
+  basePrice: 60

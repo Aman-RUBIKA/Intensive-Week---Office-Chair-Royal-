@@ -16,3 +16,4 @@ MonoBehaviour:
   upgradeName: Shotgun1
   upgradeID: C2
   icon: {fileID: -1306648087, guid: cf90cabff38499346899daeeb1199941, type: 3}
+  basePrice: 55

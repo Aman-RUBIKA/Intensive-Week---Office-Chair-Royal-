@@ -26,7 +26,7 @@ public class Capitalism : MonoBehaviour
     UpgradeManager button2Item;
 
     [Header("Prices Variables")]
-    public int price, price1, prize2, price3 = 50;
+    public float price, price1, prize2, price3 = 50;
     public int salePrice;
     private bool hasHalved;
     public float priceAugment;
@@ -68,22 +68,28 @@ public class Capitalism : MonoBehaviour
         Debug.Log(currentShopItems[0]);
         Debug.Log(currentShopItems[1]);
         Debug.Log(currentShopItems[2]);
-        PriceAugment();
         UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
         UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
         UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);
     }
     void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, UpgradeManager list)
     {
-        text.text = (PriceAugment().ToString());
+        text.text = (PriceOutput(item.basePrice).ToString());
         spr.sprite = item.icon;
         list=item;
     }
-    int PriceAugment()
+    
+    public void PriceAugment()
     {
-        price1 = Mathf.RoundToInt(price1 * Random.Range(1f, 1.2f));
-        return 0; //price * Random.Range(1f, 1.75f))
+        price += 0.1f;
     }
+
+    int PriceOutput(float number)
+    {
+      return Mathf.RoundToInt(number * price) ;
+    }
+    
+    
     public void WhichButtonWasClicked(int buttonID)
     {
         if (buttonID == 0)
@@ -126,7 +132,7 @@ public class Capitalism : MonoBehaviour
             SetTimerText();
         }
 
-        if (currentTime<=1)
+        if (currentTime<=0.5f)
         {
             if (timerText.color != Color.red)
             {
@@ -160,9 +166,6 @@ public class Capitalism : MonoBehaviour
         {
             randomTime = Random.Range(1f, 10f);
             hasHalved = false;
-
-            
-            SetPrice();
             ResetShopItems();
         }
     }
@@ -175,9 +178,9 @@ public class Capitalism : MonoBehaviour
 
     private void Sale()
     {
-        if (currentTime<1)
+        if (currentTime<0.5f)
         { 
-            salePrice= price / 2;
+            salePrice= Mathf.RoundToInt(price / 2);
             price1Text.text = salePrice.ToString();
             price2Text.text = salePrice.ToString();
             price3Text.text = salePrice.ToString();

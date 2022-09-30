@@ -57,7 +57,10 @@ public class ItemManager : MonoBehaviour
             listOfUpgradeItems.Add(listOfAllItems[FindItemInList(item, listOfAllItems) + 1]);                   // Increment The Shop Rewards (If It Can Happen)
         }
         listOfUpgradeItems.RemoveAt(removeIndex);                                                               // Remove It From The List Of Available Upgrades
-        WhenPlayerGetsUpgrade(item);                                                                            // Add Item To Player's Inventory
+        WhenPlayerGetsUpgrade(item); // Add Item To Player's Inventory
+        Capitalism.instance.PriceAugment();
+        //Capitalism.instance.
+
         /*else (listOfUpgradeItems[removeIndex].upgradeID.Contains(upgradeIdInitial))  
         {
 
