@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1205876435147366894}
   - component: {fileID: 782491829272570716}
   - component: {fileID: -3703913867569552745}
-  - component: {fileID: 700654956817699996}
+  - component: {fileID: -5912097100880494719}
   m_Layer: 8
   m_Name: PistolProjectile
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &700654956817699996
+--- !u!114 &-5912097100880494719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
