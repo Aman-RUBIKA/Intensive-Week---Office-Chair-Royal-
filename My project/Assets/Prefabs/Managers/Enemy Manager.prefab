@@ -72,3 +72,6 @@ MonoBehaviour:
   timerActive: 1
   currentTime: 0
   currentTimeText: {fileID: 0}
+  enemyManager: {fileID: 7470235009017102413}
+  timeTillBossSpawn: 60
+  timeTillMinionSpawn: 15

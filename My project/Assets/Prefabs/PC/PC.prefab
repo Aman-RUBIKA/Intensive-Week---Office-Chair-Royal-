@@ -254,7 +254,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &8956850439411494638
 MonoBehaviour:
@@ -290,8 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healAmount: 0
-  invincibilityTime: 0
+  healAmount: 10
+  healthBar: {fileID: 0}
+  invincibilityTime: 2
   canBeDamaged: 0
 --- !u!114 &7253887334619994344
 MonoBehaviour:
@@ -322,14 +323,17 @@ MonoBehaviour:
   machCooldown0: 0
   machCooldown1: 0
   machCooldown2: 0
-  shotgun0: 1
+  shotgun0: 0
   shotgun1: 0
   shotgun2: 0
   shotgunCycle: 0
-  shotgunMagSize: 0
-  shotgunCooldown0: 0
-  shotgunCooldown1: 0
-  shotgunCooldown2: 0
+  shotgunMagSize: 5
+  shotgunCooldown0: 2
+  shotgunCooldown1: 1.5
+  shotgunCooldown2: 1.25
+  pistolShot: {fileID: 0}
+  shotgunShot: {fileID: 0}
+  machineGunShot: {fileID: 0}
   pistolP: {fileID: 1913228001271541735, guid: e1c9aa88f4dbac4408ea76215a3af16f, type: 3}
   machP: {fileID: 1561388194924014883, guid: 08e8c12738917fd4ab73c2138916cdf7, type: 3}
   shotgunP: {fileID: 6615657153724959059, guid: 996f5a0e378cfa649bf4894dd40b3e45, type: 3}
@@ -377,7 +381,7 @@ GameObject:
   - component: {fileID: 2960754528335047849}
   - component: {fileID: 3394334286343868874}
   - component: {fileID: 3313039632344081894}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 'Shield Collider  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4477460551002257218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.786, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -412,7 +416,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: 0, y: -0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -423,7 +427,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25}
+  m_Size: {x: 1.1, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &3313039632344081894
 MonoBehaviour:
@@ -437,6 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384baec5b8a24f44182fbb5410721040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldUpgrade0: 0
+  shieldUpgrade1: 0
+  shieldUpgrade2: 0
 --- !u!1 &4622941545861282818
 GameObject:
   m_ObjectHideFlags: 0
