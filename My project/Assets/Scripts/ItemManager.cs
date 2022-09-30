@@ -45,8 +45,8 @@ public class ItemManager : MonoBehaviour
     public void PlayerGetsUpgrade(UpgradeManager item)      //Call This Whenever The Player Gets An Upgrade
     {
         int removeIndex;
-        string upgradeIdInitial = item.upgradeID.ToString();
-        upgradeIdInitial = upgradeIdInitial[0].ToString();
+        //string upgradeIdInitial = item.upgradeID.ToString();
+        //upgradeIdInitial = upgradeIdInitial[0].ToString();
         removeIndex = listOfUpgradeItems.FindInstanceID(item);
 
         if (item.upgradeType != UpgradeType.UPGRADE_2)

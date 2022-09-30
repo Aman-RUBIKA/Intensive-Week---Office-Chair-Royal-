@@ -10,19 +10,23 @@ public class Capitalism : MonoBehaviour
 {
     [Header("UI Elements")]
     public Canvas MenuCanvas;
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText, goldText;
     public TextMeshProUGUI price1Text, price2Text, price3Text;
     public UnityEngine.UI.Image shopImageLeft, shopImageCenter, shopImageRight;
     public UnityEngine.UI.Button shopLeft, shopCenter, shopRight;
+    public List<UnityEngine.UI.Button> shopButtons;
 
     public float currentTime = 0f;
     public float randomTime;
     public float timerLimit;
     public static bool GameIsPaused = false;
     public static Capitalism instance;
+    UpgradeManager button0Item;
+    UpgradeManager button1Item;
+    UpgradeManager button2Item;
 
     [Header("Prices Variables")]
-    public int price = 50;
+    public int price, price1, prize2, price3 = 50;
     public int salePrice;
     private bool hasHalved;
     public float priceAugment;
@@ -41,6 +45,10 @@ public class Capitalism : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        shopButtons = new List<UnityEngine.UI.Button>();
+        shopButtons.Add(shopLeft);
+        shopButtons.Add(shopCenter);
+        shopButtons.Add(shopRight);
     }
     void Start()
     {
@@ -48,8 +56,8 @@ public class Capitalism : MonoBehaviour
 
         SetPrice();
 
-        
 
+        ResetShopItems();
         randomTime = Random.Range(1f, 10f);
 
     }
@@ -58,9 +66,41 @@ public class Capitalism : MonoBehaviour
     {
         currentShopItems = GetAvailableUpgrades(3);
         Debug.Log(currentShopItems[0]);
-        foreach (UpgradeManager item in currentShopItems)
+        PriceAugment();
+        UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
+        UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
+        UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);
+    }
+    void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, UpgradeManager list)
+    {
+        text.text = (price * Random.Range(1f, 1.75f)).ToString();
+        spr.sprite = item.icon;
+        list = item;
+    }
+    void PriceAugment()
+    {
+
+    }
+    public void WhichButtonWasClicked(int buttonID)
+    {
+        if (buttonID == 0)
         {
-            Debug.Log(item.name);
+            // If Player Gold > Item Price
+            ItemManager.instance.PlayerGetsUpgrade(button0Item);
+        }
+        else if (buttonID == 1)
+        {
+            // If Player Gold > Item Price
+            ItemManager.instance.PlayerGetsUpgrade(button1Item);
+        }
+        else if (buttonID == 1)
+        {
+            // If Player Gold > Item Price
+            ItemManager.instance.PlayerGetsUpgrade(button1Item);
+        }
+        else
+        {
+            // You Don't Have Enough Money
         }
     }
     // Update is called once per frame
