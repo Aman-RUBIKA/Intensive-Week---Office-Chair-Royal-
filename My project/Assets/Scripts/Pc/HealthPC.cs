@@ -40,9 +40,9 @@ public class HealthPC : MonoBehaviour
     }
     public void callWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
     {
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         currentHealth -= damage;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         if (CheckIfDead())
         {
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over

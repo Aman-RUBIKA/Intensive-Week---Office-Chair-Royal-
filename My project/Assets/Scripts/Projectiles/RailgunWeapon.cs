@@ -6,6 +6,7 @@ using UnityEngine;
 public class RailgunWeapon: Projectile
 {
     private GameObject player;
+    public LayerMask enemyLayerMask;
     
     protected override void Awake()
     {
@@ -13,14 +14,13 @@ public class RailgunWeapon: Projectile
     }
     protected override void Start()
     { 
-        Vector2 dir = (Vector2)(Quaternion.Euler(0,0,transform.localRotation.z) * Vector2.right);
-        RaycastHit2D[] enemyCols = Physics2D.RaycastAll(transform.position, dir, 20, enemyLayer);
-        Debug.Log(dir);
-        foreach ( RaycastHit2D ray in enemyCols)
+        //Vector2 dir = (Vector2)(Quaternion.Euler(0,0,transform.localRotation.z) * Vector2.right);
+        //RaycastHit2D[] enemyCols = Physics2D.RaycastAll(transform.position, Vector2.up , 200, enemyLayerMask);
+        /*foreach ( RaycastHit2D ray in enemyCols)
         {
             DamageIfEnemy(ray);
             Debug.Log("collision with enemy");
-        }
+        }*/
         base.Start();
         //base.BulletKick();
     }
@@ -30,6 +30,7 @@ public class RailgunWeapon: Projectile
         if( ray.collider.GetComponent<HealthEnemy>() != null)
         {
             ray.collider.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);
+            Debug.Log(ray.collider.gameObject.name);
         }
     }
 
@@ -67,5 +68,9 @@ public class RailgunWeapon: Projectile
         {
             col.GetComponent<HealthEnemy>().CallIfFrozen();
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, Vector2.up * 200);
     }
 }

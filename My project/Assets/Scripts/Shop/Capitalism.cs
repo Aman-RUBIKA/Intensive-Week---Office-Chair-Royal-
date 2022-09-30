@@ -213,7 +213,7 @@ public class Capitalism : MonoBehaviour
 
     public List<UpgradeManager> GetAvailableUpgrades(int count)
     {
-        Debug.Log("I Have Entered The Function");
+        //Debug.Log("I Have Entered The Function");
         List<UpgradeManager> outputList = new List<UpgradeManager>();
         List<UpgradeManager> dupeList = new List<UpgradeManager>(ItemManager.instance.listOfUpgradeItems);
         int range;
