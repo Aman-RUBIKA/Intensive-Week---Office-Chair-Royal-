@@ -55,15 +55,65 @@ public class ItemManager : MonoBehaviour
             listOfUpgradeItems.Add(listOfAllItems[FindItemInList(item, listOfAllItems) + 1]);                   // Increment The Shop Rewards (If It Can Happen)
         }
         listOfUpgradeItems.RemoveAt(removeIndex);                                                               // Remove It From The List Of Available Upgrades
-        listOfPlayerItems.Add(item);                                                                            // Add Item To Player's Inventory
+        WhenPlayerGetsUpgrade(item);                                                                            // Add Item To Player's Inventory
         /*else (listOfUpgradeItems[removeIndex].upgradeID.Contains(upgradeIdInitial))  
         {
 
         }*/
     }
-    public void DecideItemsForShop()
+    public void WhenPlayerGetsUpgrade(UpgradeManager item)      // Enables The Upgrade If The Player Acquires It
     {
-
+        listOfPlayerItems.Add(item);
+        string compareID = item.upgradeID[0].ToString();
+        UpgradeType upgradeLevel = item.upgradeType;
+        //UpgradeType level0 = UpgradeType.BASE_UPGRADE;
+        UpgradeType level1 = UpgradeType.UPGRADE_1;
+        UpgradeType level2 = UpgradeType.UPGRADE_2;
+        switch (compareID)
+        {
+            case "A":
+                if (upgradeLevel == level2)
+                {
+                    ShootManager.instance.pistol2 = true;
+                }
+                else if (upgradeLevel== level1)
+                {
+                    ShootManager.instance.pistol1 = true;
+                }
+                else
+                {
+                    ShootManager.instance.pistol0 = true;
+                }
+                break;
+            case "B":
+                if (upgradeLevel == level2)
+                {
+                    ShootManager.instance.mach2 = true;
+                }
+                else if (upgradeLevel == level1)
+                {
+                    ShootManager.instance.mach1 = true;
+                }
+                else
+                {
+                    ShootManager.instance.mach0 = true;
+                }
+                break;
+            case "C":
+                if (upgradeLevel == level2)
+                {
+                    ShootManager.instance.shotgun2 = true;
+                }
+                else if (upgradeLevel == level1)
+                {
+                    ShootManager.instance.shotgun1 = true;
+                }
+                else
+                {
+                    ShootManager.instance.shotgun0 = true;
+                }
+                break;
+        }
     }
     public int FindItemInList(UpgradeManager item, List<UpgradeManager> shopList)
     {

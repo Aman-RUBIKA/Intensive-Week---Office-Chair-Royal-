@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
+    public static ShootManager instance;
     private Vector2 offset;
     public Transform forwardT, rightT, backT, leftT, forwardShotgun;    // Transforms That The Player Fires From
     
@@ -27,7 +28,18 @@ public class ShootManager : MonoBehaviour
 
 
     public GameObject pistolP, machP, shotgunP;       // All The Prefabs For Projectiles
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void Start()
     {
 
