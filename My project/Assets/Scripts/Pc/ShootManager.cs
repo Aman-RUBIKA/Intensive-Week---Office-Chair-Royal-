@@ -73,6 +73,7 @@ public class ShootManager : MonoBehaviour
         pistolCycle = true;
         if (pistol2)    // If The Player Has Bought 2 Upgrades
         {
+            FindObjectOfType<SoundManager>().PlayOneShot("Pistol");
             offset = new Vector2(0.25f, 0.25f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
@@ -84,6 +85,7 @@ public class ShootManager : MonoBehaviour
         }
         else if (pistol1)   // If The Player Has 1 Upgrade
         {
+            FindObjectOfType<SoundManager>().PlayOneShot("Pistol");
             offset = new Vector2(0.25f, 0.25f);
             Instantiate(pistolP, new Vector3(forwardT.position.x + offset.x, forwardT.position.y + offset.y), transform.localRotation);
             Instantiate(pistolP, new Vector3(forwardT.position.x - offset.x, forwardT.position.y - offset.y), transform.localRotation);
@@ -91,6 +93,7 @@ public class ShootManager : MonoBehaviour
         }
         else                // If The Player Owns The Base Item
         {
+            FindObjectOfType<SoundManager>().PlayOneShot("Pistol");
             Instantiate(pistolP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(0.5f);
         }
@@ -101,7 +104,7 @@ public class ShootManager : MonoBehaviour
         machCycle = true;
         if (mach2)    // If The Player Has Bought 2 Upgrades
         {
-            
+            FindObjectOfType<SoundManager>().PlayOneShot("Machinegun");
             Instantiate(machP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(0.1f);
 
@@ -109,6 +112,7 @@ public class ShootManager : MonoBehaviour
         }
         else if (mach1)   // If The Player Has 1 Upgrade
         {
+            FindObjectOfType<SoundManager>().PlayOneShot("Machinegun");
             Instantiate(machP, forwardT.position, transform.localRotation);
             yield return new WaitForSeconds(0.25f);
         }
@@ -116,6 +120,7 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= machMagSize; i++)
             {
+                FindObjectOfType<SoundManager>().PlayOneShot("Machinegun");
                 Instantiate(machP, forwardT.position, transform.localRotation);
                 yield return new WaitForSeconds(0.5f);
             }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5627881152747597539}
   - component: {fileID: 5447481671915752936}
   - component: {fileID: 998570333999793187}
-  - component: {fileID: 4791223952404917528}
+  - component: {fileID: 7693989908440186260}
   m_Layer: 8
   m_Name: ShotgunProjectile
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4791223952404917528
+--- !u!114 &7693989908440186260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,5 +145,5 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileRange: 10
   bulletAngle: 0
-  lifeSpan: 0.2
-  damage: 5
+  lifeSpan: 2
+  damage: 1
