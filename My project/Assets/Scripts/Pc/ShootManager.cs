@@ -12,6 +12,8 @@ public class ShootManager : MonoBehaviour
     public bool pistol0, pistol1, pistol2, pistolCycle;
 
     public bool mach0, mach1, mach2, machCycle;
+    public bool railGun0, railGun1, railGun2, railGunCycle;
+    private float railGunCooldown0, railGunCoolDown1, railGunCooldown2;
     public int machMagSize;
     [SerializeField]
     float machCooldown0, machCooldown1, machCooldown2;
@@ -27,7 +29,7 @@ public class ShootManager : MonoBehaviour
     [SerializeField] private AudioClip machineGunShot;
 
 
-    public GameObject pistolP, machP, shotgunP;       // All The Prefabs For Projectiles
+    public GameObject pistolP, machP, shotgunP, railGunP;       // All The Prefabs For Projectiles
 
     private void Awake()
     {
@@ -59,6 +61,11 @@ public class ShootManager : MonoBehaviour
         if (shotgun0 && !shotgunCycle)
         {
             StartCoroutine(ShotgunShoot());
+        }
+
+        if (railGun0 && !railGunCycle)
+        {
+            StartCoroutine(RailGunShoot());
         }
     }
     IEnumerator PistolShoot()
@@ -155,6 +162,39 @@ public class ShootManager : MonoBehaviour
         }
         shotgunCycle = false;
     }
+
+    IEnumerator RailGunShoot()
+    {
+        railGunCycle = true;
+
+        GameObject inst;
+
+        if (railGun2)    // If The Player Has Bought 2 Upgrades
+        {
+            
+            
+            
+            yield return new WaitForSeconds(railGunCooldown2);
+
+        }
+        else if (railGun1)   // If The Player Has 1 Upgrade
+        {
+            
+            
+            
+            yield return new WaitForSeconds(railGunCoolDown1);
+        }
+        else                // If The Player Owns The Base Item
+        {
+            
+            Instantiate(railGunP, forwardT.position, transform.localRotation);
+            railGunCooldown0 = 2;
+            
+            yield return new WaitForSeconds(railGunCooldown0);
+        }
+        railGunCycle = false;
+    }
+    
     Vector2 CalculateVectorOffset(Vector2 pos1, Vector2 offset, bool add)    // The Bool Will Determine Whether This Function Adds Or Subtracts The Offset
     {
         if (add)
