@@ -607,11 +607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: pistolCycle

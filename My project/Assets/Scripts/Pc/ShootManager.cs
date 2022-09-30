@@ -106,11 +106,6 @@ public class ShootManager : MonoBehaviour
     }
     IEnumerator ShotgunShoot()
     {
-        float minAngle, maxAngle;
-        int bulletNb;
-        minAngle = 40;
-        maxAngle = 120;
-        GameObject player = GameObject.FindWithTag("Player");
         shotgunCycle = true;
 
         GameObject inst;
@@ -148,15 +143,21 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
-                //for loop for every bullet
-                bulletNb = 5;
-                float angleIncrement = (maxAngle - minAngle) / bulletNb;
-                for (int n = 0; n < bulletNb + 1; n++)
-                {
-                    inst = Instantiate(shotgunP, transform.position, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + minAngle + angleIncrement * n, transform.localRotation.w));
-                    inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                    //Instantiate(shotgunP, transform.position, transform.localRotation);
-                }
+                
+                
+                //inst = Instantiate(shotgunP, transform.position, transform.localRotation);
+                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 40, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 56, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 72, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 88, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 104, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst =  Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 120, 0));
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
