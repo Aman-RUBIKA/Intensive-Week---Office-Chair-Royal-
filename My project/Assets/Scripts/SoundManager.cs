@@ -1,29 +1,42 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance;
-    [SerializeField] private AudioSource _musicSource, _effectSource;
+    
+    public PlaySound[] clip;
+
+    private void Start()
+    {
+        Play("Theme");
+        Debug.Log("playing song");
+    }
 
     private void Awake()
     {
-        if (Instance == null)
+        foreach (PlaySound s in clip)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }   
+  
     }
 
-    public void PlayAudio (AudioClip clip)
+    public void Play (string name)
     {
-        _effectSource.PlayOneShot(clip);
+        PlaySound s = Array.Find(clip, PlaySound  => PlaySound.name == name);
+        s.source.Play();
+    } 
+    public void PlayOneShot (string name)
+    {
+        PlaySound s = Array.Find(clip, PlaySound  => PlaySound.name == name);
+        s.source.PlayOneShot(s.clip, s.volume);
     }
+
+
+
 }
