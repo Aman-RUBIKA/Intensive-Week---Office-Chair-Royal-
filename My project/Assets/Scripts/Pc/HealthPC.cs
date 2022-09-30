@@ -28,7 +28,9 @@ public class HealthPC : MonoBehaviour
     }
     void Start()
     {
-        startingHealth = currentHealth;
+        Debug.Log(startingHealth);
+        currentHealth=startingHealth;
+        Debug.Log(currentHealth);
         canBeDamaged = true;
     }
 
@@ -38,7 +40,10 @@ public class HealthPC : MonoBehaviour
     }
     public void callWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
     {
-        if (CheckIfDead(damage))
+        Debug.Log(currentHealth);
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+        if (CheckIfDead())
         {
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over
         }
@@ -47,9 +52,7 @@ public class HealthPC : MonoBehaviour
             if (canBeDamaged)
             {
                 StartCoroutine(InvinvibilityAfterDamage());
-                currentHealth = -damage;
                 healthBar.SetHealth(currentHealth);
-
             }
         }
     }
@@ -61,9 +64,9 @@ public class HealthPC : MonoBehaviour
         }
         else { currentHealth += healAmount; }
     }
-    bool CheckIfDead(float damage)          // Checks If The Player Dies After Taking Damage
+    bool CheckIfDead()          // Checks If The Player Dies After Taking Damage
     {
-        if (currentHealth - damage <= 0)
+        if (currentHealth <= 0)
         {
             return true;
         }

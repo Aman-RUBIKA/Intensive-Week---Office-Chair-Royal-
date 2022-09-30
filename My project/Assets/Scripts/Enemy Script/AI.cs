@@ -8,6 +8,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class AI : MonoBehaviour
 {
+    private Collider2D enemyCol;
+    private int pcLayer = 6;
+    public float damage = 5;
     [Header("MidBoss Variables")]
     public bool midBoss;
     public bool isCharging;
@@ -19,14 +22,14 @@ public class AI : MonoBehaviour
     public bool minesDeployed;
     public LineRenderer lr;
 
-    [Header("General Variables")]
+    [Header("Health Variables")]
     public float maxHp;
     public float hp;
-    public float maxBurnCountdown = 60;
 
     [Header("Status Effects")]
     public float burnCountdown ;
     public float burnDamage;
+    public float maxBurnCountdown = 60;
     public bool freeze = false;
     public bool burn = false;
     public bool shock = false;
@@ -58,6 +61,7 @@ public class AI : MonoBehaviour
         chargeTimer = chargeMaxTimer;
         chargeSpeed = speed * 3;
         lr = GetComponent<LineRenderer>();
+        enemyCol = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -122,13 +126,13 @@ public class AI : MonoBehaviour
             } 
         }
         
-        if (hp <= 0)
+        /*if (hp <= 0)
         {
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             manager.GetComponent<EnemyManager>().enemyKilled(type);
             Debug.Log("dying");
             Death();
-        }
+        }*/
         
     }
 
@@ -233,5 +237,11 @@ public class AI : MonoBehaviour
         angle =(Mathf.Atan2(transform.position.y - pPosition.y, transform.position.x - pPosition.x));
         transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angle) - 90);
     }
-
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == pcLayer)
+        {
+            HealthPC.instance.callWhenDamagedPC(damage);
+        }
+    }
 }
