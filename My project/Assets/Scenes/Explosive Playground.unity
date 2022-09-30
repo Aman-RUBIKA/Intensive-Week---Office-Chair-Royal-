@@ -1429,11 +1429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
       propertyPath: clip.Array.data[1].volume
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
       propertyPath: clip.Array.data[2].volume
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
       propertyPath: clip.Array.data[3].volume
