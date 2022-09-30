@@ -7,6 +7,6 @@ public class Playsound : MonoBehaviour
     [SerializeField] private AudioClip _clip;
     void Start()
     {
-        SoundManager.Instance.PlayAudio(_clip);
+        //SoundManager.Instance.PlayAudio(_clip);
     }
 }

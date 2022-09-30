@@ -122,13 +122,13 @@ public class AI : MonoBehaviour
             } 
         }
         
-        if (hp <= 0)
+        /*if (hp <= 0)
         {
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             manager.GetComponent<EnemyManager>().enemyKilled(type);
             Debug.Log("dying");
             Death();
-        }
+        }*/
         
     }
 

@@ -405,30 +405,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: rangerPresent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: survivedWaves
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478990123729361641, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: explosivePresent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901091448693956163, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: enemyManager
-      value: 
-      objectReference: {fileID: 1665373727}
-    - target: {fileID: 4901091448693956163, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: timeTillBossSpawn
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901091448693956163, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-      propertyPath: timeTillMinionSpawn
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 7470235009017102413, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
       propertyPath: m_Name
       value: Enemy Manager
@@ -479,29 +455,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
---- !u!1 &825601372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 698184068631493140, guid: 6366886bee3f74e4c9d92e3e2cd7dd7d, type: 3}
-  m_PrefabInstance: {fileID: 6446066211380560007}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &825601373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825601372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f442ae4279e393343b365f1cf9a9a9eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textGold: {fileID: 0}
---- !u!1 &1665373727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7470235009017102413, guid: ff8f0a16d07e6c1479665428ff8b57f0, type: 3}
-  m_PrefabInstance: {fileID: 763210380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3488603370381649603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,14 +665,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 678336956137230589, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 5642386830327762015, guid: 311255523803ac64eba3ee2ce0dc4a7f, type: 3}
-    - target: {fileID: 678336956137230589, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
-      propertyPath: maxItemTimer
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 2191432933282055880, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
       propertyPath: m_Name
       value: Item Drop Manager
@@ -730,15 +675,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4113152484264337568, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12306127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4113152484264337568, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1196998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4113152484264337568, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.050312754
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4113152484264337568, guid: 6c1680914e3e9c241aaa852c33d5a6ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -780,10 +725,6 @@ PrefabInstance:
     - target: {fileID: 698184068631493140, guid: 6366886bee3f74e4c9d92e3e2cd7dd7d, type: 3}
       propertyPath: m_Name
       value: Gold Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 698184068631493140, guid: 6366886bee3f74e4c9d92e3e2cd7dd7d, type: 3}
-      propertyPath: m_TagString
-      value: GoldManager
       objectReference: {fileID: 0}
     - target: {fileID: 2195429753354403284, guid: 6366886bee3f74e4c9d92e3e2cd7dd7d, type: 3}
       propertyPath: m_RootOrder

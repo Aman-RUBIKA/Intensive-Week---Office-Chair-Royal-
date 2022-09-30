@@ -81,6 +81,7 @@ public class Capitalism : MonoBehaviour
     }
     int PriceAugment()
     {
+        price1 = Mathf.RoundToInt(price1 * Random.Range(1f, 1.2f));
         return 0; //price * Random.Range(1f, 1.75f))
     }
     public void WhichButtonWasClicked(int buttonID)
@@ -162,6 +163,7 @@ public class Capitalism : MonoBehaviour
 
             
             SetPrice();
+            ResetShopItems();
         }
     }
     private void SetPrice()
