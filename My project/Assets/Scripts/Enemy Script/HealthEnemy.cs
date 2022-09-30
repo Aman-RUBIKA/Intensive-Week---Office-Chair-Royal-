@@ -45,10 +45,12 @@ public class HealthEnemy : MonoBehaviour
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
+            if (transform.GetComponent<AI>().midBoss) { type = 0; }
             manager.GetComponent<EnemyManager>().enemyKilled(type);
             GameObject dropManager = GameObject.FindWithTag("EnemyDropManager");
             dropManager.GetComponent<EnemyDropmanager>().canAppearItem = true;
             dropManager.GetComponent<EnemyDropmanager>().appearFood(new Vector2(transform.position.x, transform.position.y));
+            //Spaghetti code, I know, don't worry about it, it works
             
             Destroy(this.gameObject);
         }
@@ -83,7 +85,7 @@ public class HealthEnemy : MonoBehaviour
     }
     void checkIfStillBurned()
     {
-        if (burnProgress > burnDuration)
+        if (burnProgress >= burnDuration)
         {
             isBurning= false;
         }
@@ -116,7 +118,7 @@ public class HealthEnemy : MonoBehaviour
     }
     void checkIfStillShocked()
     {
-        if (shockProgress > shockDuration)
+        if (shockProgress >= shockDuration)
         {
             isShocked=false;
         }
@@ -144,7 +146,7 @@ public class HealthEnemy : MonoBehaviour
     }
     void checkIfStillFrozen()
     {
-        if (freezeProgress > freezeDuration)
+        if (freezeProgress >= freezeDuration)
         {
             isFrozen = false;
         }
@@ -161,9 +163,9 @@ public class HealthEnemy : MonoBehaviour
     #endregion Freeze Status
     void ResetEnemy()
     {
-        burnProgress = 0;
-        shockProgress = 0;
-        freezeProgress = 0;
+        burnProgress = burnDuration;
+        shockProgress = shockDuration;
+        freezeProgress = freezeDuration;
         isBurning = false;
         isShocked = false;
         isFrozen = false;
