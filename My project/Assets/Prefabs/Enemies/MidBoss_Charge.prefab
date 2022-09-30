@@ -152,7 +152,7 @@ MonoBehaviour:
   midBoss: 1
   isCharging: 0
   chargeSpeed: 0
-  chargeMaxTimer: 10
+  chargeMaxTimer: 5
   chargeTimer: 0
   rangedTrajectory: 0
   minesDeployed: 0
@@ -320,3 +320,4 @@ MonoBehaviour:
   freezeProgress: 5
   burnDamage: 5
   shockDamage: 5
+  goldManager: {fileID: 0}
