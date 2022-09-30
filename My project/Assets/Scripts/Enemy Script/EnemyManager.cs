@@ -59,10 +59,30 @@ public class EnemyManager : MonoBehaviour
                 totalAppeared += 1;
             }
 
-            for ( ; meleePresent + rangerPresent + explosiveKilled < survivedWaves +4; )
+            /*for ( ; meleePresent + rangerPresent + explosiveKilled < survivedWaves +4; )
             {
-                
-            }
+                if (explosiveKilled >= 3)
+                {
+                    oocInstance(enemyPrefabs[1]);
+                    explosiveKilled -= 3;
+                    rangerPresent += 1;
+                    Debug.Log("ranger spawned");
+                }
+
+                else if (meleeKilled >= 5)
+                {
+                    oocInstance(enemyPrefabs[2]);
+                    meleeKilled -= 5;
+                    explosivePresent += 1;
+                }
+                else
+                {
+                    oocInstance(enemyPrefabs[0]);
+                    meleePresent += 1;
+                }
+
+                totalAppeared += 1;
+            }*/
         }
     }
 
