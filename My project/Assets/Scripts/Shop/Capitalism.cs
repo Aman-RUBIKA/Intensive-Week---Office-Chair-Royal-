@@ -66,6 +66,8 @@ public class Capitalism : MonoBehaviour
     {
         currentShopItems = GetAvailableUpgrades(3);
         Debug.Log(currentShopItems[0]);
+        Debug.Log(currentShopItems[1]);
+        Debug.Log(currentShopItems[2]);
         PriceAugment();
         UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
         UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
@@ -73,30 +75,33 @@ public class Capitalism : MonoBehaviour
     }
     void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, UpgradeManager list)
     {
-        text.text = (price * Random.Range(1f, 1.75f)).ToString();
+        text.text = (PriceAugment().ToString());
         spr.sprite = item.icon;
-        list = item;
+        list=item;
     }
-    void PriceAugment()
+    int PriceAugment()
     {
-
+        return 0; //price * Random.Range(1f, 1.75f))
     }
     public void WhichButtonWasClicked(int buttonID)
     {
         if (buttonID == 0)
         {
             // If Player Gold > Item Price
-            ItemManager.instance.PlayerGetsUpgrade(button0Item);
+            Debug.Log(buttonID + " I Was Clicked");
+            ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
         else if (buttonID == 1)
         {
             // If Player Gold > Item Price
-            ItemManager.instance.PlayerGetsUpgrade(button1Item);
+            Debug.Log(buttonID + " I Was Clicked");
+            ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
-        else if (buttonID == 1)
+        else if (buttonID == 2)
         {
             // If Player Gold > Item Price
-            ItemManager.instance.PlayerGetsUpgrade(button1Item);
+            Debug.Log(buttonID + " I Was Clicked");
+            ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);
         }
         else
         {
