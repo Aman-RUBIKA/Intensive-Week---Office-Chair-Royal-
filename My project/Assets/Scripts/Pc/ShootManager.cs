@@ -115,13 +115,9 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize*2; i++)
             {
-                
-                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                yield return new WaitForSeconds(0.2f);
-                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, false), transform.localRotation);
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                yield return new WaitForSeconds(0.2f);
+                shotgunSpread(shotgunP, 40, 120, 6, new Vector2(0.25f,0.25f), true, 26);
+                shotgunSpread(shotgunP, 40, 120, 6, new Vector2(-0.25f,-0.25f), true, 26);
+                yield return new WaitForSeconds(0.6f);
             }
             yield return new WaitForSeconds(shotgunCooldown2);
 
@@ -130,12 +126,9 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize*2; i++)
             {
-                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, true), transform.localRotation);
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                yield return new WaitForSeconds(0.3f);
-                inst = Instantiate(shotgunP, CalculateVectorOffset(forwardShotgun.position, offset, false), transform.localRotation);
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                yield return new WaitForSeconds(0.5f);
+                shotgunSpread(shotgunP, 40, 120, 5, new Vector2(0.25f,0.25f), true, 25);
+                shotgunSpread(shotgunP, 40, 120, 5, new Vector2(-0.25f,-0.25f), true, 25);
+                yield return new WaitForSeconds(0.7f);
             }
             yield return new WaitForSeconds(shotgunCooldown1);
         }
@@ -143,21 +136,7 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
-                shotgunSpread(shotgunP, 40, 120, 5);
-                
-                //inst = Instantiate(shotgunP, transform.position, transform.localRotation);
-                /*inst = Instantiate(shotgunP, transform.position, transform.localRotation);
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 56, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 72, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 88, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 104, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
-                inst =  Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 120, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;*/
+                shotgunSpread(shotgunP, 40, 120, 5, new Vector2(0,0), false, 0);
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
@@ -176,15 +155,22 @@ public class ShootManager : MonoBehaviour
         }
     }
 
-    void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb)
+    void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb, Vector2 offset, bool canFreeze, int freezeChance)
     {
         float angleIncrement = (maxAngle - minAngle) / bulletNb;
         GameObject inst;
         for (int i = 0; i < bulletNb; i++)
         {
-            //inst = Instantiate(prefab, transform.position, new Quaternion(transform.localRotation.x, transform.localRotation.y,  transform.localRotation.z + minAngle + (angleIncrement * i), transform.localRotation.w));
-            inst = Instantiate(prefab, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.eulerAngles.z + minAngle + (i* angleIncrement) -  70));
-            Debug.Log(inst.transform.rotation);
+            inst = Instantiate(prefab, new Vector3(transform.localPosition.x + offset.x, transform.localPosition.y + offset.x, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.eulerAngles.z + minAngle + (i* angleIncrement) -  70));
+            if (canFreeze)
+            {
+                float bruh = freezeChance / 100;
+                float rng = Random.value;
+                if (rng <= bruh)
+                {
+                    inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                }
+            }
         }
     }
 }
