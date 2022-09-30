@@ -53,7 +53,7 @@ public class HealthPC : MonoBehaviour
             }
         }
     }
-    void callWhenHealed()                   // Call This Function When The Player Consumes STolen Lunch (Healing Item)
+    public void callWhenHealed()                   // Call This Function When The Player Consumes STolen Lunch (Healing Item)
     {
         if (CheckIfHealOverflow())
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyManager
   - GoldManager
+  - EnemyDropManager
   layers:
   - Default
   - TransparentFX

@@ -143,10 +143,10 @@ public class ShootManager : MonoBehaviour
         {
             for (int i = 0; i <= shotgunMagSize; i++)
             {
-                
+                shotgunSpread(shotgunP, 40, 120, 5);
                 
                 //inst = Instantiate(shotgunP, transform.position, transform.localRotation);
-                inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 40, 0));
+                /*inst = Instantiate(shotgunP, transform.position, transform.localRotation);
                 inst.GetComponent<ShotgunWeapon>().canFreeze = true;
                 inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 56, 0));
                 inst.GetComponent<ShotgunWeapon>().canFreeze = true;
@@ -157,7 +157,7 @@ public class ShootManager : MonoBehaviour
                 inst = Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 104, 0));
                 inst.GetComponent<ShotgunWeapon>().canFreeze = true;
                 inst =  Instantiate(shotgunP, transform.position, new Quaternion(0, 0, 120, 0));
-                inst.GetComponent<ShotgunWeapon>().canFreeze = true;
+                inst.GetComponent<ShotgunWeapon>().canFreeze = true;*/
                 yield return new WaitForSeconds(0.8f);
             }
             yield return new WaitForSeconds(shotgunCooldown0);
@@ -179,9 +179,12 @@ public class ShootManager : MonoBehaviour
     void shotgunSpread(GameObject prefab, float minAngle, float maxAngle, int bulletNb)
     {
         float angleIncrement = (maxAngle - minAngle) / bulletNb;
+        GameObject inst;
         for (int i = 0; i < bulletNb; i++)
         {
-            Instantiate(prefab, transform.position, new Quaternion(0, 0, minAngle + angleIncrement * i, 0));
+            //inst = Instantiate(prefab, transform.position, new Quaternion(transform.localRotation.x, transform.localRotation.y,  transform.localRotation.z + minAngle + (angleIncrement * i), transform.localRotation.w));
+            inst = Instantiate(prefab, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.eulerAngles.z + minAngle + (i* angleIncrement) -  70));
+            Debug.Log(inst.transform.rotation);
         }
     }
 }

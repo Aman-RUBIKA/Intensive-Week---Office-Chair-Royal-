@@ -30,7 +30,29 @@ public class EnemyManager : MonoBehaviour
     {
         if (BossPresent)
         {
-            
+            while (meleePresent + rangerPresent + explosivePresent < survivedWaves + 1)
+            {
+                if (explosiveKilled >= 3)
+                {
+                    oocInstance(enemyPrefabs[1]);
+                    explosiveKilled -= 3;
+                    rangerPresent += 1;
+                }
+
+                else if (meleeKilled >= 5)
+                {
+                    oocInstance(enemyPrefabs[2]);
+                    meleeKilled -= 5;
+                    explosivePresent += 1;
+                }
+                else
+                {
+                    oocInstance(enemyPrefabs[0]);
+                    meleePresent += 1;
+                }
+
+                totalAppeared += 1;
+            } 
         }
         else
         {

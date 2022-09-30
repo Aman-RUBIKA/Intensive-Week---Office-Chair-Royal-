@@ -46,6 +46,9 @@ public class HealthEnemy : MonoBehaviour
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
             manager.GetComponent<EnemyManager>().enemyKilled(type);
+            GameObject dropManager = GameObject.FindWithTag("EnemyDropManager");
+            dropManager.GetComponent<EnemyDropmanager>().canAppearItem = true;
+            dropManager.GetComponent<EnemyDropmanager>().appearFood(new Vector2(transform.position.x, transform.position.y));
             
             Destroy(this.gameObject);
         }
