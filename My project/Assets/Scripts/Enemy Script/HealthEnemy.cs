@@ -45,7 +45,12 @@ public class HealthEnemy : MonoBehaviour
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");
             int type = transform.GetComponent<AI>().type;
-            if (transform.GetComponent<AI>().midBoss) { type = 0; }
+            if (transform.GetComponent<AI>().midBoss)
+            {
+                type = 0;
+                manager.GetComponent<EnemyManager>().bossPresent = false;
+                //manager.Get
+            }
             manager.GetComponent<EnemyManager>().enemyKilled(type);
             GameObject dropManager = GameObject.FindWithTag("EnemyDropManager");
             dropManager.GetComponent<EnemyDropmanager>().canAppearItem = true;

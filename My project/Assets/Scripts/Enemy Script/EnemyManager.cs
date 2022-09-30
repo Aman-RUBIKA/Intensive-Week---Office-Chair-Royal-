@@ -9,14 +9,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject player ;
     private Vector2 pPosition;
     [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private bool BossPresent;
+    public bool bossPresent;
     public int totalAppeared;
     public int meleePresent;
-    private int meleeKilled;
+    public int meleeKilled;
     public int rangerPresent;
-    private int rangerKilled;
+    public int rangerKilled;
     public int explosivePresent;
-    private int explosiveKilled;
+    public int explosiveKilled;
     public int survivedWaves = 0;
     
     void Start()
@@ -28,31 +28,9 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnNewEnemy()
     {
-        if (BossPresent)
+        if (bossPresent)
         {
-            while (meleePresent + rangerPresent + explosivePresent < survivedWaves + 1)
-            {
-                if (explosiveKilled >= 3)
-                {
-                    oocInstance(enemyPrefabs[1]);
-                    explosiveKilled -= 3;
-                    rangerPresent += 1;
-                }
-
-                else if (meleeKilled >= 5)
-                {
-                    oocInstance(enemyPrefabs[2]);
-                    meleeKilled -= 5;
-                    explosivePresent += 1;
-                }
-                else
-                {
-                    oocInstance(enemyPrefabs[0]);
-                    meleePresent += 1;
-                }
-
-                totalAppeared += 1;
-            } 
+            
         }
         else
         {
@@ -63,6 +41,7 @@ public class EnemyManager : MonoBehaviour
                     oocInstance(enemyPrefabs[1]);
                     explosiveKilled -= 3;
                     rangerPresent += 1;
+                    Debug.Log("ranger spawned");
                 }
 
                 else if (meleeKilled >= 5)
@@ -78,7 +57,12 @@ public class EnemyManager : MonoBehaviour
                 }
 
                 totalAppeared += 1;
-            } 
+            }
+
+            for ( ; meleePresent + rangerPresent + explosiveKilled < survivedWaves +4; )
+            {
+                
+            }
         }
     }
 
@@ -90,23 +74,23 @@ public class EnemyManager : MonoBehaviour
         float Width = height * cam.GetComponent<Camera>().aspect ;
         float widthFromPlayer = Width / 2;
         float heightFromPlayer = height / 2;
-        float randomvalue = Random.value;
+        float randomValue = Random.value;
         
 
         int whereSpawn = Random.Range(1, 5);// 1, up / 2, left / 3, down / 4, right
         switch (whereSpawn)
         {
             case 1:
-                Instantiate(go, new Vector2(randomvalue * 19, 11 + camPos.y), Quaternion.identity);
+                Instantiate(go, new Vector2(randomValue * 19, 11 + camPos.y), Quaternion.identity);
                 break;
             case  2:
-                Instantiate(go, new Vector2(-19 + camPos.x, randomvalue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(-19 + camPos.x, randomValue * 11), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(go, new Vector2(randomvalue * 19, -11 + camPos.y), Quaternion.identity);
+                Instantiate(go, new Vector2(randomValue * 19, -11 + camPos.y), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(go, new Vector2(19 + camPos.x, randomvalue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(19 + camPos.x, randomValue * 11), Quaternion.identity);
                 break;
         }
         
@@ -126,8 +110,8 @@ public class EnemyManager : MonoBehaviour
                 rangerPresent -= 1;
                 break;
             case 2:
-                explosiveKilled += 1;
-                explosivePresent -= 1;
+                explosiveKilled = explosiveKilled + 1;
+                explosivePresent = explosivePresent - 1;
                 break;
         }
     }
@@ -137,10 +121,12 @@ public class EnemyManager : MonoBehaviour
         switch (boss)
         {
             case true:
-                if (BossPresent == false)
+                if (bossPresent == false)
                 {
-                    BossPresent = true;
+                    bossPresent = true;
                     oocInstance(enemyPrefabs[3]);
+                    meleePresent += 1;
+                    totalAppeared += 1;
                 }
                 else
                 {
@@ -155,9 +141,11 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (meleePresent + rangerPresent + explosivePresent == 0)
-        {
-            SpawnNewEnemy();
-        }
+        
+        //if (meleePresent + rangerPresent + explosivePresent == 0)
+        //{
+        //    SpawnNewEnemy();
+        //}
     }
+    
 }
