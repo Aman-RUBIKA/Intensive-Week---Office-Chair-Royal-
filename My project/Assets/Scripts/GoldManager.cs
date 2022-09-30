@@ -11,7 +11,7 @@ public class GoldManager : MonoBehaviour
     public void AddGold(int acquired)
     {
         currentGold += acquired;
-        textGold.text = "$ :" + currentGold.ToString();
+        //textGold.text = "$ :" + currentGold.ToString();
         Debug.Log(currentGold);
     }
 
