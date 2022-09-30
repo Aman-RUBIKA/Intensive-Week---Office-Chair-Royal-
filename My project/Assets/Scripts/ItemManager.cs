@@ -42,7 +42,7 @@ public class ItemManager : MonoBehaviour
     {
         
     }
-    public void PlayerGetsUpgrade(UpgradeManager item)      //Call This Whenever The Player Gets An Upgrade
+    public void PlayerGetsUpgrade(UpgradeManager item)      //Call This Whenever The Player Gets / Buys An Upgrade
     {
         int removeIndex;
         //string upgradeIdInitial = item.upgradeID.ToString();
@@ -118,7 +118,9 @@ public class ItemManager : MonoBehaviour
                     ShootManager.instance.shotgun0 = true;
                 }
                 break;
+                
         }
+        Capitalism.instance.ResetShopItems();
     }
     public int FindItemInList(UpgradeManager item, List<UpgradeManager> shopList)
     {

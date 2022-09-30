@@ -65,9 +65,9 @@ public class Capitalism : MonoBehaviour
     public void ResetShopItems()
     {
         currentShopItems = GetAvailableUpgrades(3);
-        //Debug.Log(currentShopItems[0]);
-        //Debug.Log(currentShopItems[1]);
-        //Debug.Log(currentShopItems[2]);
+        Debug.Log(currentShopItems[0]);
+        Debug.Log(currentShopItems[1]);
+        Debug.Log(currentShopItems[2]);
         UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
         UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
         UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);

@@ -53,10 +53,13 @@ public class MachineGunWeapon : Projectile
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        CheckCollision(col);
-        if (canStun)
+        if (col.gameObject != null)
         {
-            col.gameObject.GetComponent<HealthEnemy>().CallIfShocked();
+            CheckCollision(col);
+            if (canStun)
+            {
+                col.gameObject.GetComponent<HealthEnemy>().CallIfShocked();
+            }
         }
     }
 }
