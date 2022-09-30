@@ -59,8 +59,6 @@ public class ItemManager : MonoBehaviour
         listOfUpgradeItems.RemoveAt(removeIndex);                                                               // Remove It From The List Of Available Upgrades
         WhenPlayerGetsUpgrade(item); // Add Item To Player's Inventory
         Capitalism.instance.PriceAugment();
-        Capitalism.instance.
-
         /*else (listOfUpgradeItems[removeIndex].upgradeID.Contains(upgradeIdInitial))  
         {
 
