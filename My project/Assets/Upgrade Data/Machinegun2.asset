@@ -16,3 +16,4 @@ MonoBehaviour:
   upgradeName: Machinegun2
   upgradeID: B3
   icon: {fileID: -556952628, guid: cf90cabff38499346899daeeb1199941, type: 3}
+  basePrice: 120

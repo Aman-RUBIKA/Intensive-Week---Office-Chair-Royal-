@@ -16,4 +16,5 @@ public class UpgradeManager : ScriptableObject
     public string upgradeName;
     public string upgradeID;
     public Sprite icon;
+    public int basePrice;
 }
