@@ -65,9 +65,9 @@ public class Capitalism : MonoBehaviour
     public void ResetShopItems()
     {
         currentShopItems = GetAvailableUpgrades(3);
-        Debug.Log(currentShopItems[0]);
-        Debug.Log(currentShopItems[1]);
-        Debug.Log(currentShopItems[2]);
+        //Debug.Log(currentShopItems[0]);
+        //Debug.Log(currentShopItems[1]);
+        //Debug.Log(currentShopItems[2]);
         UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
         UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
         UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);
@@ -92,21 +92,18 @@ public class Capitalism : MonoBehaviour
     
     public void WhichButtonWasClicked(int buttonID)
     {
-        if (buttonID == 0)
+        if (buttonID == 0 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price1Text)))      // If This Button Is Clicked AND You Have Enough Gold
         {
-            // If Player Gold > Item Price
             Debug.Log(buttonID + " I Was Clicked");
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
-        else if (buttonID == 1)
+        else if (buttonID == 1 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price2Text)))
         {
-            // If Player Gold > Item Price
             Debug.Log(buttonID + " I Was Clicked");
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
-        else if (buttonID == 2)
+        else if (buttonID == 2 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price3Text)))
         {
-            // If Player Gold > Item Price
             Debug.Log(buttonID + " I Was Clicked");
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);
         }
