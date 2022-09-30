@@ -37,12 +37,10 @@ public class HealthEnemy : MonoBehaviour
     }
     public void CallWhenDamagedEnemy(float damage)    // Call This Function Whenever The Enemy Takes Damage
     {
-        if (currentHealth <= 0)
-        {
-            return;
-        }
+        currentHealth -= damage;
+
         Debug.Log(damage + " is the Damage I've Taken");
-        if (CheckIfDead(damage))
+        if (CheckIfDead())
         {
             goldManager.GetComponent<GoldManager>().AddGold(3);
             
@@ -60,17 +58,18 @@ public class HealthEnemy : MonoBehaviour
             dropManager.GetComponent<EnemyDropmanager>().canAppearItem = true;
             dropManager.GetComponent<EnemyDropmanager>().appearFood(new Vector2(transform.position.x, transform.position.y));
             //Spaghetti code, I know, don't worry about it, it works
+            // It Can Always Be More Optimised :)
             
             Destroy(this.gameObject);
         }
-        else 
+        if (currentHealth <= 0)
         {
-            currentHealth -= damage;
+            return;
         }
     }
-    bool CheckIfDead(float damage)          // Checks If The Enemy Dies After Taking Damage
+    bool CheckIfDead()          // Checks If The Enemy Dies After Taking Damage
     {
-        if (currentHealth - damage <= 0)
+        if (currentHealth  <= 0)
         {
             return true;
         }
