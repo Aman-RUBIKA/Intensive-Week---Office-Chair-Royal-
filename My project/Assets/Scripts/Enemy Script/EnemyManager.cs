@@ -120,7 +120,6 @@ public class EnemyManager : MonoBehaviour
             case 0:
                 meleeKilled += 1;
                 meleePresent -= 1;
-                Debug.Log("melee killed");
                 break;
             case 1:
                 rangerKilled += 1;
