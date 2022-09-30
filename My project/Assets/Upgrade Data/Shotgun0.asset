@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ecc6e1722c6b314290bc9501d468a7c, type: 3}
-  m_Name: Pistol2
+  m_Name: Shotgun0
   m_EditorClassIdentifier: 
-  upgradeType: 2
-  upgradeName: Pistol2
-  upgradeID: A3
+  upgradeType: 0
+  upgradeName: Shotgun0
+  upgradeID: C1
+  icon: {fileID: -1306648087, guid: cf90cabff38499346899daeeb1199941, type: 3}
