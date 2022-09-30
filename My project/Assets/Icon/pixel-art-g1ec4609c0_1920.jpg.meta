@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel-art-g1ec4609c0_1920_7
+      name: Railgun
       rect:
         serializedVersion: 2
         x: 485
@@ -494,23 +494,23 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       pixel-art-g1ec4609c0_1920_3: 1360369336
-      pixel-art-g1ec4609c0_1920_1: -1291690383
       Machinegun: -556952628
       pixel-art-g1ec4609c0_1920_14: 1333001862
       pixel-art-g1ec4609c0_1920_10: -543974651
       pixel-art-g1ec4609c0_1920_17: 937511888
       pixel-art-g1ec4609c0_1920_8: 1184514381
       pixel-art-g1ec4609c0_1920_13: -957956360
+      Railgun: 1599090280
       pixel-art-g1ec4609c0_1920_15: 768755018
       pixel-art-g1ec4609c0_1920_12: 1873266699
       pixel-art-g1ec4609c0_1920_11: 794963797
       Shotgun: -1306648087
       pixel-art-g1ec4609c0_1920_6: -1976565212
       Pistol: -109179954
-      pixel-art-g1ec4609c0_1920_4: -967797391
+      pixel-art-g1ec4609c0_1920_1: -1291690383
       pixel-art-g1ec4609c0_1920_16: -1288309397
       pixel-art-g1ec4609c0_1920_9: -499963233
-      pixel-art-g1ec4609c0_1920_7: 1599090280
+      pixel-art-g1ec4609c0_1920_4: -967797391
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

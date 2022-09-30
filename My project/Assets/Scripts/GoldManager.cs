@@ -5,9 +5,23 @@ using UnityEngine.UI;
 
 public class GoldManager : MonoBehaviour
 {
+    public static GoldManager instance;
     private float currentGold;
     public Text textGold;
 
+    private void Awake()
+    {
+        #region Simpleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        #endregion Simpleton
+    }
     public void AddGold(int acquired)
     {
         currentGold += acquired;

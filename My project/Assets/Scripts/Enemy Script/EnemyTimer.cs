@@ -15,6 +15,7 @@ public class EnemyTimer : MonoBehaviour
     public GameObject enemyManager;
     public float timeTillBossSpawn;
     public float timeTillMinionSpawn;
+    public float timeTillMoreSpawnPerWave = 120;
 
     private void Update()
     {
@@ -24,6 +25,10 @@ public class EnemyTimer : MonoBehaviour
             if (currentTime % timeTillMinionSpawn <= 0.01f)
             {
                 enemyManager.GetComponent<EnemyManager>().survivedWaves += 1;
+            }
+            if (currentTime % timeTillMoreSpawnPerWave <= 0.01f)
+            {
+                enemyManager.GetComponent<EnemyManager>().survivedWaves *= 2;
             }
         }
 
