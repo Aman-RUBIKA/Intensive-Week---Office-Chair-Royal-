@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 431770368644884888}
   - component: {fileID: 4881621649464385619}
   - component: {fileID: 3636227925662911837}
-  - component: {fileID: -4993410763810111506}
+  - component: {fileID: 7466465592697576669}
   m_Layer: 8
   m_Name: MachineGunProjectile
   m_TagString: Untagged
@@ -148,7 +148,7 @@ MonoBehaviour:
   bulletAngle: 0
   lifeSpan: 2
   damage: 1
---- !u!114 &-4993410763810111506
+--- !u!114 &7466465592697576669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

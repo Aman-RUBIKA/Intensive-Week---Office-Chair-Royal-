@@ -21,6 +21,18 @@ public class GoldManager : MonoBehaviour
         currentGold -= goldremoval;
         textGold.text = "$ :" + currentGold.ToString();
     }
+
+    public bool CallWhenComparingPrices(int price)
+    {
+        if (price > currentGold)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     
     
     
