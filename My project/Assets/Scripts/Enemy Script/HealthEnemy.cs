@@ -37,6 +37,10 @@ public class HealthEnemy : MonoBehaviour
     }
     public void CallWhenDamagedEnemy(float damage)    // Call This Function Whenever The Enemy Takes Damage
     {
+        if (currentHealth <= 0)
+        {
+            return;
+        }
         Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead(damage))
         {

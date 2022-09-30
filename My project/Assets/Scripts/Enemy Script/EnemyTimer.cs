@@ -21,17 +21,13 @@ public class EnemyTimer : MonoBehaviour
         if (timerActive)
         {
             currentTime = currentTime + Time.deltaTime;
-            if (currentTime % timeTillBossSpawn <= 0.01f)
+            if (currentTime % timeTillMinionSpawn <= 0.01f)
             {
-                spawnBoss();
-            }
-            else if (currentTime % timeTillMinionSpawn <= 0.01f)
-            {
-                spawnEnemy();
+                enemyManager.GetComponent<EnemyManager>().survivedWaves += 1;
             }
         }
 
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        //TimeSpan time = TimeSpan.FromSeconds(currentTime);
         //currentTimeText.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
     }
 

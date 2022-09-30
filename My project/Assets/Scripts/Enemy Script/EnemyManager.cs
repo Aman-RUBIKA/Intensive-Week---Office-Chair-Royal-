@@ -36,7 +36,14 @@ public class EnemyManager : MonoBehaviour
         {
             while (meleePresent + rangerPresent + explosivePresent < survivedWaves + 4)
             {
-                if (explosiveKilled >= 3)
+                if (rangerKilled >= 2)
+                {
+                    oocInstance(enemyPrefabs[3]);
+                    meleePresent += 1;
+                    rangerKilled -= 2;
+                }
+                
+                else if (explosiveKilled >= 3)
                 {
                     oocInstance(enemyPrefabs[1]);
                     explosiveKilled -= 3;
@@ -161,11 +168,26 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        if (meleePresent < 0)
+        {
+            meleePresent = 0;
+        }
+
+        if (rangerPresent < 0)
+        {
+            rangerPresent = 0;
+        }
+
+        if (explosivePresent < 0)
+        {
+            explosivePresent = 0;
+        }
+
+        if (meleePresent + rangerPresent + explosivePresent == 0)
+        {
+            SpawnNewEnemy();
+        }
         
-        //if (meleePresent + rangerPresent + explosivePresent == 0)
-        //{
-        //    SpawnNewEnemy();
-        //}
     }
     
 }

@@ -156,7 +156,7 @@ MonoBehaviour:
   rangedTrajectory: 0
   minesDeployed: 0
   lr: {fileID: 0}
-  maxHp: 6
+  maxHp: 3
   hp: 0
   maxBurnCountdown: 2
   burnCountdown: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b33a7f6eddffe458045eedd29d84c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 3
   currentHealth: 0
   canBeDamaged: 0
   isBurning: 0
@@ -220,3 +220,4 @@ MonoBehaviour:
   freezeProgress: 0
   burnDamage: 2
   shockDamage: 2
+  goldManager: {fileID: 0}
