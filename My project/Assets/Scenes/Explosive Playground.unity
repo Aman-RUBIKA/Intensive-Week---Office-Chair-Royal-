@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -436,6 +437,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99b217d333c57c40b5739502d51e284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,82 +1376,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1637533363}
     m_Modifications:
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d80159a763ac0f44cb3ae59d4cfc17d9, type: 3}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[0].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[0].name
-      value: Theme
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ae3ba2b7157d6d04d9520c9cd7a7f093, type: 3}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[1].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[1].name
-      value: Pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 96337aed6475dc043a1588c7fa1b4b54, type: 3}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[2].name
-      value: Machinegun
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ae3ba2b7157d6d04d9520c9cd7a7f093, type: 3}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[3].name
-      value: Shotgun
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[0].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[1].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[2].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[3].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[0].volume
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[1].volume
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[2].volume
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 935443955599214386, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
-      propertyPath: clip.Array.data[3].volume
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 935443955599214388, guid: 27f78c96fb839ca488beae4bbfd08267, type: 3}
       propertyPath: m_Name
       value: SoundManager

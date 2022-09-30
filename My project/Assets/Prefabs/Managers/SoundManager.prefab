@@ -44,4 +44,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0896701d26c8a4d903f8078bc1591c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: []
+  clip:
+  - name: Theme
+    clip: {fileID: 8300000, guid: d80159a763ac0f44cb3ae59d4cfc17d9, type: 3}
+    volume: 100
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Pistol
+    clip: {fileID: 8300000, guid: ae3ba2b7157d6d04d9520c9cd7a7f093, type: 3}
+    volume: 6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Machinegun
+    clip: {fileID: 8300000, guid: 96337aed6475dc043a1588c7fa1b4b54, type: 3}
+    volume: 2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: ae3ba2b7157d6d04d9520c9cd7a7f093, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
