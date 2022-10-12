@@ -51,7 +51,15 @@ public class HealthEnemy : MonoBehaviour
             {
                 type = 0;
                 manager.GetComponent<EnemyManager>().bossPresent = false;
-                //manager.Get
+                manager.GetComponent<EnemyManager>().midBossDrop = -10;
+            }
+            else
+            {
+                manager.GetComponent<EnemyManager>().midBossDrop += 1;
+                if (manager.GetComponent<EnemyManager>().midBossDrop > 0)
+                {
+                    manager.GetComponent<EnemyManager>().midBossDrop = 0;
+                }
             }
             manager.GetComponent<EnemyManager>().enemyKilled(type);
             GameObject dropManager = GameObject.FindWithTag("EnemyDropManager");
@@ -59,7 +67,7 @@ public class HealthEnemy : MonoBehaviour
             dropManager.GetComponent<EnemyDropmanager>().appearFood(new Vector2(transform.position.x, transform.position.y));
             //Spaghetti code, I know, don't worry about it, it works
             // It Can Always Be More Optimised :)
-            
+
             Destroy(this.gameObject);
         }
         if (currentHealth <= 0)
