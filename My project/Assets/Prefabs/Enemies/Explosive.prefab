@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a61c67ceb48143bd7952ff0ee7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   midBoss: 0
   isCharging: 0
   chargeSpeed: 0
@@ -156,19 +157,19 @@ MonoBehaviour:
   rangedTrajectory: 0
   minesDeployed: 0
   lr: {fileID: 0}
-  maxHp: 3
+  maxHp: 5
   hp: 0
-  maxBurnCountdown: 2
   burnCountdown: 0
   burnDamage: 5
+  maxBurnCountdown: 2
   freeze: 0
   burn: 0
   shock: 0
-  explosiveRange: 2
-  explosionCountdown: 10
+  explosiveRange: 3
+  explosionCountdown: 1
   explosionPrefab: {fileID: 2895712181643414182, guid: b2440454560533a4499463b46da4af9a, type: 3}
   type: 2
-  speed: 2
+  speed: 5
   shootTimerMax: 0
   shootTimer: 0
   rangedDistanceStop: 0
