@@ -34,7 +34,40 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            while (meleePresent + rangerPresent + explosivePresent < survivedWaves + 4)
+            /*while (meleePresent + rangerPresent + explosivePresent < survivedWaves + 4)
+            {
+                if (rangerKilled >= 2)
+                {
+                    oocInstance(enemyPrefabs[3]);
+                    meleePresent += 1;
+                    rangerKilled -= 2;
+                }
+                
+                else if (explosiveKilled >= 3)
+                {
+                    oocInstance(enemyPrefabs[1]);
+                    explosiveKilled -= 3;
+                    rangerPresent += 1;
+                }
+
+                else if (meleeKilled >= 5)
+                {
+                    oocInstance(enemyPrefabs[2]);
+                    meleeKilled -= 5;
+                    explosivePresent += 1;
+                }
+                else
+                {
+                    oocInstance(enemyPrefabs[0]);
+                    meleePresent += 1;
+                }
+
+                totalAppeared += 1;
+            }*/
+
+            int thatOneNumberYouKnowTheOne = survivedWaves + 4;
+            
+            for (int i = 0; meleePresent + rangerPresent + explosivePresent < thatOneNumberYouKnowTheOne ; i++)
             {
                 if (rangerKilled >= 2)
                 {
@@ -64,7 +97,7 @@ public class EnemyManager : MonoBehaviour
 
                 totalAppeared += 1;
             }
-
+            
         }
     }
 
@@ -130,7 +163,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    
+                    SpawnNewEnemy();
                 }
                 break;
             case false:
