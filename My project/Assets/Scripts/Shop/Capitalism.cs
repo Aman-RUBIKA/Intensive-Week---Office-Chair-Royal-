@@ -205,7 +205,7 @@ public class Capitalism : MonoBehaviour
         {
             return System.Convert.ToInt32(text);
         }
-        else return -1;
+        else return -1;                         // Retuns -1, if out of stock, because this value should normally not be less than 0
     }
     private void SetTimerText()
     {
