@@ -40,7 +40,7 @@ public class Boom : MonoBehaviour
         }
         else if (col.GetComponent<HealthPC>())
         {
-            HealthPC.instance.callWhenDamagedPC(damage);
+            HealthPC.instance.CallWhenDamagedPC(damage);
         }
     }
 

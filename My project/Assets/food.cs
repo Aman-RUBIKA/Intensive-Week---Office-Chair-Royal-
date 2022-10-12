@@ -19,7 +19,7 @@ public class food : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             foodManager.GetComponent<EnemyDropmanager>().hasItemAppeared = false;
-            player.GetComponent<HealthPC>().callWhenHealed();
+            player.GetComponent<HealthPC>().CallWhenHealed();
             Destroy(this.gameObject); 
         }
         

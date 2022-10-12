@@ -5,8 +5,10 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
+
     public bool kickInput;
     public Vector2 mousePosition;
+    public bool pauseInput;
     private void Awake()
     {
         if (instance == null)
@@ -29,5 +31,6 @@ public class InputManager : MonoBehaviour
     {
         mousePosition = Input.mousePosition;
         kickInput = Input.GetMouseButtonDown(0) ;
+        //pauseInput = 
     }
 }

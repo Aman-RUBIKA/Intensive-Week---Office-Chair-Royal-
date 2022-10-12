@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GoldManager : MonoBehaviour
 {
     public static GoldManager instance;
+    [SerializeField]
     private float currentGold;
     public TextMeshProUGUI textGold;
 
@@ -26,7 +27,7 @@ public class GoldManager : MonoBehaviour
     public void AddGold(int acquired)
     {
         currentGold += acquired;
-        //textGold.text = "$ :" + currentGold.ToString();
+        textGold.text = "$ " + currentGold.ToString();
         Debug.Log(currentGold);
     }
 
