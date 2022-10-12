@@ -28,9 +28,9 @@ public class HealthPC : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(startingHealth);
+        //Debug.Log(startingHealth);
         currentHealth=startingHealth;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         canBeDamaged = true;
     }
 
@@ -38,7 +38,7 @@ public class HealthPC : MonoBehaviour
     {
         
     }
-    public void callWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
+    public void CallWhenDamagedPC(float damage)    // Call This Function Whenever The Player Takes Damage From Anything
     {
         //Debug.Log(currentHealth);
         currentHealth -= damage;
@@ -56,7 +56,7 @@ public class HealthPC : MonoBehaviour
             }
         }
     }
-    public void callWhenHealed()                   // Call This Function When The Player Consumes STolen Lunch (Healing Item)
+    public void CallWhenHealed()                   // Call This Function When The Player Consumes STolen Lunch (Healing Item)
     {
         if (CheckIfHealOverflow())
         {

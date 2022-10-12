@@ -41,7 +41,7 @@ public class Enemy_Ranged_Projectile : Projectile
         }
         else if (col.gameObject.layer==pcLayerInt)
         {
-            HealthPC.instance.callWhenDamagedPC(base.damage);
+            HealthPC.instance.CallWhenDamagedPC(base.damage);
             Destroy(this.gameObject);
         }
     }

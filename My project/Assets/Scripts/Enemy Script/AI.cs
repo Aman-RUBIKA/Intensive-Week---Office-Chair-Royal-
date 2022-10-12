@@ -241,7 +241,7 @@ public class AI : MonoBehaviour
     {
         if (col.gameObject.layer == pcLayer)
         {
-            HealthPC.instance.callWhenDamagedPC(damage);
+            HealthPC.instance.CallWhenDamagedPC(damage);
         }
     }
 }
