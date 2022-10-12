@@ -47,8 +47,8 @@ public class ItemManager : MonoBehaviour
         int removeIndex;
         //string upgradeIdInitial = item.upgradeID.ToString();
         //upgradeIdInitial = upgradeIdInitial[0].ToString();
-        Debug.Log(item);
-        Debug.Log(listOfUpgradeItems.FindInstanceID<UpgradeManager>(item));
+        //Debug.Log(item);
+        //Debug.Log(listOfUpgradeItems.FindInstanceID<UpgradeManager>(item));
         removeIndex = listOfUpgradeItems.FindInstanceID(item);
 
         if (item.upgradeType != UpgradeType.UPGRADE_2)

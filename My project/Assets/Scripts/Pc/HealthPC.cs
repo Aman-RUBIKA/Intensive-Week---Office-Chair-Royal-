@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class HealthPC : MonoBehaviour
     public Healthbar healthBar;
     public float invincibilityTime;
     public bool canBeDamaged;
+    public GameObject deathCanvas;
     private void Awake()
     {
         #region Simpleton
@@ -45,6 +47,7 @@ public class HealthPC : MonoBehaviour
         //Debug.Log(currentHealth);
         if (CheckIfDead())
         {
+            Death();
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over
         }
         else 
@@ -87,5 +90,13 @@ public class HealthPC : MonoBehaviour
         canBeDamaged = true;
     }
 
+    public void Death()
+    {
+        if (currentHealth <= 0f)
+        {
+            deathCanvas.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
 
 }

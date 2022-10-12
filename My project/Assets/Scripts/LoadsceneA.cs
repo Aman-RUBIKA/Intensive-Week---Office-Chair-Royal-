@@ -16,5 +16,15 @@ public class LoadsceneA : MonoBehaviour
         Debug.Log("Bitch 2");
         SceneManager.LoadScene(2);
     }
+    public void OnButtonPress3()
+    {
+        Debug.Log("Bitch 3");
+        SceneManager.LoadScene(1);
+    }
+    public void OnButtonPress4()
+    {
+        Debug.Log("Bitch 4");
+        SceneManager.LoadScene(0);
+    }
 }
     
