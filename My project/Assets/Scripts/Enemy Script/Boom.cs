@@ -18,6 +18,7 @@ public class Boom : MonoBehaviour
     void Start()
     {
         countdown = maxCountdown;
+        Destroy(this.gameObject, countdown + 1);
     }
     
     void Update()
