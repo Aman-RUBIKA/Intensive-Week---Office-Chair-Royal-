@@ -17,22 +17,33 @@ public class EnemyTimer : MonoBehaviour
     public float timeTillMinionSpawn;
     public float timeTillMoreSpawnPerWave = 120;
 
+    private void Start()
+    {
+        StartTimer();
+    }
+
     private void Update()
     {
         if (timerActive)
         {
             currentTime = currentTime + Time.deltaTime;
+            if (currentTime % timeTillBossSpawn <= 0.01f)
+            {
+                spawnBoss();
+            }
+            
             if (currentTime % timeTillMinionSpawn <= 0.01f)
+            {
+                spawnEnemy();
+            }
+            
+            if (currentTime % timeTillMoreSpawnPerWave <= 0.01f)
             {
                 enemyManager.GetComponent<EnemyManager>().survivedWaves += 1;
             }
-            if (currentTime % timeTillMoreSpawnPerWave <= 0.01f)
-            {
-                enemyManager.GetComponent<EnemyManager>().survivedWaves *= 2;
-            }
         }
 
-        //TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
         //currentTimeText.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
     }
 
