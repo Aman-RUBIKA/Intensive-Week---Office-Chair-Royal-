@@ -20,11 +20,15 @@ public class LoadsceneA : MonoBehaviour
     {
         Debug.Log("Bitch 3");
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
+
     }
     public void OnButtonPress4()
     {
         Debug.Log("Bitch 4");
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+
     }
 }
     
