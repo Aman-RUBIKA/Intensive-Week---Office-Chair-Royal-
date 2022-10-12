@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HealthPC : MonoBehaviour
 {
     public static HealthPC instance;
-    float maxHealth;
+    public float maxHealth;
     public float startingHealth;
     public float currentHealth;
     public float healAmount;
