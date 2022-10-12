@@ -900,6 +900,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7187304213254170442, guid: 7d2a47fd09843c14eb1d39fa0d492b47, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7187304213387157902, guid: 7d2a47fd09843c14eb1d39fa0d492b47, type: 3}
       propertyPath: price
       value: 1
@@ -1702,15 +1706,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: mach0
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: mach1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: mach2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: pistol0
@@ -1718,23 +1722,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: pistol1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: pistol2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun0
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253887334619994344, guid: e6f7425c6947801419596cb82aab9042, type: 3}
       propertyPath: shotgun2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6f7425c6947801419596cb82aab9042, type: 3}

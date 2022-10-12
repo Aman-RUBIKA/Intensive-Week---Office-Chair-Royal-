@@ -117,7 +117,7 @@ public class Capitalism : MonoBehaviour
     
     public void PriceAugment()
     {
-        price += 0.2f;
+        price += 0.4f;
     }
 
     int PriceOutput(float number)
