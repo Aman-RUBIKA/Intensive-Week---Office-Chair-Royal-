@@ -48,7 +48,6 @@ public class EnemyManager : MonoBehaviour
                     oocInstance(enemyPrefabs[1]);
                     explosiveKilled -= 3;
                     rangerPresent += 1;
-                    Debug.Log("ranger spawned");
                 }
 
                 else if (meleeKilled >= 5)
@@ -74,9 +73,6 @@ public class EnemyManager : MonoBehaviour
         GameObject cam = GameObject.FindWithTag("MainCamera");
         Vector2 camPos = cam.transform.position;
         float height = cam.GetComponent<Camera>().orthographicSize * 2f ;
-        float Width = height * cam.GetComponent<Camera>().aspect ;
-        float widthFromPlayer = Width / 2;
-        float heightFromPlayer = height / 2;
         float randomValue = Random.value;
         
 
@@ -84,18 +80,19 @@ public class EnemyManager : MonoBehaviour
         switch (whereSpawn)
         {
             case 1:
-                Instantiate(go, new Vector2(randomValue * 19, 11 + camPos.y), Quaternion.identity);
+                Instantiate(go, new Vector2(randomValue * 19 + camPos.x, 11 + camPos.y), Quaternion.identity);
                 break;
             case  2:
-                Instantiate(go, new Vector2(-19 + camPos.x, randomValue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(-19 + camPos.x, randomValue * 11 + camPos.y), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(go, new Vector2(randomValue * 19, -11 + camPos.y), Quaternion.identity);
+                Instantiate(go, new Vector2(randomValue * 19 + camPos.x, -11 + camPos.y), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(go, new Vector2(19 + camPos.x, randomValue * 11), Quaternion.identity);
+                Instantiate(go, new Vector2(19 + camPos.x, randomValue * 11 + camPos.y), Quaternion.identity);
                 break;
         }
+        Debug.Log(camPos);
         
     }
 
