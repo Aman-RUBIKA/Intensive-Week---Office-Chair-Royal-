@@ -118,7 +118,21 @@ public class ItemManager : MonoBehaviour
                     ShootManager.instance.shotgun0 = true;
                 }
                 break;
-                
+            case "D":
+                if (upgradeLevel == level2)
+                {
+                    ShootManager.instance.railGun2 = true;
+                }
+                else if (upgradeLevel == level1)
+                {
+                    ShootManager.instance.railGun1 = true;
+                }
+                else
+                {
+                    ShootManager.instance.railGun0 = true;
+                }
+                break;
+
         }
         Capitalism.instance.ResetShopItems();
     }

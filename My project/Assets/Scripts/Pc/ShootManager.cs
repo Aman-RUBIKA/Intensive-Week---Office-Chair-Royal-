@@ -13,7 +13,7 @@ public class ShootManager : MonoBehaviour
 
     public bool mach0, mach1, mach2, machCycle;
     public bool railGun0, railGun1, railGun2, railGunCycle;
-    private float railGunCooldown0, railGunCoolDown1, railGunCooldown2;
+    public float railGunCooldown0, railGunCoolDown1, railGunCooldown2;
     public int machMagSize;
     [SerializeField]
     float machCooldown0, machCooldown1, machCooldown2;
@@ -176,24 +176,23 @@ public class ShootManager : MonoBehaviour
 
         if (railGun2)    // If The Player Has Bought 2 Upgrades
         {
-            
-            
-            
+
+            Instantiate(railGunP, forwardT.position, transform.localRotation);
+
             yield return new WaitForSeconds(railGunCooldown2);
 
         }
         else if (railGun1)   // If The Player Has 1 Upgrade
         {
-            
-            
-            
+
+            Instantiate(railGunP, forwardT.position, transform.localRotation);
+
             yield return new WaitForSeconds(railGunCoolDown1);
         }
         else                // If The Player Owns The Base Item
         {
             
             Instantiate(railGunP, forwardT.position, transform.localRotation);
-            railGunCooldown0 = 2;
             
             yield return new WaitForSeconds(railGunCooldown0);
         }

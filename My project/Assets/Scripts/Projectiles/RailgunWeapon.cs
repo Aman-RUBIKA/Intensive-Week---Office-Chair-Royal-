@@ -7,29 +7,33 @@ public class RailgunWeapon: Projectile
 {
     private GameObject player;
     public LayerMask enemyLayerMask;
+    private Transform spawnerForwardShotgun;
     
     protected override void Awake()
     {
         base.Awake();
+        spawnerForwardShotgun = ShootManager.instance.forwardShotgun;
     }
     protected override void Start()
-    { 
-        //Vector2 dir = (Vector2)(Quaternion.Euler(0,0,transform.localRotation.z) * Vector2.right);
-        //RaycastHit2D[] enemyCols = Physics2D.RaycastAll(transform.position, Vector2.up , 200, enemyLayerMask);
-        /*foreach ( RaycastHit2D ray in enemyCols)
+    {
+        //Vector2 dir = (Vector2)(Quaternion.Euler(0,0,transform.localRotation.z) * Vector2.up);
+        RaycastHit2D[] enemyCols = Physics2D.RaycastAll(transform.position,  spawnerForwardShotgun.position - transform.position , 100);
+        foreach ( RaycastHit2D ray in enemyCols)
         {
             DamageIfEnemy(ray);
             Debug.Log("collision with enemy");
-        }*/
+        }
         base.Start();
         //base.BulletKick();
     }
 
     void DamageIfEnemy(RaycastHit2D ray)
     {
-        if( ray.collider.GetComponent<HealthEnemy>() != null)
+        Debug.Log("Tried To Damage Enemy");
+        Debug.Log(ray.collider.gameObject.name + " "+ray.collider.gameObject.layer );
+        if ( ray.collider.gameObject.layer == enemyLayer )
         {
-            ray.collider.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);
+            ray.collider.gameObject.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);
             Debug.Log(ray.collider.gameObject.name);
         }
     }
@@ -42,7 +46,7 @@ public class RailgunWeapon: Projectile
 
     private void Update()
     {
-        destroyExterminate();
+        //destroyExterminate();
     }
 
 
@@ -71,6 +75,6 @@ public class RailgunWeapon: Projectile
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, Vector2.up * 200);
+        Gizmos.DrawLine(transform.position, transform.position +  (Quaternion.Euler(transform.rotation.eulerAngles) * Vector2.up) * 100 ) ;
     }
 }

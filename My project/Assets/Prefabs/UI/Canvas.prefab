@@ -872,10 +872,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8078f4d5c23e4954a9281f18e2070d78, type: 2}
   - {fileID: 11400000, guid: f00f32c3baaf56448823a4a38e3e377e, type: 2}
   - {fileID: 11400000, guid: 5938e77e17407194290f5ce97516edbb, type: 2}
+  - {fileID: 11400000, guid: 640381d31bbeb7647ab3c9c750f3ac91, type: 2}
+  - {fileID: 11400000, guid: 09be30c3f946cdf4ea7230f9aade855b, type: 2}
+  - {fileID: 11400000, guid: df91b6011fae69746a4e5c4121bb35ec, type: 2}
   listOfUpgradeItems: []
   listOfPlayerItems: []
   listChosenForShop: []
-  positionsOfStartingItems: 000000000200000005000000
+  positionsOfStartingItems: 00000000020000000500000008000000
 --- !u!114 &7187304213387157902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +907,8 @@ MonoBehaviour:
   currentTime: 0
   randomTime: 0
   timerLimit: 0
+  empty: {fileID: 11400000, guid: 8c29c799fdc453a47a03f843fedfea7f, type: 2}
+  outOfStockText: Out Of Stock
   price: 50
   price1: 0
   prize2: 0

@@ -32,7 +32,7 @@ public class GoldManager : MonoBehaviour
     {
         currentGold += acquired;
         textGold.text = "$ " + currentGold.ToString();
-        Debug.Log(currentGold);
+        //Debug.Log(currentGold);
     }
 
 

@@ -273,7 +273,7 @@ MonoBehaviour:
   meleeRange: {fileID: 1778980674312429992}
   pcCollider: {fileID: 6879136601469901474}
   mainCamera: {fileID: 0}
-  kickForce: 20
+  kickForce: 30
   kickDelay: 0
   angleOfKick: 0
   kickAngleVector: {x: 0, y: 0}
@@ -290,11 +290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   healAmount: 10
   healthBar: {fileID: 0}
   invincibilityTime: 2
   canBeDamaged: 0
+  deathCanvas: {fileID: 0}
 --- !u!114 &7253887334619994344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,29 +321,32 @@ MonoBehaviour:
   mach1: 0
   mach2: 0
   machCycle: 0
-  railGun0: 0
+  railGun0: 1
   railGun1: 0
   railGun2: 0
   railGunCycle: 0
-  machMagSize: 15
-  machCooldown0: 0
-  machCooldown1: 0
-  machCooldown2: 0
+  railGunCooldown0: 10
+  railGunCoolDown1: 7.5
+  railGunCooldown2: 4
+  machMagSize: 30
+  machCooldown0: 5
+  machCooldown1: 3
+  machCooldown2: 1
   shotgun0: 0
   shotgun1: 0
   shotgun2: 0
   shotgunCycle: 0
-  shotgunMagSize: 5
-  shotgunCooldown0: 2
-  shotgunCooldown1: 1.5
-  shotgunCooldown2: 1.25
+  shotgunMagSize: 2
+  shotgunCooldown0: 4
+  shotgunCooldown1: 2
+  shotgunCooldown2: 2
   pistolShot: {fileID: 0}
   shotgunShot: {fileID: 0}
   machineGunShot: {fileID: 0}
   pistolP: {fileID: 1913228001271541735, guid: e1c9aa88f4dbac4408ea76215a3af16f, type: 3}
   machP: {fileID: 1561388194924014883, guid: 08e8c12738917fd4ab73c2138916cdf7, type: 3}
   shotgunP: {fileID: 6615657153724959059, guid: 996f5a0e378cfa649bf4894dd40b3e45, type: 3}
-  railGunP: {fileID: 0}
+  railGunP: {fileID: 6615657153724959059, guid: 3c17f74e0c1c8994db89f9a9cf106c59, type: 3}
 --- !u!1 &3488603371019496662
 GameObject:
   m_ObjectHideFlags: 0

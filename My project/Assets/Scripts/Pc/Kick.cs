@@ -45,7 +45,7 @@ public class Kick : MonoBehaviour
 
         if (hitEnemyList.Length > 0)
         {
-            Debug.Log(hitEnemyList[0].gameObject.layer);
+            //Debug.Log(hitEnemyList[0].gameObject.layer);
         }
 
         foreach (Collider2D col in hitEnemyList)
