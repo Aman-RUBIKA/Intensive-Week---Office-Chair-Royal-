@@ -231,8 +231,23 @@ public class Capitalism : MonoBehaviour
     private void Sale()
     {
         if (currentTime<0.5f)
-        { 
-            salePrice= Mathf.RoundToInt(price / 2);
+        {
+            /*int newPrice1;
+            int newPrice2;
+            int newPrice3;
+            newPrice1 = System.Convert.ToInt32(price1Text);
+            newPrice2 = System.Convert.ToInt32(price2Text);
+            newPrice3 = System.Convert.ToInt32(price3Text);
+            Debug.Log(newPrice1 + " is new price 1");
+            newPrice1 = Mathf.RoundToInt(newPrice1 / 2);
+            newPrice2 = Mathf.RoundToInt(newPrice2 / 2);
+            newPrice3 = Mathf.RoundToInt(newPrice3 / 2);
+
+            price1Text.text = newPrice1.ToString();
+            price2Text.text = newPrice2.ToString();
+            price3Text.text = newPrice3.ToString(); */
+            salePrice = Mathf.RoundToInt(price / 2);
+
             price1Text.text = salePrice.ToString();
             price2Text.text = salePrice.ToString();
             price3Text.text = salePrice.ToString();

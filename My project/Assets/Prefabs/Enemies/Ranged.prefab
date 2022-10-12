@@ -169,7 +169,7 @@ MonoBehaviour:
   explosionCountdown: 10
   explosionPrefab: {fileID: 0}
   type: 1
-  speed: 0.9
+  speed: 2
   shootTimerMax: 3
   shootTimer: 0
   rangedDistanceStop: 10
