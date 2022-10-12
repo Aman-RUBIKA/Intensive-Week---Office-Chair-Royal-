@@ -42,7 +42,7 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead())
         {
-            goldManager.GetComponent<GoldManager>().AddGold(3);
+            GoldManager.instance.AddGold(5);
             
             Debug.Log("Oops, I Have Died With " + currentHealth + " HP Remaining");
             GameObject manager = GameObject.FindWithTag("EnemyManager");

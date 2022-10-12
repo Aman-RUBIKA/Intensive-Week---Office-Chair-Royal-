@@ -117,7 +117,7 @@ public class Capitalism : MonoBehaviour
     
     public void PriceAugment()
     {
-        price += 0.4f;
+        price += 0.5f;
     }
 
     int PriceOutput(float number)
@@ -216,7 +216,7 @@ public class Capitalism : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            randomTime = Random.Range(1f, 10f);
+            randomTime = Random.Range(20f, 45f);
             hasHalved = false;
             ResetShopItems();
         }
