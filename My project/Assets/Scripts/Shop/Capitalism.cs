@@ -92,17 +92,18 @@ public class Capitalism : MonoBehaviour
     
     public void WhichButtonWasClicked(int buttonID)
     {
-        if (buttonID == 0 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price1Text)))      // If This Button Is Clicked AND You Have Enough Gold
+        if (buttonID == 0 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price1Text.text)))      // If This Button Is Clicked AND You Have Enough Gold
         {
-            Debug.Log(buttonID + " I Was Clicked");
+            Debug.Log(System.Convert.ToInt32(price1Text) + " is price of this item.");
+            Debug.Log(price1Text.text);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
-        else if (buttonID == 1 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price2Text)))
+        else if (buttonID == 1 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price2Text.text)))
         {
             Debug.Log(buttonID + " I Was Clicked");
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
-        else if (buttonID == 2 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price3Text)))
+        else if (buttonID == 2 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price3Text.text)))
         {
             Debug.Log(buttonID + " I Was Clicked");
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);

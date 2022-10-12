@@ -28,9 +28,9 @@ public class HealthPC : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(startingHealth);
+        //Debug.Log(startingHealth);
         currentHealth=startingHealth;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         canBeDamaged = true;
     }
 
