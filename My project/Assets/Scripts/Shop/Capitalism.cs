@@ -68,7 +68,14 @@ public class Capitalism : MonoBehaviour
         //Debug.Log(currentShopItems[0]);
         //Debug.Log(currentShopItems[1]);
         //Debug.Log(currentShopItems[2]);
-        UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
+        if (currentShopItems[0] != null)
+        {
+            UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
+        }
+        else
+        {
+
+        }
         UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
         UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);
     }
@@ -86,7 +93,7 @@ public class Capitalism : MonoBehaviour
 
     int PriceOutput(float number)
     {
-      return Mathf.RoundToInt(number * price) ;
+        return Mathf.RoundToInt(number * price) ;
     }
     
     
@@ -94,23 +101,26 @@ public class Capitalism : MonoBehaviour
     {
         if (buttonID == 0 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price1Text.text)))      // If This Button Is Clicked AND You Have Enough Gold
         {
-            Debug.Log(System.Convert.ToInt32(price1Text) + " is price of this item.");
-            Debug.Log(price1Text.text);
+            Debug.Log(System.Convert.ToInt32(price1Text.text) + " is price of this item.");
+            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price1Text.text));
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
         else if (buttonID == 1 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price2Text.text)))
         {
-            Debug.Log(buttonID + " I Was Clicked");
+            Debug.Log(System.Convert.ToInt32(price2Text.text) + " is price of this item.");
+            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price2Text.text));
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
         else if (buttonID == 2 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price3Text.text)))
         {
-            Debug.Log(buttonID + " I Was Clicked");
+            Debug.Log(System.Convert.ToInt32(price3Text.text) + " is price of this item.");
+            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price3Text.text));
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);
         }
         else
         {
             // You Don't Have Enough Money
+            Debug.Log("You Are Missing Some Stolen Salary, Get Back Out There Capatalist!");
         }
     }
     // Update is called once per frame

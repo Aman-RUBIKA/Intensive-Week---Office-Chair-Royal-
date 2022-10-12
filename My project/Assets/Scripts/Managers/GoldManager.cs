@@ -24,6 +24,10 @@ public class GoldManager : MonoBehaviour
         }
         #endregion Simpleton
     }
+    private void Start()
+    {
+        AddGold(0);
+    }
     public void AddGold(int acquired)
     {
         currentGold += acquired;
