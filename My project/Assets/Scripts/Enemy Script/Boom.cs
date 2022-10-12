@@ -18,6 +18,7 @@ public class Boom : MonoBehaviour
     void Start()
     {
         countdown = maxCountdown;
+        Destroy(this.gameObject, countdown + 1);
     }
     
     void Update()
@@ -25,6 +26,7 @@ public class Boom : MonoBehaviour
         if (countdown <= 0)
         {
             StartCoroutine(SpriteFade(sprite, 0, lerpDuration));
+            
         }
         else
         {
@@ -34,13 +36,13 @@ public class Boom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.GetComponent<AI>() != null)
+        if (col.GetComponent<HealthEnemy>() != null)
         {
-            col.GetComponent<AI>().hp -= damage;
+            col.GetComponent<HealthEnemy>().currentHealth -= damage;
         }
         else if (col.GetComponent<HealthPC>())
         {
-            HealthPC.instance.callWhenDamagedPC(damage);
+            col.GetComponent<HealthPC>().callWhenDamagedPC(damage);
         }
     }
 

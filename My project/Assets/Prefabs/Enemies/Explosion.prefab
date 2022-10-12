@@ -118,4 +118,4 @@ MonoBehaviour:
   maxCountdown: 1
   countdown: 0
   lerpDuration: 0.5
-  damage: 5
+  damage: 8
