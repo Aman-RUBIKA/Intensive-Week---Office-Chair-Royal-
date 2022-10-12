@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public class Capitalism : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Capitalism : MonoBehaviour
     UpgradeManager button0Item;
     UpgradeManager button1Item;
     UpgradeManager button2Item;
+    public UpgradeManager empty;
+    public string outOfStockText = "Out Of Stock";
 
     [Header("Prices Variables")]
     public float price, price1, prize2, price3 = 50;
@@ -68,22 +71,48 @@ public class Capitalism : MonoBehaviour
         //Debug.Log(currentShopItems[0]);
         //Debug.Log(currentShopItems[1]);
         //Debug.Log(currentShopItems[2]);
-        if (currentShopItems[0] != null)
+
+        if (currentShopItems.Count>=3)
+        {
+            UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button0Item);
+        }
+        else
+        {
+            UpdateShopVisual(shopImageRight, price3Text, button2Item, true);
+        }
+
+        if (currentShopItems.Count>=2)
+        {
+            UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
+        }
+        else
+        {
+            UpdateShopVisual(shopImageCenter, price2Text, button1Item, true);
+        }
+
+        if (currentShopItems.Count >=1)
         {
             UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
         }
         else
         {
-
+            UpdateShopVisual(shopImageLeft, price1Text, button0Item, true);
         }
-        UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
-        UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button2Item);
     }
     void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, UpgradeManager list)
     {
         text.text = (PriceOutput(item.basePrice).ToString());
         spr.sprite = item.icon;
         list=item;
+    }
+    void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, bool isEmpty)
+    {
+        if (isEmpty)
+        {
+            text.text = outOfStockText;
+            spr.sprite = empty.icon;
+            item = empty;
+        }
     }
     
     public void PriceAugment()
@@ -99,22 +128,29 @@ public class Capitalism : MonoBehaviour
     
     public void WhichButtonWasClicked(int buttonID)
     {
-        if (buttonID == 0 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price1Text.text)))      // If This Button Is Clicked AND You Have Enough Gold
+        int price1 = ConvertShopTextToInt(price1Text.text);
+        Debug.Log(price1);
+        int price2 = ConvertShopTextToInt(price2Text.text);
+        Debug.Log(price2);
+        int price3 = ConvertShopTextToInt(price3Text.text);
+        Debug.Log(price3);
+
+        if (buttonID == 0 && price1 !=-1 && GoldManager.instance.CallWhenComparingPrices(price1))      // If This Button Is Clicked AND You Have Enough Gold. It Retuns -1 If The Position In Shop Is Out Of Stock
         {
             Debug.Log(System.Convert.ToInt32(price1Text.text) + " is price of this item.");
-            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price1Text.text));
+            GoldManager.instance.CallWhenBought(price1);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
-        else if (buttonID == 1 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price2Text.text)))
+        else if (buttonID == 1 && price2!=-1 && GoldManager.instance.CallWhenComparingPrices(price2))
         {
             Debug.Log(System.Convert.ToInt32(price2Text.text) + " is price of this item.");
-            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price2Text.text));
+            GoldManager.instance.CallWhenBought(price2);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
-        else if (buttonID == 2 && GoldManager.instance.CallWhenComparingPrices(System.Convert.ToInt32(price3Text.text)))
+        else if (buttonID == 2 && price3!=-1 && GoldManager.instance.CallWhenComparingPrices(price3))
         {
             Debug.Log(System.Convert.ToInt32(price3Text.text) + " is price of this item.");
-            GoldManager.instance.CallWhenBought(System.Convert.ToInt32(price3Text.text));
+            GoldManager.instance.CallWhenBought(price3);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);
         }
         else
@@ -163,6 +199,14 @@ public class Capitalism : MonoBehaviour
         TimerReset();
     }
 
+    private int ConvertShopTextToInt(string text)
+    {
+        if (text != outOfStockText)
+        {
+            return System.Convert.ToInt32(text);
+        }
+        else return -1;
+    }
     private void SetTimerText()
     {
         timerText.text = currentTime.ToString();
