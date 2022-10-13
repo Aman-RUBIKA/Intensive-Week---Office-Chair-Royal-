@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
 public class AI : MonoBehaviour
 {
     private Collider2D enemyCol;
-    private int pcLayer = 6;
+    public int pcLayer = 6;
     public float damage = 5;
     [Header("MidBoss Variables")]
     public bool midBoss;
@@ -52,7 +49,7 @@ public class AI : MonoBehaviour
     public Vector2 pPosition;
     private GameObject player;
     public GameObject bulletPrefab;
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
         burnCountdown = maxBurnCountdown;
@@ -237,11 +234,5 @@ public class AI : MonoBehaviour
         angle =(Mathf.Atan2(transform.position.y - pPosition.y, transform.position.x - pPosition.x));
         transform.rotation = Quaternion.Euler(0, 0, (Mathf.Rad2Deg * angle) - 90);
     }
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.layer == pcLayer)
-        {
-            HealthPC.instance.CallWhenDamagedPC(damage);
-        }
-    }
+    
 }

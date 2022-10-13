@@ -39,7 +39,7 @@ public class HealthEnemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-        Debug.Log(damage + " is the Damage I've Taken");
+        //Debug.Log(damage + " is the Damage I've Taken");
         if (CheckIfDead())
         {
             GoldManager.instance.AddGold(5);

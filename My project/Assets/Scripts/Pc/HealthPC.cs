@@ -45,17 +45,17 @@ public class HealthPC : MonoBehaviour
         //Debug.Log(currentHealth);
         currentHealth -= damage;
         //Debug.Log(currentHealth);
-        if (CheckIfDead())
+        if (IsDead())
         {
-            Death();
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over
+            Death();
         }
         else 
         {
             if (canBeDamaged)
             {
-                StartCoroutine(InvinvibilityAfterDamage());
                 healthBar.SetHealth(currentHealth);
+                StartCoroutine(InvinvibilityAfterDamage());
             }
         }
     }
@@ -67,7 +67,7 @@ public class HealthPC : MonoBehaviour
         }
         else { currentHealth += healAmount; }
     }
-    bool CheckIfDead()          // Checks If The Player Dies After Taking Damage
+    bool IsDead()          // Checks If The Player Dies After Taking Damage
     {
         if (currentHealth <= 0)
         {
@@ -92,11 +92,8 @@ public class HealthPC : MonoBehaviour
 
     public void Death()
     {
-        if (currentHealth <= 0f)
-        {
-            deathCanvas.SetActive(true);
-            Time.timeScale = 0f;
-        }
+        deathCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 }
