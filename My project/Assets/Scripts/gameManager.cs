@@ -7,8 +7,10 @@ using UnityEngine;
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
+
     public GAMESTATE currentGameState;
     public GAMESTATE desiredGameState;
+    [SerializeField] Canvas             deathCanvas;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class gameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         #endregion Simpleton
+        deathCanvas.enabled = false;
     }
     private void Start()
     {
@@ -37,6 +40,7 @@ public class gameManager : MonoBehaviour
             case GAMESTATE.PLAY:
                 break;
             case GAMESTATE.GAMEOVER:
+                CallWhenGameOver();
                 break;
         }
     }
@@ -47,6 +51,10 @@ public class gameManager : MonoBehaviour
         PAUSE,
         GAMEOVER
     }
-    
-    
+
+    public void CallWhenGameOver()
+    {
+        Time.timeScale = 0f;
+        deathCanvas.enabled = true;
+    }
 }

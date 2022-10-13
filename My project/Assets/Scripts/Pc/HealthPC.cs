@@ -48,7 +48,7 @@ public class HealthPC : MonoBehaviour
         if (IsDead())
         {
             // Add Code Here Once The State Machine Is Complete, To Trigger Game Over
-            Death();
+            gameManager.instance.currentGameState= gameManager.GAMESTATE.GAMEOVER;
         }
         else 
         {
@@ -89,11 +89,4 @@ public class HealthPC : MonoBehaviour
         yield return new WaitForSeconds(invincibilityTime);
         canBeDamaged = true;
     }
-
-    public void Death()
-    {
-        deathCanvas.SetActive(true);
-        Time.timeScale = 0f;
-    }
-
 }

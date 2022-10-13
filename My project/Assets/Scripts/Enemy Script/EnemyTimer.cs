@@ -26,7 +26,7 @@ public class EnemyTimer : MonoBehaviour
     {
         if (timerActive)
         {
-            currentTime = currentTime + Time.deltaTime;
+            currentTime += Time.deltaTime;
             if (currentTime % timeTillBossSpawn <= 0.01f)
             {
                 spawnBoss();

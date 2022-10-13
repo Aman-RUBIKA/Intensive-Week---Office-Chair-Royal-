@@ -42,11 +42,14 @@ public class PcController : MonoBehaviour
 
     void Update()
     {
-        GetInputs();
-        CharacterAim(mousePosition);
-        if (kickInput && !kickCooldown)
+        if (gameManager.instance.currentGameState == gameManager.GAMESTATE.PLAY)
         {
-            StartCoroutine(KickUpdate(kickDelay));
+            GetInputs();
+            CharacterAim(mousePosition);
+            if (kickInput && !kickCooldown)
+            {
+                StartCoroutine(KickUpdate(kickDelay));
+            }
         }
         //Debug.Log(mousePosition);
     }
