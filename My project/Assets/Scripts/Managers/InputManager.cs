@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public bool pauseInput;
     private void Awake()
     {
+        #region Simpleton
         if (instance == null)
         {
             instance = this;
@@ -19,18 +20,20 @@ public class InputManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        #endregion Simpleton
     }
     void Start()
     {
         kickInput = false;
+        pauseInput = false;
         //mousePosition = 
     }
 
     // Update is called once per frame
     void Update()
     {
-        mousePosition = Input.mousePosition;
-        kickInput = Input.GetMouseButtonDown(0) ;
-        //pauseInput = 
+        mousePosition   =     Input.mousePosition;
+        kickInput       =     Input.GetMouseButtonDown(0);
+        pauseInput      =     Input.GetKeyDown(KeyCode.Tab);
     }
 }

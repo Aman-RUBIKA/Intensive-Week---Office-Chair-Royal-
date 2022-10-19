@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
 
-    public GAMESTATE currentGameState;
-    public GAMESTATE desiredGameState;
-    [SerializeField] Canvas             deathCanvas;
+    public              GAMESTATE    currentGameState, desiredGameState;
+    [SerializeField]    Canvas       deathCanvas;
+    public              GameObject   pausePanel;
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class gameManager : MonoBehaviour
 
     private void Update()
     {
+        SwitchPauseAndPlay();
+
         switch (currentGameState)
         {
             case GAMESTATE.PAUSE:
@@ -42,11 +45,31 @@ public class gameManager : MonoBehaviour
             case GAMESTATE.GAMEOVER:
                 CallWhenGameOver();
                 break;
+            case GAMESTATE.MAINMENU:
+                break;
+        }
+    }
+
+    private void SwitchPauseAndPlay()
+    {
+        if (InputManager.instance.pauseInput)
+        {
+            if (currentGameState == GAMESTATE.PLAY)
+            {
+                currentGameState = GAMESTATE.PAUSE;
+                Capitalism.instance.Pause();
+            }
+            else if (currentGameState == GAMESTATE.PAUSE)
+            {
+                currentGameState = GAMESTATE.PLAY;
+                Capitalism.instance.Resume();
+            }
         }
     }
 
     public enum GAMESTATE
     {
+        MAINMENU,
         PLAY,
         PAUSE,
         GAMEOVER

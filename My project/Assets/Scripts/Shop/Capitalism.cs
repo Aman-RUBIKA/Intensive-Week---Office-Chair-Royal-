@@ -10,32 +10,30 @@ using System.Linq;
 public class Capitalism : MonoBehaviour
 {
     [Header("UI Elements")]
-    public Canvas MenuCanvas;
-    public TextMeshProUGUI timerText, goldText;
-    public TextMeshProUGUI price1Text, price2Text, price3Text;
-    public UnityEngine.UI.Image shopImageLeft, shopImageCenter, shopImageRight;
-    public UnityEngine.UI.Button shopLeft, shopCenter, shopRight;
-    public List<UnityEngine.UI.Button> shopButtons;
+    public Canvas                       MainCanvas;
+    public GameObject                   shopPanel, hudPanel, goldPanel;
+    public TextMeshProUGUI              timerText, goldText;
+    public TextMeshProUGUI              price1Text, price2Text, price3Text;
+    public UnityEngine.UI.Image         shopImageLeft, shopImageCenter, shopImageRight;
+    public UnityEngine.UI.Button        shopLeft, shopCenter, shopRight;
+    public List<UnityEngine.UI.Button>  shopButtons;
 
-    public float currentTime = 0f;
-    public float randomTime;
-    public float timerLimit;
-    public static bool GameIsPaused = false;
-    public static Capitalism instance;
-    UpgradeManager button0Item;
-    UpgradeManager button1Item;
-    UpgradeManager button2Item;
-    public UpgradeManager empty;
-    public string outOfStockText = "Out Of Stock";
+    public  float                currentTime         = 0f;
+    public  float                randomTime;
+    public  float                timerLimit;
+    public  static bool          GameIsPaused        = false;
+    public  static Capitalism    instance;
+    private UpgradeManager       button0Item, button1Item, button2Item;
+    public  UpgradeManager       empty;
+    public  string               outOfStockText      = "Out Of Stock";
 
     [Header("Prices Variables")]
-    public float price, price1, prize2, price3 = 50;
-    public int salePrice;
-    private bool hasHalved;
-    public float priceAugment;
-    [SerializeField] 
-    private List<UpgradeManager> upgrades;
-    public List<UpgradeManager> currentShopItems;
+    public              float                           price, price1, prize2, price3 = 50;
+    public              int                             salePrice;
+    private             bool                            hasHalved;
+    public              float                           priceAugment;
+    [SerializeField]    List<UpgradeManager>            upgrades;
+    public              List<UpgradeManager>            currentShopItems;
 
 
     private void Awake()
@@ -49,19 +47,26 @@ public class Capitalism : MonoBehaviour
             Destroy(this.gameObject);
         }
         shopButtons = new List<UnityEngine.UI.Button>();
-        shopButtons.Add(shopLeft);
-        shopButtons.Add(shopCenter);
-        shopButtons.Add(shopRight);
+        shopButtons.Add(UiManager.instance.shopLeft);
+        shopButtons.Add(UiManager.instance.shopCenter);
+        shopButtons.Add(UiManager.instance.shopRight);
     }
     void Start()
     {
-        MenuCanvas.enabled = false ;
 
         SetPrice();
 
 
         ResetShopItems();
         randomTime = Random.Range(1f, 10f);
+        if (gameManager.instance.currentGameState == gameManager.GAMESTATE.PLAY)
+        {
+            GameIsPaused = false;
+        }
+        else
+        {
+            GameIsPaused = true;
+        }
 
     }
 
@@ -74,29 +79,29 @@ public class Capitalism : MonoBehaviour
 
         if (currentShopItems.Count>=3)
         {
-            UpdateShopVisual(shopImageRight, price3Text, currentShopItems[2], button0Item);
+            UpdateShopVisual(UiManager.instance.shopImageRight, UiManager.instance.price3Text, currentShopItems[2], button0Item);
         }
         else
         {
-            UpdateShopVisual(shopImageRight, price3Text, button2Item, true);
+            UpdateShopVisual(UiManager.instance.shopImageRight, UiManager.instance.price3Text, button2Item, true);
         }
 
         if (currentShopItems.Count>=2)
         {
-            UpdateShopVisual(shopImageCenter, price2Text, currentShopItems[1], button1Item);
+            UpdateShopVisual(UiManager.instance.shopImageCenter, price2Text, currentShopItems[1], button1Item);
         }
         else
         {
-            UpdateShopVisual(shopImageCenter, price2Text, button1Item, true);
+            UpdateShopVisual(UiManager.instance.shopImageCenter, price2Text, button1Item, true);
         }
 
         if (currentShopItems.Count >=1)
         {
-            UpdateShopVisual(shopImageLeft, price1Text, currentShopItems[0], button0Item);
+            UpdateShopVisual(UiManager.instance.shopImageLeft, UiManager.instance.price1Text, currentShopItems[0], button0Item);
         }
         else
         {
-            UpdateShopVisual(shopImageLeft, price1Text, button0Item, true);
+            UpdateShopVisual(UiManager.instance.shopImageLeft, UiManager.instance.price1Text, button0Item, true);
         }
     }
     void UpdateShopVisual(UnityEngine.UI.Image spr, TextMeshProUGUI text, UpgradeManager item, UpgradeManager list)
@@ -128,28 +133,28 @@ public class Capitalism : MonoBehaviour
     
     public void WhichButtonWasClicked(int buttonID)
     {
-        int price1 = ConvertShopTextToInt(price1Text.text);
+        int price1 = ConvertShopTextToInt(UiManager.instance.price1Text.text);
         Debug.Log(price1);
-        int price2 = ConvertShopTextToInt(price2Text.text);
+        int price2 = ConvertShopTextToInt(UiManager.instance.price2Text.text);
         Debug.Log(price2);
-        int price3 = ConvertShopTextToInt(price3Text.text);
+        int price3 = ConvertShopTextToInt(UiManager.instance.price3Text.text);
         Debug.Log(price3);
 
         if (buttonID == 0 && price1 !=-1 && GoldManager.instance.CallWhenComparingPrices(price1))      // If This Button Is Clicked AND You Have Enough Gold. It Retuns -1 If The Position In Shop Is Out Of Stock
         {
-            Debug.Log(System.Convert.ToInt32(price1Text.text) + " is price of this item.");
+            Debug.Log(System.Convert.ToInt32(UiManager.instance.price1Text.text) + " is price of this item.");
             GoldManager.instance.CallWhenBought(price1);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[0]);
         }
         else if (buttonID == 1 && price2!=-1 && GoldManager.instance.CallWhenComparingPrices(price2))
         {
-            Debug.Log(System.Convert.ToInt32(price2Text.text) + " is price of this item.");
+            Debug.Log(System.Convert.ToInt32(UiManager.instance.price2Text.text) + " is price of this item.");
             GoldManager.instance.CallWhenBought(price2);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[1]);
         }
         else if (buttonID == 2 && price3!=-1 && GoldManager.instance.CallWhenComparingPrices(price3))
         {
-            Debug.Log(System.Convert.ToInt32(price3Text.text) + " is price of this item.");
+            Debug.Log(System.Convert.ToInt32(UiManager.instance.price3Text.text) + " is price of this item.");
             GoldManager.instance.CallWhenBought(price3);
             ItemManager.instance.PlayerGetsUpgrade(currentShopItems[2]);
         }
@@ -164,10 +169,6 @@ public class Capitalism : MonoBehaviour
     {
         currentTime = randomTime -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            PauseResume();
-        }
 
 
         if (currentTime <= timerLimit)
@@ -178,9 +179,9 @@ public class Capitalism : MonoBehaviour
 
         if (currentTime<=0.5f)
         {
-            if (timerText.color != Color.red)
+            if (UiManager.instance.timerText.color != Color.red)
             {
-                timerText.color = Color.red;
+                UiManager.instance.timerText.color = Color.red;
             }
             if (hasHalved == false)
             {
@@ -190,9 +191,9 @@ public class Capitalism : MonoBehaviour
         }
         else
         {
-            if (timerText.color != Color.white)
+            if (UiManager.instance.timerText.color != Color.white)
             {
-                timerText.color = Color.white;
+                UiManager.instance.timerText.color = Color.white;
             }
         }
         SetTimerText();
@@ -209,7 +210,7 @@ public class Capitalism : MonoBehaviour
     }
     private void SetTimerText()
     {
-        timerText.text = currentTime.ToString();
+        UiManager.instance.timerText.text = currentTime.ToString();
     }
     private void TimerReset()
     {
@@ -223,9 +224,9 @@ public class Capitalism : MonoBehaviour
     }
     private void SetPrice()
     {
-        price1Text.text = price.ToString();
-        price2Text.text = price.ToString();
-        price3Text.text = price.ToString();
+        UiManager.instance.price1Text.text = price.ToString();
+        UiManager.instance.price2Text.text = price.ToString();
+        UiManager.instance.price3Text.text = price.ToString();
     }
 
     private void Sale()
@@ -235,36 +236,36 @@ public class Capitalism : MonoBehaviour
             /*int newPrice1;
             int newPrice2;
             int newPrice3;
-            newPrice1 = System.Convert.ToInt32(price1Text);
-            newPrice2 = System.Convert.ToInt32(price2Text);
-            newPrice3 = System.Convert.ToInt32(price3Text);
+            newPrice1 = System.Convert.ToInt32(UiManager.instance.price1Text);
+            newPrice2 = System.Convert.ToInt32(UiManager.instance.price2Text);
+            newPrice3 = System.Convert.ToInt32(UiManager.instance.price3Text);
             Debug.Log(newPrice1 + " is new price 1");
             newPrice1 = Mathf.RoundToInt(newPrice1 / 2);
             newPrice2 = Mathf.RoundToInt(newPrice2 / 2);
             newPrice3 = Mathf.RoundToInt(newPrice3 / 2);
 
-            price1Text.text = newPrice1.ToString();
-            price2Text.text = newPrice2.ToString();
-            price3Text.text = newPrice3.ToString(); */
+            UiManager.instance.price1Text.text = newPrice1.ToString();
+            UiManager.instance.price2Text.text = newPrice2.ToString();
+            UiManager.instance.price3Text.text = newPrice3.ToString(); */
             salePrice = Mathf.RoundToInt(price / 2);
 
-            price1Text.text = salePrice.ToString();
-            price2Text.text = salePrice.ToString();
-            price3Text.text = salePrice.ToString();
+            UiManager.instance.price1Text.text = salePrice.ToString();
+            UiManager.instance.price2Text.text = salePrice.ToString();
+            UiManager.instance.price3Text.text = salePrice.ToString();
         }
     }
     
     #region Pause And Resume
-    void Resume()
+    public void Resume()
     {
-        MenuCanvas.enabled = false;
+        MainCanvas.enabled = false;
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
-        MenuCanvas.enabled = true;
+        MainCanvas.enabled = true;
         Time.timeScale = 0f;
         GameIsPaused = true;
         Debug.Log("fuck");

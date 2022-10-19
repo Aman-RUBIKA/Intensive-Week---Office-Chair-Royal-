@@ -30,7 +30,7 @@ public class RailgunWeapon: Projectile
     void DamageIfEnemy(RaycastHit2D ray)
     {
         //Debug.Log("Tried To Damage Enemy");
-        Debug.Log(ray.collider.gameObject.name + " "+ray.collider.gameObject.layer );
+        //Debug.Log(ray.collider.gameObject.name + " "+ray.collider.gameObject.layer );
         if ( ray.collider.gameObject.layer == enemyLayer )
         {
             ray.collider.gameObject.GetComponent<HealthEnemy>().CallWhenDamagedEnemy(damage);

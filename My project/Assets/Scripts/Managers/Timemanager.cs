@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using TMPro;
 
 
-public class Timemanager : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
     public float timeValue;
     public TextMeshProUGUI timerText;
